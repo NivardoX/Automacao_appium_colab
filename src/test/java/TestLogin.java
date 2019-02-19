@@ -32,6 +32,11 @@ public class TestLogin {
         cpf.sendKeys("00717420345");
         pass.sendKeys("12345678");
         login_button.click();
+        try {
+            sleep(8000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Before
@@ -157,21 +162,9 @@ public class TestLogin {
 
     @Test
     public void test_login_correto(){
-        MobileElement cpf = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_cpf"));
-        MobileElement pass = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_password"));
-        MobileElement login_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/cpf_sign_in_button"));
+        logar();
 
 
-        cpf.sendKeys("00717420345");
-        pass.sendKeys("12345678");
-        login_button.click();
-
-        try {
-            sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         driver.getContext();
         MobileElement drop = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_company"));
         drop.click();
@@ -181,7 +174,10 @@ public class TestLogin {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        assertEquals("Selecione uma empresa",drop.getText());
+
+        MobileElement perfil = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/profile"));
+
+        assert(perfil.isDisplayed());
 
 
     }
