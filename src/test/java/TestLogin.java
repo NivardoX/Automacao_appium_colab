@@ -1,4 +1,6 @@
 import io.appium.java_client.AppiumDriver;
+
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -6,9 +8,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.mobile.NetworkConnection;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.seleniumhq.jetty9.io.Connection;
+
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -34,15 +40,67 @@ public class TestLogin {
         pass.sendKeys("12345678");
         login_button.click();
         try {
-            sleep(8000);
+            sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    private void logar_cpf(String cpf_str) {
+        MobileElement cpf = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_cpf"));
+        MobileElement pass = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_password"));
+        MobileElement login_button = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/cpf_sign_in_button"));
+
+
+        cpf.sendKeys(cpf_str);
+        pass.sendKeys("12345678");
+        login_button.click();
+        try {
+            sleep(6000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
+    private void deslogar(){
+        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        empresa.click();
+
+        try {
+            sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        MobileElement scroll_view = (MobileElement) driver.findElement((By.id("br.com.fortes.appcolaborador:id/scroll_view_profile")));
+
+        MobileElement logout_btn = (MobileElement)scroll_view
+                .findElement(MobileBy
+                        .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
+                                + "new UiSelector().text(\"Sair\"));"));
+
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        logout_btn = (MobileElement)  driver.findElement((By.id("br.com.fortes.appcolaborador:id/btn_logout")));
+
+        logout_btn.click();
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+
+
     @Before
     public void setup() throws MalformedURLException {
-        File app = new File("/home/nivardo/nivardo/lia/automacao/", "app-homolog.apk");
+        File app = new File("/home/nivardo/nivardo/lia/automacao/", "app-homolog_ifce.apk");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("device", "Android");
 
@@ -217,11 +275,14 @@ public class TestLogin {
             e.printStackTrace();
         }
 
+        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
 
         MobileElement drop = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_company"));
         drop.click();
 
-        assert (true);
+
+
+        assert (empresa.isDisplayed());
 
 
     }
@@ -255,26 +316,16 @@ public class TestLogin {
 
     }
 
-    /*@Test
-    public void test_internet_logged() {
+    @Test
+    public void test_login_logout_login(){
         logar();
+        deslogar();
+        logar_cpf("01607344521");
+        MobileElement perfil = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/profile"));
 
-        driver.getContext();
-
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-
-        MobileElement drop = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_company"));
-        drop.click();
-
-        assert (true);
+        assert(perfil.isDisplayed());
 
 
     }
-*/
 
 }
