@@ -1,7 +1,6 @@
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.functions.ExpectedCondition;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.junit.After;
 import org.junit.Before;
@@ -14,15 +13,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 import static java.lang.Thread.sleep;
-import static junit.framework.TestCase.*;
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertFalse;
+import static org.junit.Assert.fail;
 
 public class TestLogin {
-    AppiumDriver driver;
+    private AppiumDriver driver;
 
-    public void logar(){
+    private void logar() {
         MobileElement cpf = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_cpf"));
         MobileElement pass = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_password"));
         MobileElement login_button = (MobileElement) driver.findElement
@@ -49,7 +50,7 @@ public class TestLogin {
         capabilities.setCapability("deviceName", "Android");
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("autoGrantPermissions", "true");
-        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,"uiautomator2");
+        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
         //other caps
         capabilities.setCapability("app", app.getAbsolutePath());
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
@@ -62,7 +63,6 @@ public class TestLogin {
     }
 
 
-    //TESTE DE VERIFICAÇÃO DE CPF INVALIDO
     @Test
     public void test_cpf_invalido() {
         MobileElement cpf = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_cpf"));
@@ -72,7 +72,7 @@ public class TestLogin {
         assertEquals(tvErrorCPF.getText(), cpfInvalido);
 
     }
-
+    //CPF VALIDO NÃO CADASTRO
     @Test
     public void test_credenciais_incorretas() {
         MobileElement cpf = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_cpf"));
@@ -106,8 +106,7 @@ public class TestLogin {
 
     }
 
-    //não rodar com cpf valido para nao quebrar a conta
-    /*
+
     @Test
     public void test_cpfvalido_senhaincorreta(){
         MobileElement cpf = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_cpf"));
@@ -115,7 +114,7 @@ public class TestLogin {
         MobileElement login_button = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/cpf_sign_in_button"));
 
-        cpf.sendKeys("xxxx");
+        cpf.sendKeys("00717420345");
         pass.sendKeys("79654321654");
 
         login_button.click();
@@ -139,16 +138,16 @@ public class TestLogin {
 
         }
     }
-*/
+
 
     @Test
-    public void test_recuperar_senha(){
+    public void test_recuperar_senha() {
         MobileElement recover_pass_tv = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/tv_recover_password"));
 
         recover_pass_tv.click();
 
-        WebDriverWait wait = new WebDriverWait(driver,4);
+        WebDriverWait wait = new WebDriverWait(driver, 4);
 
 
         MobileElement recover_cpf_tv = (MobileElement) driver.findElement
@@ -156,18 +155,40 @@ public class TestLogin {
 
         wait.until(ExpectedConditions.visibilityOf(recover_cpf_tv));
 
-        assert(recover_cpf_tv.isDisplayed());
+        assert (recover_cpf_tv.isDisplayed());
+
+    }
+    @Test
+    public void test_recuperar_senha_cpf_invalido() {
+        MobileElement recover_pass_tv = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/tv_recover_password"));
+
+        recover_pass_tv.click();
+
+        WebDriverWait wait = new WebDriverWait(driver, 4);
+
+
+        MobileElement recover_cpf_tv = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/rp_et_cpf"));
+
+        wait.until(ExpectedConditions.visibilityOf(recover_cpf_tv));
+
+        recover_cpf_tv.sendKeys("39456803975");
+
+        MobileElement rp_tv_invalid_cpf= (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/rp_tv_invalid_cpf"));
+
+        assertEquals("CPF inválido",rp_tv_invalid_cpf.getText());
 
     }
 
     @Test
-    public void test_login_correto(){
+    public void test_login_correto() {
         logar();
 
 
         driver.getContext();
-        MobileElement drop = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_company"));
-        drop.click();
+
 
         try {
             sleep(1000);
@@ -182,5 +203,78 @@ public class TestLogin {
 
     }
 
+    @Test
+    public void test_login_escolher_empresa() {
+        logar();
+
+
+        driver.getContext();
+
+
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        MobileElement drop = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_company"));
+        drop.click();
+
+        assert (true);
+
+
+    }
+
+    @Test
+    public void test_minimizar() {
+        logar();
+        driver.getContext();
+
+        MobileElement drop = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_company"));
+        drop.click();
+
+        MobileElement perfil = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/profile"));
+
+
+        if(perfil.isDisplayed()) {
+            driver.runAppInBackground(Duration.ofSeconds(2));
+            try {
+                sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            perfil =(MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/profile"));
+            assert(perfil.isDisplayed());
+
+
+        }else{
+            fail();
+        }
+
+
+    }
+
+    /*@Test
+    public void test_internet_logged() {
+        logar();
+
+        driver.getContext();
+
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        MobileElement drop = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_company"));
+        drop.click();
+
+        assert (true);
+
+
+    }
+*/
 
 }
