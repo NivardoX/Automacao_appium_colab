@@ -271,7 +271,7 @@ public class TestLogin {
             e.printStackTrace();
         }
 
-        MobileElement empresa = (MobileElemqent) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
 
         MobileElement drop = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_company"));
         drop.click();
