@@ -20,27 +20,12 @@ import java.time.Duration;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
+import static org.junit.Assert.assertFalse;
 
 ;
 
-public class TestContraCheque{
+public class TestFerias {
     private AppiumDriver driver;
-
-    private Boolean isSorted(List<MobileElement> a){
-        int i = 0;
-        if(a.size() == 1){
-            return true;
-        }
-        for (i = 0; i < a.size(); i++) {
-            if (Integer.parseInt(a.get(i).getText()) < Integer.parseInt(a.get(i + 1).getText())){
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        return true;
-    }
 
     private void logar() {
         MobileElement cpf = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_cpf"));
@@ -132,9 +117,9 @@ public class TestContraCheque{
         driver.quit();
     }
 
-    @Test
-    public void test_anos_ordenados(){
 
+    @Test
+    public void test_vizualizar_ferias(){
         logar();
 
         MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
@@ -149,19 +134,22 @@ public class TestContraCheque{
         MobileElement folha =(MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
 
+        MobileElement ferias = (MobileElement) driver.findElement(MobileBy
+               .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");"));
 
-        MobileElement scroll_view = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/frame_layout_principal"));
+        ferias.click();
 
-        List<MobileElement> anos = scroll_view.findElements
-                (By.id("br.com.fortes.appcolaborador:id/text_item_header_name"));
+        MobileElement scroll_view = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/viewpager"));
 
-        assert(isSorted(anos));
+        List<MobileElement> meses = scroll_view.findElements
+                (By.id("br.com.fortes.appcolaborador:id/item"));
+
+        assert (meses.get(0).isDisplayed() && meses.get(0).isEnabled());
+
     }
 
     @Test
-    public void test_exibir_matriculas(){
-
+    public void test_vizualizar_matriculas(){
         logar();
 
         MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
@@ -176,43 +164,61 @@ public class TestContraCheque{
         MobileElement folha =(MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
 
+        MobileElement ferias = (MobileElement) driver.findElement(MobileBy
+                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");"));
 
-        MobileElement scroll_view = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/listShowPayChecks"));
+        ferias.click();
+
+
+        MobileElement scroll_view = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/viewpager"));
 
         List<MobileElement> meses = scroll_view.findElements
-                (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
+                (By.id("br.com.fortes.appcolaborador:id/item"));
 
         meses.get(0).click();
 
+        List<MobileElement> matricula =driver.findElements(By.id
+                ("br.com.fortes.appcolaborador:id/text_item_header_name"));
+
+        System.out.println(matricula.size());
+        assert(matricula.size() != 0);
+
+
+
+
+    }
+    @Test
+    public void test_vizualizar_ferias_meses(){
+        logar();
+
+        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        empresa.click();
+
         try {
-            sleep(1000);
+            sleep(6000) ;
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        MobileElement view = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/paycheck_registry_recyclerview"));
+        MobileElement folha =(MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
+        folha.click();
 
-        List<MobileElement> matriculas = driver.findElements(By.id
-                ("br.com.fortes.appcolaborador:id/item"));
+        MobileElement ferias = (MobileElement) driver.findElement(MobileBy
+                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");"));
 
-        matriculas.get(0).click();
+        ferias.click();
 
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        MobileElement scroll_view = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/viewpager"));
 
-        MobileElement download_pdf = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/action_delete"));
+        List<MobileElement> meses = scroll_view.findElements
+                (By.id("br.com.fortes.appcolaborador:id/item"));
 
-        assert(download_pdf.isDisplayed() && download_pdf.isEnabled());
+        assert (meses.size() >= 1);
+
     }
 
     @Test
-    public void test_atualizar(){
+    public void test_refresh(){
 
         logar();
 
@@ -227,6 +233,13 @@ public class TestContraCheque{
 
         MobileElement folha =(MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
+
+        MobileElement ferias = (MobileElement) driver.findElement(MobileBy
+                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");"));
+
+        ferias.click();
+
+
 
 
         Dimension size = driver.manage().window().getSize();
@@ -256,8 +269,14 @@ public class TestContraCheque{
             e.printStackTrace();
         }
 
-        folha =(MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
-        assert(folha.isDisplayed());
+
+
+        ferias = (MobileElement) driver.findElement(MobileBy
+                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");"));
+
+        assert(ferias.isDisplayed());
+
     }
+
 
 }

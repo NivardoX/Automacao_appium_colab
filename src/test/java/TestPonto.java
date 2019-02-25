@@ -20,27 +20,12 @@ import java.time.Duration;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
+import static junit.framework.TestCase.assertEquals;
 
 ;
 
-public class TestContraCheque{
+public class TestPonto {
     private AppiumDriver driver;
-
-    private Boolean isSorted(List<MobileElement> a){
-        int i = 0;
-        if(a.size() == 1){
-            return true;
-        }
-        for (i = 0; i < a.size(); i++) {
-            if (Integer.parseInt(a.get(i).getText()) < Integer.parseInt(a.get(i + 1).getText())){
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        return true;
-    }
 
     private void logar() {
         MobileElement cpf = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_cpf"));
@@ -133,7 +118,35 @@ public class TestContraCheque{
     }
 
     @Test
-    public void test_anos_ordenados(){
+    public void test_matricula_folha() {
+
+        logar();
+
+        MobileElement empresa = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        empresa.click();
+
+        try {
+            sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        MobileElement ponto_button = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/pointt"));
+
+        ponto_button.click();
+
+        List<MobileElement> rc_matriculas = driver.findElements
+                (By.id("br.com.fortes.appcolaborador:id/constraint_layout_profile"));
+
+        assert (rc_matriculas.size() > 1);
+
+    }
+
+    @Test
+    public void ponto_mes_ano() {
+
 
         logar();
 
@@ -141,94 +154,78 @@ public class TestContraCheque{
         empresa.click();
 
         try {
-            sleep(6000) ;
+            sleep(8000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        MobileElement folha =(MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
-        folha.click();
+        MobileElement ponto_button = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/pointt"));
 
+        ponto_button.click();
+
+        MobileElement rc_matricula = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/constraint_layout_profile"));
+
+        rc_matricula.click();
+
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         MobileElement scroll_view = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/frame_layout_principal"));
+                (By.id("br.com.fortes.appcolaborador:id/point_month_recyclerview"));
 
         List<MobileElement> anos = scroll_view.findElements
                 (By.id("br.com.fortes.appcolaborador:id/text_item_header_name"));
 
-        assert(isSorted(anos));
-    }
-
-    @Test
-    public void test_exibir_matriculas(){
-
-        logar();
-
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
-
-        try {
-            sleep(6000) ;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        MobileElement folha =(MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
-        folha.click();
-
-
-        MobileElement scroll_view = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/listShowPayChecks"));
-
         List<MobileElement> meses = scroll_view.findElements
-                (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
+                (By.id("br.com.fortes.appcolaborador:id/text_month"));
 
-        meses.get(0).click();
-
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        boolean flag = true;
+        if (meses.size() == 0) {
+            if (anos.size() == 0) {
+                flag = true;
+            } else {
+                flag = false;
+            }
         }
+        assert (flag);
 
-        MobileElement view = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/paycheck_registry_recyclerview"));
-
-        List<MobileElement> matriculas = driver.findElements(By.id
-                ("br.com.fortes.appcolaborador:id/item"));
-
-        matriculas.get(0).click();
-
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        MobileElement download_pdf = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/action_delete"));
-
-        assert(download_pdf.isDisplayed() && download_pdf.isEnabled());
     }
 
     @Test
-    public void test_atualizar(){
+    public void test_batidas_refresh() {
 
         logar();
 
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        MobileElement empresa = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresa.click();
 
         try {
-            sleep(6000) ;
+            sleep(6000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        MobileElement folha =(MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
-        folha.click();
+        MobileElement ponto_button = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/pointt"));
 
+        ponto_button.click();
 
+        List<MobileElement> rc_matriculas = driver.findElements
+                (By.id("br.com.fortes.appcolaborador:id/constraint_layout_profile"));
+
+        rc_matriculas.get(0).click();
+
+        try {
+            sleep(400);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Dimension size = driver.manage().window().getSize();
         System.out.println(size);
         int startX = 0;
@@ -256,8 +253,14 @@ public class TestContraCheque{
             e.printStackTrace();
         }
 
-        folha =(MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
-        assert(folha.isDisplayed());
+        MobileElement toolbar = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/toolbar"));
+        MobileElement title = (MobileElement) toolbar.findElement(By.className("android.widget.TextView"));
+
+        assertEquals("Histórico de Batidas",title.getText());
+
+
+
+
     }
 
 }

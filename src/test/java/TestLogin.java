@@ -150,7 +150,7 @@ public class TestLogin {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        assertEquals(tvErrorCPF.getText(), error);
+        assertEquals(tvErrorCPF.getText(),error);
     }
 
     @Test
@@ -265,8 +265,16 @@ public class TestLogin {
     public void test_login_escolher_empresa() {
         logar();
 
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        driver.getContext();
+        MobileElement empresa = (MobileElemqent) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+
+        MobileElement drop = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_company"));
+        drop.click();
 
 
         try {
@@ -275,14 +283,8 @@ public class TestLogin {
             e.printStackTrace();
         }
 
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
 
-        MobileElement drop = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_company"));
-        drop.click();
-
-
-
-        assert (empresa.isDisplayed());
+        assert(empresa.isDisplayed());
 
 
     }
