@@ -178,16 +178,22 @@ public class TestLogin {
         login_button.click();
 
         try {
-            sleep(6000);
+            sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        MobileElement error_dados_alert = (MobileElement) driver.findElement(By.id("android:id/alertTitle"));
+        if(!(error_dados_alert.getText().equals("CPF ou senhas incorretos"))){fail();}
+        MobileElement error_dados_alert_button = (MobileElement) driver.findElement(By.id("android:id/button1"));
+        error_dados_alert_button.click();
+
 
         MobileElement error_dados_tv = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_login_incorrect"));
         String error_dados = "Os dados informados não correspondem a um login existente. Tente novamente.";
 
         MobileElement qnt_tentativas_tv = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_number_attempts"));
-        String error_tentativas = "Você possui mais 3 tentativas";
+
 
         if(qnt_tentativas_tv.getText().contains("Você possui mais ") && qnt_tentativas_tv.getText().contains(" tentativas")){
             assertFalse(false);

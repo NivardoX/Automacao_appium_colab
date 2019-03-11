@@ -27,6 +27,21 @@ import static junit.framework.TestCase.assertEquals;
 public class TestPonto {
     private AppiumDriver driver;
 
+
+    private void trocar_empresa(){  MobileElement dropDown = (MobileElement) driver.findElement
+            (By.id("br.com.fortes.appcolaborador:id/iv_company"));
+
+        dropDown.click();
+
+        List<MobileElement> empresas = driver.findElements
+                (By.id("br.com.fortes.appcolaborador:id/constraint_layout_profile"));
+        empresas.get(2).click();
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
     private void logar() {
         MobileElement cpf = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_cpf"));
         MobileElement pass = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_password"));
@@ -259,6 +274,63 @@ public class TestPonto {
         assertEquals("Histórico de Batidas",title.getText());
 
 
+
+
+    }
+
+    @Test
+    public void att_dados_troca_empresa(){
+
+        logar_cpf("01530880521");
+
+        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        empresa.click();
+
+        try {
+            sleep(8000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        MobileElement ponto_button = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/pointt"));
+
+        ponto_button.click();
+
+        List<MobileElement> rc_matriculas1 = driver.findElements
+                (By.id("br.com.fortes.appcolaborador:id/text_mat"));
+
+        trocar_empresa();
+
+
+        List<MobileElement> rc_matriculas2 = driver.findElements
+                (By.id("br.com.fortes.appcolaborador:id/text_mat"));
+
+        for (int i = 0; i < rc_matriculas2.size() ; i++){
+            System.out.println(rc_matriculas2.get(i).getText());
+        }
+
+
+        boolean flagTodasIguas = true;
+
+        if(rc_matriculas1.size() != rc_matriculas2.size()){
+            assert (true);
+        }else if(rc_matriculas1.size()== 0 && rc_matriculas2.size() == 0){
+            assert(true);
+        }else{
+            for (int i = 0; i < rc_matriculas2.size() ; i++){
+                String aux1 = rc_matriculas2.get(i).getText();
+                for(int j = 0; j < rc_matriculas1.size() ; j++){
+                    String aux2 = (rc_matriculas1.get(i).getText());
+                        if(!aux1.equals(aux2)){
+                            flagTodasIguas = false;
+                        }
+                }
+            }
+
+            assert(flagTodasIguas);
+
+        }
 
 
     }
