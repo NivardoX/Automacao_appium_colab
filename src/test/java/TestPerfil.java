@@ -8,8 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -20,7 +18,6 @@ import static java.lang.Thread.sleep;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertFalse;
 
-;
 public class TestPerfil {
     private AppiumDriver driver;
 
@@ -40,6 +37,7 @@ public class TestPerfil {
             e.printStackTrace();
         }
     }
+
     private void logar_cpf(String cpf_str) {
         MobileElement cpf = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_cpf"));
         MobileElement pass = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_password"));
@@ -57,7 +55,7 @@ public class TestPerfil {
         }
     }
 
-    private void deslogar(){
+    private void deslogar() {
         MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresa.click();
 
@@ -69,7 +67,7 @@ public class TestPerfil {
 
         MobileElement scroll_view = (MobileElement) driver.findElement((By.id("br.com.fortes.appcolaborador:id/scroll_view_profile")));
 
-        MobileElement logout_btn = (MobileElement)scroll_view
+        MobileElement logout_btn = scroll_view
                 .findElement(MobileBy
                         .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                                 + "new UiSelector().text(\"Sair\"));"));
@@ -79,7 +77,7 @@ public class TestPerfil {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        logout_btn = (MobileElement)  driver.findElement((By.id("br.com.fortes.appcolaborador:id/btn_logout")));
+        logout_btn = (MobileElement) driver.findElement((By.id("br.com.fortes.appcolaborador:id/btn_logout")));
 
         logout_btn.click();
         try {
@@ -87,7 +85,6 @@ public class TestPerfil {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
 
 
     }
@@ -122,47 +119,7 @@ public class TestPerfil {
         empresa.click();
 
         try {
-            sleep(6000) ;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-
-        MobileElement scroll_view = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/scroll_view_profile"));
-
-        List<MobileElement> elementos = driver.findElements(MobileBy
-                        .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
-                                + "new UiSelector().className(\"android.widget.EditText\").clickable(true));"));
-
-        int erros = 0;
-        for(int i = 0; i < elementos.size(); i++){
-            if(elementos.get(i).getText().equals("")){
-                erros++;
-            }
-            try {
-                sleep(300);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-        assertEquals(0,erros);
-
-    }
-
-
-    //Faltam dados.
-    @Test
-    public void test_campos_perfil_enderecoVazio() {
-        logar();
-
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
-
-        try {
-            sleep(6000) ;
+            sleep(6000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -176,8 +133,8 @@ public class TestPerfil {
                         + "new UiSelector().className(\"android.widget.EditText\").clickable(true));"));
 
         int erros = 0;
-        for(int i = 0; i < elementos.size(); i++){
-            if(elementos.get(i).getText().equals("")){
+        for (int i = 0; i < elementos.size(); i++) {
+            if (elementos.get(i).getText().equals("")) {
                 erros++;
             }
             try {
@@ -188,18 +145,20 @@ public class TestPerfil {
 
         }
 
-        assert(erros >= 1);
+        assertEquals(0, erros);
 
     }
+
+
+    //Faltam dados.
     @Test
-    public void test_mudar_empresa_campos() {
-        logar();
+    public void test_campos_perfil_enderecoVazio() {
+        logar_cpf("01530880521");
 
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
-
+        List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        empresas.get(3).click();
         try {
-            sleep(6000) ;
+            sleep(6000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -208,7 +167,45 @@ public class TestPerfil {
         MobileElement scroll_view = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/scroll_view_profile"));
 
-        MobileElement elemento = (MobileElement)driver.findElement(MobileBy
+        List<MobileElement> elementos = driver.findElements(MobileBy
+                .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
+                        + "new UiSelector().className(\"android.widget.EditText\").clickable(true));"));
+
+        int erros = 0;
+        for (int i = 0; i < elementos.size(); i++) {
+            if (elementos.get(i).getText().equals("")) {
+                erros++;
+            }
+            try {
+                sleep(300);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        assert (erros >= 1);
+
+    }
+
+    @Test
+    public void test_mudar_empresa_campos() {
+        logar();
+
+        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        empresa.click();
+
+        try {
+            sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        MobileElement scroll_view = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/scroll_view_profile"));
+
+        MobileElement elemento = (MobileElement) driver.findElement(MobileBy
                 .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                         + "new UiSelector().className(\"android.widget.EditText\").clickable(true).index(3));"));
 
@@ -217,7 +214,7 @@ public class TestPerfil {
         System.out.println(cpf_1);
 
 
-        MobileElement logout_btn = (MobileElement)scroll_view
+        MobileElement logout_btn = scroll_view
                 .findElement(MobileBy
                         .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                                 + "new UiSelector().text(\"Sair\"));"));
@@ -227,7 +224,7 @@ public class TestPerfil {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        logout_btn = (MobileElement)  driver.findElement((By.id("br.com.fortes.appcolaborador:id/btn_logout")));
+        logout_btn = (MobileElement) driver.findElement((By.id("br.com.fortes.appcolaborador:id/btn_logout")));
 
         logout_btn.click();
 
@@ -243,13 +240,13 @@ public class TestPerfil {
         empresa.click();
 
         try {
-            sleep(6000) ;
+            sleep(6000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
 
-        elemento = (MobileElement)driver.findElement(MobileBy
+        elemento = (MobileElement) driver.findElement(MobileBy
                 .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                         + "new UiSelector().className(\"android.widget.EditText\").clickable(true).index(3));"));
 
