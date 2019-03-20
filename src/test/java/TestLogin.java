@@ -198,7 +198,7 @@ public class TestLogin {
 
         MobileElement error_dados_alert = (MobileElement) driver.findElement(By.id("android:id/alertTitle"));
         if (!(error_dados_alert.getText().equals("CPF ou senha incorretos"))) {
-            fail("Não esá exibindo o texto \"CPF ou senhas incorretos\"");
+            fail("Não esá exibindo o texto \"CPF ou senha incorretos\"");
         }
         MobileElement error_dados_alert_button = (MobileElement) driver.findElement(By.id("android:id/button1"));
         error_dados_alert_button.click();

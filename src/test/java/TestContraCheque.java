@@ -156,7 +156,7 @@ public class TestContraCheque {
         empresa.click();
 
         try {
-            sleep(6000);
+            sleep(8000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -295,7 +295,7 @@ public class TestContraCheque {
         empresas.get(0).click();
 
         try {
-            sleep(6000);
+            sleep(8000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
