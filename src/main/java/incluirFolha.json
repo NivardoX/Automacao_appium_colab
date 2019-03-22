@@ -1,0 +1,84 @@
+{
+    "Folhas": [
+        {
+            "TpInscEmpregador": "1",
+            "NrInscEmpregador": "02535568",
+            "CPF": "01607344521",
+            "Matricula": "100000",
+            "IdFolha": "99000",
+            "IdFolhaPai": "0",
+            "TpFolha": "2",
+            "CargoCodigo": "016",
+            "CargoNome": "Professor",
+            "LotacaoCodigo": "9999",
+            "LotacaoNome": "LOTAÇÃO APP",
+            "TpInscEstabelecimento": "1",
+			"NrInscEstabelecimento": "02535568000132",
+            "AnoMes": "201902",
+            "DataPagamento": "28/09/2018",
+            "DataInicial": "29/08/2018",
+            "DataFinal": "17/09/2018",
+            "Periodicidade": "4",
+            "ValorProventos": "2.620,34",
+            "ValorDescontos": "200,34",
+            "ValorLiquido": "2.420,00",
+            "SalarioContratual": "430,55",
+            "BaseCalculoINSS": "1.856,08",
+            "BaseCalculoFGTS": "1.856,08",
+            "BaseCalculoIRRF": "1.800,78",
+            "FGTS": "174,69",
+            "FGTSContSocial": "-",
+            "Rubricas": {
+                "110": {
+                    "Tipo": "1",
+                    "Nome": "Remuneração de Férias",
+                    "Referencia": "20",
+                    "Mascara": " dia(s)",
+                    "Valor": "655,09"
+                },
+                "111": {
+                    "Tipo": "1",
+                    "Nome": "1/3 de Férias",
+                    "Referencia": "0",
+                    "Mascara": "",
+                    "Valor": "218,36"
+                },
+                "112": {
+                    "Tipo": "1",
+                    "Nome": "Remuneração de Férias em Dobro",
+                    "Referencia": "30",
+                    "Mascara": " dia(s)",
+                    "Valor": "1.310,17"
+                },
+                "113": {
+                    "Tipo": "1",
+                    "Nome": "Abono Pecuniário",
+                    "Referencia": "10",
+                    "Mascara": " dia(s)",
+                    "Valor": "436,72"
+                },
+                "310": {
+                    "Tipo": "2",
+                    "Nome": "INSS",
+                    "Referencia": "0",
+                    "Mascara": "%",
+                    "Valor": "193,25"
+                },
+                "391": {
+                    "Tipo": "2",
+                    "Nome": "Arredondamento Desconto",
+                    "Referencia": "0",
+                    "Mascara": "",
+                    "Valor": "0,63"
+                },
+                "905": {
+                    "Tipo": "2",
+                    "Nome": "Desconto Contribuição Assisten",
+                    "Referencia": "1,5",
+                    "Mascara": "%",
+                    "Valor": "6,46"
+                }
+            }
+        }
+    ]
+}

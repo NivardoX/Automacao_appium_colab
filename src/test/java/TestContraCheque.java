@@ -6,6 +6,12 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +19,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -25,6 +33,32 @@ import static junit.framework.TestCase.fail;
 public class TestContraCheque {
     private AppiumDriver driver;
 
+    private void atualizar(){
+
+        Dimension size = driver.manage().window().getSize();
+        System.out.println(size);
+        int endX = 0;
+
+
+        int  startY = (int) (size.height * 0.70);
+        int endY = (int) (size.height * 0.30);
+        int startX = (size.width / 2);
+        //Swipe from Bottom to Top.
+
+        new TouchAction(driver)
+                .press(PointOption.point(startX, startY))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(200)))
+                .moveTo(PointOption.point(endX, endY))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
+                .release()
+                .perform();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
     private void trocar_empresa() {
         MobileElement dropDown = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/iv_company"));
@@ -387,7 +421,7 @@ public class TestContraCheque {
     @Test
     public void test_atualizar() {
 
-        logar();
+        logar_cpf("01607344521");
 
         MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresa.click();
@@ -400,34 +434,50 @@ public class TestContraCheque {
 
         MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
-
-
-        Dimension size = driver.manage().window().getSize();
-        System.out.println(size);
-        int endX = 0;
-
-
-        int  startY = (int) (size.height * 0.70);
-        int endY = (int) (size.height * 0.30);
-        int startX = (size.width / 2);
-        //Swipe from Bottom to Top.
-
-        new TouchAction(driver)
-                .press(PointOption.point(startX, startY))
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(200)))
-                .moveTo(PointOption.point(endX, endY))
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                .release()
-                .perform();
-
         try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
+            // FileReader reads text files in the default encoding.
+            FileReader fileReader = new FileReader("incluirFolha.json");
+
+            // Always wrap FileReader in BufferedReader.
+            BufferedReader bufferedReader =
+                    new BufferedReader(fileReader);
+            String payload = "";
+            String line = null;
+            while((line = bufferedReader.readLine()) != null) {
+                payload += line;
+            }
+
+            System.out.println(payload);
+            StringEntity entity = new StringEntity(payload,
+                    "UTF-8");
+
+            CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+            HttpPost request = new HttpPost("https://qe00nlgco8.execute-api.sa-east-1.amazonaws.com/homologifce/agente/folha/incluir");
+            request.setEntity(entity);
+
+            HttpResponse response = httpClient.execute(request);
+            System.out.println(response.getStatusLine().getStatusCode());
+        }catch(Exception e){
             e.printStackTrace();
         }
 
-        folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
-        assert (folha.isDisplayed());
+        atualizar();
+
+        MobileElement scroll_view = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/listShowPayChecks"));
+        List<MobileElement> meses = scroll_view.findElements
+                (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
+
+        boolean flag = false;
+        for (MobileElement me:meses
+        ) {
+            if(me.getText().equals("Fevereiro")){
+                flag = true;
+            }
+
+        }
+
+        assert flag;
     }
 
     @Test
@@ -456,6 +506,96 @@ public class TestContraCheque {
         }
 
         assert true;
+
+
+    }
+    @Test
+    public void enviar_folha(){
+        //Envia a folha
+        try {
+            // FileReader reads text files in the default encoding.
+            FileReader fileReader = new FileReader("incluirFolha.json");
+
+            // Always wrap FileReader in BufferedReader.
+            BufferedReader bufferedReader =
+                    new BufferedReader(fileReader);
+            String payload = "";
+            String line = null;
+            while((line = bufferedReader.readLine()) != null) {
+                payload += line;
+            }
+
+            System.out.println(payload);
+            StringEntity entity = new StringEntity(payload,
+                    "UTF-8");
+
+            CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+            HttpPost request = new HttpPost("https://qe00nlgco8.execute-api.sa-east-1.amazonaws.com/homologifce/agente/folha/incluir");
+            request.setEntity(entity);
+
+            HttpResponse response = httpClient.execute(request);
+            System.out.println(response.getStatusLine().getStatusCode());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        logar_cpf("01607344521");
+        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        empresa.click();
+
+
+
+        try {
+            sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
+        folha.click();
+
+        MobileElement scroll_view = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/listShowPayChecks"));
+        List<MobileElement> meses = scroll_view.findElements
+                (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
+
+        boolean flag = false;
+        for (MobileElement me:meses
+             ) {
+            if(me.getText().equals("Fevereiro")){
+                flag = true;
+            }
+
+        }
+
+        try {
+            // FileReader reads text files in the default encoding.
+            FileReader fileReader = new FileReader("excluirFolha.json");
+
+            // Always wrap FileReader in BufferedReader.
+            BufferedReader bufferedReader =
+                    new BufferedReader(fileReader);
+            String payload = "";
+            String line = null;
+            while((line = bufferedReader.readLine()) != null) {
+                payload += line;
+            }
+
+            System.out.println(payload);
+            StringEntity entity = new StringEntity(payload,
+                    "UTF-8");
+
+            CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+            HttpPost request = new HttpPost("https://qe00nlgco8.execute-api.sa-east-1.amazonaws.com/homologifce/agente/folha/incluir");
+            request.setEntity(entity);
+
+            HttpResponse response = httpClient.execute(request);
+            System.out.println(response.getStatusLine().getStatusCode());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        assert flag;
+
 
 
     }
