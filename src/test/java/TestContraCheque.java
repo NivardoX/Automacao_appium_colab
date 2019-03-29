@@ -8,7 +8,6 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -22,9 +21,11 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
@@ -567,9 +568,45 @@ public class TestContraCheque {
 
         }
 
+        int response2 =0;
         try {
             // FileReader reads text files in the default encoding.
             FileReader fileReader = new FileReader("excluirFolha.json");
+
+            // Always wrap FileReader in BufferedReader.
+            BufferedReader bufferedReader =
+                    new BufferedReader(fileReader);
+            String payload = "";
+            String line = null;
+            while((line = bufferedReader.readLine()) != null) {
+                payload += line;
+            }
+
+            System.out.println(payload);
+            StringEntity entity = new StringEntity(payload,
+                    "UTF-8");
+
+            CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+            HttpPost request = new HttpPost("https://qe00nlgco8.execute-api.sa-east-1.amazonaws.com/homologifce/agente/folha/excluir");
+            request.setEntity(entity);
+
+            HttpResponse response = httpClient.execute(request);
+            response2 = response.getStatusLine().getStatusCode();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        assert flag && response2 == 200;
+
+
+
+    }
+    @Test
+    public void transicao_folha(){
+        //Envia a folha
+        try {
+            // FileReader reads text files in the default encoding.
+            FileReader fileReader = new FileReader("incluirFolha.json");
 
             // Always wrap FileReader in BufferedReader.
             BufferedReader bufferedReader =
@@ -593,11 +630,51 @@ public class TestContraCheque {
         }catch(Exception e){
             e.printStackTrace();
         }
+        logar_cpf("01607344521");
+        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        empresa.click();
+
+        try {
+            sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
+        folha.click();
+
+        MobileElement scroll_view = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/listShowPayChecks"));
+        List<MobileElement> meses = scroll_view.findElements
+                (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
+        meses.get(0).click();
+
+        driver.navigate().back();
+        try {
+            sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        scroll_view = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/listShowPayChecks"));
+        List<MobileElement> meses2 = scroll_view.findElements
+                (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
+
+        boolean flag = true;
+
+
+        if(meses.size() != meses2.size()){
+            flag = false;
+        }else{
+            for(int i = 0; i < meses.size(); i++){
+                System.out.println(meses.get(i).getText());
+                flag = meses.get(i).getText().equals(meses2.get(i).getText()) && flag;
+            }
+        }
+
 
         assert flag;
-
-
-
     }
 
 }

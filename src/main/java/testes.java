@@ -14,7 +14,7 @@ public class testes{
 
         try {
             // FileReader reads text files in the default encoding.
-            FileReader fileReader = new FileReader("incluirFolha.json");
+            FileReader fileReader = new FileReader("excluirFolha.json");
 
             // Always wrap FileReader in BufferedReader.
             BufferedReader bufferedReader =
@@ -32,7 +32,7 @@ public class testes{
             System.out.println(payload);
             StringEntity entity = new StringEntity(payload, "UTF-8");
             CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-            HttpPost request = new HttpPost("https://qe00nlgco8.execute-api.sa-east-1.amazonaws.com/homologifce/agente/folha/incluir");
+            HttpPost request = new HttpPost("https://qe00nlgco8.execute-api.sa-east-1.amazonaws.com/homologifce/agente/folha/excluir");
             request.setEntity(entity);
 
             HttpResponse response = httpClient.execute(request);
