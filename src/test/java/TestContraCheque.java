@@ -649,9 +649,20 @@ public class TestContraCheque {
                 (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
         meses.get(0).click();
 
+        try {
+            sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+try {
+            sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         driver.navigate().back();
         try {
-            sleep(500);
+            sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -666,7 +677,7 @@ public class TestContraCheque {
 
         if(meses.size() != meses2.size()){
             flag = false;
-        }else{
+        }else if(meses.size() != 0){
             for(int i = 0; i < meses.size(); i++){
                 System.out.println(meses.get(i).getText());
                 flag = meses.get(i).getText().equals(meses2.get(i).getText()) && flag;
