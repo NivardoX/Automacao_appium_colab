@@ -25,6 +25,7 @@ import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -424,7 +425,7 @@ public class TestContraCheque {
 
 
         try {
-            sleep(6000);
+            sleep(8000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -464,6 +465,37 @@ public class TestContraCheque {
                 (By.id("br.com.fortes.appcolaborador:id/listShowPayChecks"));
         List<MobileElement> meses = scroll_view.findElements
                 (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
+
+        try {
+            // FileReader reads text files in the default encoding.
+            FileReader fileReader = new FileReader("excluirFolha.json");
+
+            // Always wrap FileReader in BufferedReader.
+            BufferedReader bufferedReader =
+                    new BufferedReader(fileReader);
+            String payload = "";
+            String line = null;
+            while((line = bufferedReader.readLine()) != null) {
+                payload += line;
+            }
+
+            System.out.println(payload);
+            StringEntity entity = new StringEntity(payload,
+                    "UTF-8");
+
+            CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+            HttpPost request = new HttpPost("https://qe00nlgco8.execute-api.sa-east-1.amazonaws.com/homologifce/agente/folha/excluir");
+            request.setEntity(entity);
+
+            HttpResponse response = httpClient.execute(request);
+            System.out.println(response.getStatusLine().getStatusCode());
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+
+
 
         boolean flag = false;
         for (MobileElement me:meses
@@ -638,6 +670,12 @@ public class TestContraCheque {
                 (By.id("br.com.fortes.appcolaborador:id/listShowPayChecks"));
         List<MobileElement> meses = scroll_view.findElements
                 (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
+        ArrayList<String> meses_str = new ArrayList<String>();
+
+
+        for (MobileElement mes : meses) {
+            meses_str.add(mes.getText());
+        }
         meses.get(0).click();
 
         try {
@@ -670,8 +708,8 @@ try {
             flag = false;
         }else if(meses.size() != 0){
             for(int i = 0; i < meses.size(); i++){
-                System.out.println(meses.get(i).getText());
-                flag = meses.get(i).getText().equals(meses2.get(i).getText()) && flag;
+                System.out.println(meses_str.get(i));
+                flag = meses_str.get(i).equals(meses2.get(i).getText()) && flag;
             }
         }
 

@@ -73,7 +73,7 @@ public class TestFerias {
         pass.sendKeys("12345678");
         login_button.click();
         try {
-            sleep(6000);
+            sleep(7000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -173,7 +173,7 @@ public class TestFerias {
         empresa.click();
 
         try {
-            sleep(6000);
+            sleep(8000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -220,11 +220,11 @@ public class TestFerias {
     public void test_vizualizar_matriculas() {
         logar_cpf("01530880521");
 
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
+        List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        empresas.get(2).click();
 
         try {
-            sleep(6000);
+            sleep(8000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -245,6 +245,11 @@ public class TestFerias {
 
         meses.get(0).click();
 
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         List<MobileElement> matricula = driver.findElements(By.id
                 ("br.com.fortes.appcolaborador:id/text_item_header_name"));
 
@@ -346,7 +351,7 @@ public class TestFerias {
         empresas.get(4).click();
 
         try {
-            sleep(4000);
+            sleep(7000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

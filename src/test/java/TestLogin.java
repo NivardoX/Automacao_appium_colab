@@ -76,14 +76,20 @@ public class TestLogin {
     }
 
     private void deslogar() {
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
-
         try {
-            sleep(6000);
+            sleep(2800);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        MobileElement perfil = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/profile"));
+        perfil.click();
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
         MobileElement scroll_view = (MobileElement) driver.findElement((By.id("br.com.fortes.appcolaborador:id/scroll_view_profile")));
 
@@ -198,7 +204,7 @@ public class TestLogin {
 
         MobileElement error_dados_alert = (MobileElement) driver.findElement(By.id("android:id/alertTitle"));
         if (!(error_dados_alert.getText().equals("CPF ou senha incorretos"))) {
-            fail("Não esá exibindo o texto \"CPF ou senha incorretos\"");
+            fail("Não está exibindo o texto \"CPF ou senha incorretos\" e sim "+ error_dados_alert.getText());
         }
         MobileElement error_dados_alert_button = (MobileElement) driver.findElement(By.id("android:id/button1"));
         error_dados_alert_button.click();
@@ -255,13 +261,21 @@ public class TestLogin {
 
         recover_pass_tv.click();
 
-        WebDriverWait wait = new WebDriverWait(driver, 4);
-
+        try {
+            sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         MobileElement recover_cpf_tv = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/rp_et_cpf"));
+        try {
+            sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        wait.until(ExpectedConditions.visibilityOf(recover_cpf_tv));
+
 
         recover_cpf_tv.sendKeys("39456803975");
 
@@ -281,7 +295,7 @@ public class TestLogin {
 
 
         try {
-            sleep(1000);
+            sleep(8000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -298,7 +312,11 @@ public class TestLogin {
     public void test_minimizar() {
         logar();
         driver.getContext();
-
+        try {
+            sleep(8000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         MobileElement perfil = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/profile"));
 
 
@@ -335,7 +353,17 @@ public class TestLogin {
     @Test
     public void test_login_logout_login_diffacc() {
         logar();
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         deslogar();
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         logar();
         MobileElement perfil = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/profile"));
 

@@ -123,6 +123,11 @@ public class TestPerfil {
             e.printStackTrace();
         }
 
+        MobileElement perfil = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/profile"));
+        perfil.click();
+
+
 
         MobileElement scroll_view = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/scroll_view_profile"));
@@ -161,7 +166,9 @@ public class TestPerfil {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        MobileElement perfil = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/profile"));
+        perfil.click();
 
         MobileElement scroll_view = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/scroll_view_profile"));
@@ -191,15 +198,14 @@ public class TestPerfil {
     public void test_mudar_empresa_campos() {
         logar();
 
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
-
         try {
             sleep(6000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        MobileElement perfil = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/profile"));
+        perfil.click();
 
         MobileElement scroll_view = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/scroll_view_profile"));
@@ -235,8 +241,6 @@ public class TestPerfil {
 
         logar_cpf("01607344521");
 
-        empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
 
         try {
             sleep(6000);
@@ -244,6 +248,9 @@ public class TestPerfil {
             e.printStackTrace();
         }
 
+        perfil = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/profile"));
+        perfil.click();
 
         elemento = (MobileElement) driver.findElement(MobileBy
                 .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("

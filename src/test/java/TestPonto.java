@@ -138,9 +138,6 @@ public class TestPonto {
 
         logar();
 
-        MobileElement empresa = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
 
         try {
             sleep(6000);
@@ -149,7 +146,7 @@ public class TestPonto {
         }
 
         MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/pointt"));
+                (By.id("br.com.fortes.appcolaborador:id/point"));
 
         ponto_button.click();
 
@@ -166,8 +163,6 @@ public class TestPonto {
 
         logar();
 
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
 
         try {
             sleep(8000);
@@ -176,7 +171,7 @@ public class TestPonto {
         }
 
         MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/pointt"));
+                (By.id("br.com.fortes.appcolaborador:id/point"));
 
         ponto_button.click();
 
@@ -213,9 +208,6 @@ public class TestPonto {
 
         logar();
 
-        MobileElement empresa = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
 
         try {
             sleep(6000);
@@ -224,7 +216,7 @@ public class TestPonto {
         }
 
         MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/pointt"));
+                (By.id("br.com.fortes.appcolaborador:id/point"));
 
         ponto_button.click();
 
@@ -288,7 +280,7 @@ public class TestPonto {
         }
 
         MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/pointt"));
+                (By.id("br.com.fortes.appcolaborador:id/point"));
 
         ponto_button.click();
 
@@ -335,22 +327,27 @@ public class TestPonto {
 
         logar_cpf("01530880521");
 
+
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresas.get(4).click();
+        empresas.get(1).click();
 
         try {
-            sleep(4000);
+            sleep(8000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/pointt"));
+                (By.id("br.com.fortes.appcolaborador:id/point"));
 
         ponto_button.click();
+        try {
+            sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         try {
-
             MobileElement nothing_point = (MobileElement) driver.findElement(
                     By.id("br.com.fortes.appcolaborador:id/nothing_point"));
         } catch (Exception e) {
@@ -388,7 +385,7 @@ public class TestPonto {
         }
 
         MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/pointt"));
+                (By.id("br.com.fortes.appcolaborador:id/point"));
 
         ponto_button.click();
 
@@ -514,7 +511,7 @@ public class TestPonto {
         }
 
         MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/pointt"));
+                (By.id("br.com.fortes.appcolaborador:id/point"));
 
         ponto_button.click();
 
@@ -636,6 +633,11 @@ public class TestPonto {
 
         logar_cpf("01530880521");
 
+        try {
+            sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(0).click();
 
@@ -646,7 +648,7 @@ public class TestPonto {
         }
 
         MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/pointt"));
+                (By.id("br.com.fortes.appcolaborador:id/point"));
 
         ponto_button.click();
 
@@ -763,13 +765,13 @@ public class TestPonto {
         empresas.get(4).click();
 
         try {
-            sleep(4000);
+            sleep(8000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/pointt"));
+                (By.id("br.com.fortes.appcolaborador:id/point"));
 
         ponto_button.click();
 
