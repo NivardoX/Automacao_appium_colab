@@ -140,8 +140,6 @@ public class TestFerias {
     public void test_vizualizar_ferias() {
         logar();
 
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
 
         try {
             sleep(6000);
@@ -260,8 +258,6 @@ public class TestFerias {
     public void test_vizualizar_ferias_meses() {
         logar();
 
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
 
         try {
             sleep(6000);
@@ -290,9 +286,6 @@ public class TestFerias {
     public void test_refresh() {
 
         logar();
-
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
 
         try {
             sleep(6000);

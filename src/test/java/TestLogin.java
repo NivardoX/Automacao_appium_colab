@@ -299,9 +299,6 @@ public class TestLogin {
         logar();
         driver.getContext();
 
-        MobileElement drop = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_company"));
-        drop.click();
-
         MobileElement perfil = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/profile"));
 
 

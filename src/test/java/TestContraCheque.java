@@ -187,8 +187,6 @@ public class TestContraCheque {
 
         logar();
 
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
 
         try {
             sleep(8000);
@@ -424,8 +422,6 @@ public class TestContraCheque {
 
         logar_cpf("01607344521");
 
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
 
         try {
             sleep(6000);
@@ -540,10 +536,6 @@ public class TestContraCheque {
             e.printStackTrace();
         }
         logar_cpf("01607344521");
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
-
-
 
         try {
             sleep(6000);
@@ -631,8 +623,7 @@ public class TestContraCheque {
             e.printStackTrace();
         }
         logar_cpf("01607344521");
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
+
 
         try {
             sleep(6000);

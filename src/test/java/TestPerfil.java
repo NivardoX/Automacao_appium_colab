@@ -115,8 +115,7 @@ public class TestPerfil {
     public void test_campos_perfil() {
         logar();
 
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
+
 
         try {
             sleep(6000);
