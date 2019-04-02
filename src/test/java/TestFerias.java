@@ -13,13 +13,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.io.File;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
+
 
 public class TestFerias {
     private AppiumDriver driver;
@@ -115,7 +117,9 @@ public class TestFerias {
 
     @Before
     public void setup() throws MalformedURLException {
-        File app = new File("/home/nivardo/nivardo/lia/automacao/", "app-homolog_ifce.apk");
+        String path = "/home/nivardo/nivardo/lia/automacao/";
+
+        File app = new File(path, "app-homolog_ifce.apk");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("device", "Android");
 
@@ -377,5 +381,84 @@ public class TestFerias {
 
 
     }
+    @Test
+    public void ferias_att_dados_troca_empresa() {
+
+        logar_cpf("01530880521");
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        empresa.click();
+
+        try {
+            sleep(8000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
+        folha.click();
+
+        MobileElement ferias = (MobileElement) driver.findElement(MobileBy
+                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");"));
+
+        ferias.click();
+
+        MobileElement scroll_view = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/viewpager"));
+
+        List<MobileElement> meses_empresa1 = scroll_view.findElements
+                (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
+        ArrayList<String> meses_empresa1_str = new ArrayList<String>();
+
+        for (int i = 0; i < meses_empresa1.size(); i++) {
+            meses_empresa1_str.add(meses_empresa1.get(i).getText());
+        }
+
+        trocar_empresa();
+
+        try {
+            sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ferias = (MobileElement) driver.findElement(MobileBy
+                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");"));
+
+        ferias.click();
+
+        List<MobileElement> meses_empresa2 = driver.findElements
+                (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
+        ArrayList<String> meses_empresa2_str = new ArrayList<String>();
+
+        for (int i = 0; i < meses_empresa2.size(); i++) {
+            meses_empresa1_str.add(meses_empresa2.get(i).getText());
+        }
+
+
+        boolean flagTodasIguas = true;
+
+        if (meses_empresa1_str.size() != meses_empresa2_str.size()) {
+            assert (true);
+        } else if (meses_empresa1_str.size() == 0 && meses_empresa2_str.size() == 0) {
+            assert (true);
+        } else {
+            for (int i = 0; i < meses_empresa2_str.size(); i++) {
+                String aux1 = meses_empresa2_str.get(i);
+                for (int j = 0; j < meses_empresa1.size(); j++) {
+                    String aux2 = (meses_empresa1_str.get(j));
+                    if (!aux1.equals(aux2)) {
+                        flagTodasIguas = false;
+                    }
+                }
+            }
+
+            assert (flagTodasIguas);
+
+        }
+    }
+
 
 }

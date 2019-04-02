@@ -717,4 +717,54 @@ try {
         assert flag;
     }
 
+    @Test
+    public void folhas_diferentes(){
+        logar_cpf("01530880521");
+
+        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        empresa.click();
+
+        try {
+            sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
+        folha.click();
+
+
+        MobileElement scroll_view = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/listShowPayChecks"));
+
+        List<MobileElement> meses = scroll_view.findElements
+                (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
+
+        meses.get(0).click();
+
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        MobileElement view = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/paycheck_registry_recyclerview"));
+
+        List<MobileElement> matriculas = driver.findElements(By.id
+                ("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
+
+        for (int i = 0; i < matriculas.size(); i++) {
+            if (matriculas.get(i).getText().contains("Indefinido")) {
+                fail("Exibindo Indefinido");
+            }
+        }
+
+        assert true;
+
+
+    }
+
+
+
 }
