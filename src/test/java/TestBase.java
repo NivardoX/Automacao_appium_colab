@@ -6,13 +6,20 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -20,8 +27,55 @@ import java.util.List;
 
 import static java.lang.Thread.sleep;
 
-public class testBase {
+public class TestBase {
     AppiumDriver driver;
+
+    @Before
+    public void setup() throws MalformedURLException {
+
+        final String PATH = "/home/nivardo/nivardo/lia/automacao/";
+        File app = new File(PATH, "app-homolog_ifce.apk");
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("device", "Android");
+
+        //mandatory capabilities
+        capabilities.setCapability("deviceName", "Mi 8 Lite");
+        capabilities.setCapability("platformName", "Android");
+        capabilities.setCapability("autoGrantPermissions", "true");
+        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
+        //other caps
+        capabilities.setCapability("app", app.getAbsolutePath());
+        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+    }
+
+    void enviar_req(String file,String endpoint){
+        try {
+            // FileReader reads text files in the default encoding.
+            FileReader fileReader = new FileReader(file);
+
+            // Always wrap FileReader in BufferedReader.
+            BufferedReader bufferedReader =
+                    new BufferedReader(fileReader);
+            String payload = "";
+            String line = null;
+            while((line = bufferedReader.readLine()) != null) {
+                payload += line;
+            }
+
+            System.out.println(payload);
+            StringEntity entity = new StringEntity(payload,
+                    "UTF-8");
+
+            CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+            HttpPost request = new HttpPost("https://qe00nlgco8.execute-api.sa-east-1.amazonaws.com/homologifce/" + endpoint);
+            request.setEntity(entity);
+
+            HttpResponse response = httpClient.execute(request);
+            System.out.println(response.getStatusLine().getStatusCode());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 
     void trocar_empresa() {
         MobileElement dropDown = (MobileElement) driver.findElement
@@ -29,7 +83,7 @@ public class testBase {
 
         dropDown.click();
         try {
-            sleep(500);
+            sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -140,23 +194,6 @@ public class testBase {
 
     }
 
-    @Before
-    public void setup() throws MalformedURLException {
-        String path = "/home/nivardo/Documents/Automacao_appium_colab/";
-
-        File app = new File(path, "app-homolog_ifce.apk");
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("device", "Android");
-
-        //mandatory capabilities
-        capabilities.setCapability("deviceName", "Android");
-        capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("autoGrantPermissions", "true");
-        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
-        //other caps
-        capabilities.setCapability("app", app.getAbsolutePath());
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-    }
 
     void atualizar(){
 

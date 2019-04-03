@@ -1,38 +1,21 @@
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.remote.MobileCapabilityType;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
-import java.lang.reflect.Array;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
 import static junit.framework.TestCase.fail;
 
-public class TestContraCheque extends testBase{
+public class TestContraCheque extends TestBase {
 
     @Test
     public void test_anos_ordenados() {
@@ -132,19 +115,30 @@ public class TestContraCheque extends testBase{
         MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
 
+
         List<MobileElement> rc_matriculas1 = driver.findElements
                 (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
+        ArrayList<String> rc_matriculas1_str = new ArrayList<String>();
+
         for (int i = 0; i < rc_matriculas1.size(); i++) {
+            rc_matriculas1_str.add(rc_matriculas1.get(i).getText());
             System.out.println(rc_matriculas1.get(i).getText());
         }
 
         trocar_empresa();
 
+        try {
+            sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         List<MobileElement> rc_matriculas2 = driver.findElements
                 (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
+        ArrayList<String> rc_matriculas2_str = new ArrayList<String>();
 
         for (int i = 0; i < rc_matriculas2.size(); i++) {
+            rc_matriculas2_str.add(rc_matriculas2.get(i).getText());
             System.out.println(rc_matriculas2.get(i).getText());
         }
 
@@ -152,23 +146,18 @@ public class TestContraCheque extends testBase{
         boolean flagTodasIguas = true;
 
         if (rc_matriculas1.size() != rc_matriculas2.size()) {
-            assert (true);
-        } else if (rc_matriculas1.size() == 0 && rc_matriculas2.size() == 0) {
-            assert (true);
+            assert (false);
+        } else if (rc_matriculas1.size() == 0) {
+            assert (false);
         } else {
             for (int i = 0; i < rc_matriculas2.size(); i++) {
-                String aux1 = rc_matriculas2.get(i).getText();
-                for (int j = 0; j < rc_matriculas1.size(); j++) {
-                    String aux2 = (rc_matriculas1.get(j).getText());
-                    if (!aux1.equals(aux2)) {
-                        flagTodasIguas = false;
-                    }
-                }
+                flagTodasIguas = flagTodasIguas && rc_matriculas1_str.get(i).equals(rc_matriculas2_str.get(i));
+
             }
-
-            assert (flagTodasIguas);
-
         }
+            assert (!flagTodasIguas);
+
+
     }
 
     @Test

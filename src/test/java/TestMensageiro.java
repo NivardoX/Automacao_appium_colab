@@ -1,4 +1,3 @@
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -8,16 +7,26 @@ import java.util.List;
 
 import static java.lang.Thread.sleep;
 
-public class TestMensageiro extends testBase {
+public class TestMensageiro extends TestBase {
 
     @Test
     public void mensagem_empty_state(){
-        logar_cpf("01607344521");
+        logar_cpf("01530880521");
+
         try {
-            sleep(5000);
+            sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        empresas.get(2).click();
+
+        try {
+            sleep(8000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         MobileElement mensagens_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/message");
         mensagens_button.click();
 
@@ -156,5 +165,55 @@ public class TestMensageiro extends testBase {
         assert texto_acessivel && titulo_acessivel;
     }
 
+    @Test
+    public void enviar_mensagem(){
+
+        enviar_req("enviarMensagem.json","agente/mensagem/incluir");
+
+        logar_cpf("01607344521");
+
+        try {
+            sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        MobileElement mensagens_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/message");
+        mensagens_button.click();
+
+        MobileElement scroll_view = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/list_message"));
+
+        List<MobileElement> mensagens = scroll_view.findElements
+                (By.id("br.com.fortes.appcolaborador:id/constraint_layout_profile"));
+
+
+        String titulo =mensagens.get(0).findElementById("br.com.fortes.appcolaborador:id/title_message").getText();
+        String texto = mensagens.get(0).findElementById("br.com.fortes.appcolaborador:id/text_message").getText();
+
+        mensagens.get(0).click();
+
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        MobileElement delete_button = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/action_delete"));
+        delete_button.click();
+
+        try {
+            sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        MobileElement delete_button_confirm = (MobileElement) driver.findElement(By.id("android:id/button1"));
+        delete_button_confirm.click();
+
+        assert (titulo.equals("Teste") && texto.equals("Este é um testes automatizado, não bula!"));
+
+
+
+    }
 }
 

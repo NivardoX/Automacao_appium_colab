@@ -4,7 +4,7 @@
     "TpInscEmpregador": "1",
     "NrInscEmpregador": "02535568",
     "MensagemTitulo": "Teste",
-    "MensagemCorpo": "Teste",
+    "MensagemCorpo": "Este é um testes automatizado, não bula!",
     "Colaboradores": [
       {
         "CPF": "01607344521",

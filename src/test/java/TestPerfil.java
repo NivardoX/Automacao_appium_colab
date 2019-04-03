@@ -1,24 +1,15 @@
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.remote.MobileCapabilityType;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertFalse;
 
-public class TestPerfil extends testBase{
+public class TestPerfil extends TestBase {
 
     @Test
     public void test_campos_perfil() {

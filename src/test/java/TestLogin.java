@@ -1,19 +1,9 @@
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.remote.MobileCapabilityType;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.Duration;
 
 import static java.lang.Thread.sleep;
@@ -21,7 +11,7 @@ import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.fail;
 
-public class TestLogin extends testBase{
+public class TestLogin extends TestBase {
 
 
     @Test
