@@ -310,7 +310,15 @@ public class TestContraCheque extends testBase{
             e.printStackTrace();
         }
 
+
         atualizar();
+        try {
+            sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        atualizar();
+
 
         MobileElement scroll_view = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/listShowPayChecks"));
@@ -365,11 +373,16 @@ public class TestContraCheque extends testBase{
 
         logar_cpf("01530880521");
 
+        try {
+            sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(4).click();
 
         try {
-            sleep(4000);
+            sleep(6000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

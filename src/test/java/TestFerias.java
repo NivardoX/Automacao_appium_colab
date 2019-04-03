@@ -306,7 +306,7 @@ public class TestFerias extends testBase{
         trocar_empresa();
 
         try {
-            sleep(2000);
+            sleep(6000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
