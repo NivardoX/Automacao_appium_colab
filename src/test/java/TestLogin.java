@@ -117,7 +117,48 @@ public class TestLogin extends TestBase {
 
         assert (recover_cpf_tv.isDisplayed());
 
+    } @Test
+    public void test_recuperar_senha_minimizar() {
+        MobileElement recover_pass_tv = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/tv_recover_password"));
+
+        recover_pass_tv.click();
+
+        WebDriverWait wait = new WebDriverWait(driver, 4);
+
+
+        MobileElement recover_cpf_tv = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/rp_et_cpf"));
+
+        wait.until(ExpectedConditions.visibilityOf(recover_cpf_tv));
+
+        recover_cpf_tv.sendKeys("87577440094");
+
+        MobileElement avancar_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/rp_bt_proceed");
+        avancar_button.click();
+
+        try {
+            sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        driver.runAppInBackground(Duration.ofSeconds(2));
+
+        try {
+            sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        avancar_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/rp_bt_proceed2");
+
+        assert avancar_button.isDisplayed();
+
+
+
+
     }
+
 
     @Test
     public void login_cognito_sem_empresa() {

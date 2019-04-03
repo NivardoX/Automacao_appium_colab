@@ -2,6 +2,7 @@ import io.appium.java_client.MobileElement;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -210,7 +211,9 @@ public class TestMensageiro extends TestBase {
         MobileElement delete_button_confirm = (MobileElement) driver.findElement(By.id("android:id/button1"));
         delete_button_confirm.click();
 
-        assert (titulo.equals("Teste") && texto.equals("Este é um testes automatizado, não bula!"));
+        System.out.println(titulo);
+        System.out.println(texto);
+        assert (titulo.equals("Teste") && texto.equals("Este é um teste automatizado, não bula!\n"));
 
 
 

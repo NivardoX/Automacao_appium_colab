@@ -29,11 +29,11 @@ import static java.lang.Thread.sleep;
 
 public class TestBase {
     AppiumDriver driver;
-
+    String PATH = "/home/nivardo/nivardo/lia/automacao/";
     @Before
     public void setup() throws MalformedURLException {
 
-        final String PATH = "/home/nivardo/nivardo/lia/automacao/";
+
         File app = new File(PATH, "app-homolog_ifce.apk");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("device", "Android");
@@ -51,7 +51,7 @@ public class TestBase {
     void enviar_req(String file,String endpoint){
         try {
             // FileReader reads text files in the default encoding.
-            FileReader fileReader = new FileReader(file);
+            FileReader fileReader = new FileReader(PATH+"src/test/java/"+file);
 
             // Always wrap FileReader in BufferedReader.
             BufferedReader bufferedReader =
