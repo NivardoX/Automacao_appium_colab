@@ -174,7 +174,7 @@ public class TestMensageiro extends TestBase {
         logar_cpf("01607344521");
 
         try {
-            sleep(2000);
+            sleep(6000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -211,9 +211,9 @@ public class TestMensageiro extends TestBase {
         MobileElement delete_button_confirm = (MobileElement) driver.findElement(By.id("android:id/button1"));
         delete_button_confirm.click();
 
-        System.out.println(titulo);
-        System.out.println(texto);
-        assert (titulo.equals("Teste") && texto.equals("Este é um teste automatizado, não bula!\n"));
+        System.out.println(titulo+", Teste");
+        System.out.println(texto+",Este é um teste automatizado, não bula!" );
+        assert (titulo.equals("Teste") && texto.equals("Este é um teste automatizado, não bula!"));
 
 
 

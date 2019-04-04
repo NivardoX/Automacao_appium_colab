@@ -79,7 +79,7 @@ public class TestLogin extends TestBase {
 
         MobileElement error_dados_alert = (MobileElement) driver.findElement(By.id("android:id/alertTitle"));
         if (!(error_dados_alert.getText().equals("CPF ou senha incorretos"))) {
-            fail("Não está exibindo o texto \"CPF ou senha incorretos\" e sim "+ error_dados_alert.getText());
+            fail("Não está exibindo o texto \"CPF ou senha incorretos\" e sim \""+ error_dados_alert.getText()+"\"");
         }
         MobileElement error_dados_alert_button = (MobileElement) driver.findElement(By.id("android:id/button1"));
         error_dados_alert_button.click();
@@ -117,8 +117,10 @@ public class TestLogin extends TestBase {
 
         assert (recover_cpf_tv.isDisplayed());
 
-    } @Test
-    public void test_recuperar_senha_minimizar() {
+    }
+
+    @Test
+    public void test_recuperar_senha_minimizar_loading() {
         MobileElement recover_pass_tv = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/tv_recover_password"));
 
@@ -147,6 +149,48 @@ public class TestLogin extends TestBase {
 
         try {
             sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        avancar_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/rp_bt_proceed2");
+
+        assert avancar_button.isDisplayed();
+
+
+
+
+    } @Test
+    public void test_recuperar_senha_minimizar() {
+        MobileElement recover_pass_tv = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/tv_recover_password"));
+
+        recover_pass_tv.click();
+
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        MobileElement recover_cpf_tv = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/rp_et_cpf"));
+
+
+        recover_cpf_tv.sendKeys("87577440094");
+
+        MobileElement avancar_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/rp_bt_proceed");
+        avancar_button.click();
+
+        try {
+            sleep(7000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        driver.runAppInBackground(Duration.ofSeconds(2));
+
+        try {
+            sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -270,17 +314,22 @@ public class TestLogin extends TestBase {
     public void test_login_logout_login_diffacc() {
         logar();
         try {
-            sleep(1000);
+            sleep(4000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         deslogar();
         try {
-            sleep(1000);
+            sleep(4000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         logar();
+        try {
+            sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         MobileElement perfil = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/profile"));
 
         assert (perfil.isDisplayed());

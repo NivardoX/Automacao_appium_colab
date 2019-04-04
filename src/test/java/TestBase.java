@@ -161,11 +161,17 @@ public class TestBase {
     }
 
     void deslogar() {
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
-        empresa.click();
+        try {
+            sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        MobileElement perfil = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/profile"));
+        perfil.click();
 
         try {
-            sleep(6000);
+            sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -197,29 +203,30 @@ public class TestBase {
 
     void atualizar(){
 
+        driver.getContext();
+        //Get the size of screen.
         Dimension size = driver.manage().window().getSize();
-        System.out.println(size);
-        int endX = 0;
-
-
-        int  startY = (int) (size.height * 0.70);
-        int endY = (int) (size.height * 0.30);
-        int startX = (size.width / 2);
-        //Swipe from Bottom to Top.
-
-        new TouchAction(driver)
-                .press(PointOption.point(startX, startY))
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(200)))
-                .moveTo(PointOption.point(endX, endY))
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                .release()
-                .perform();
-
+//Find swipe start and end point from screen’s width and height.
+//Find starty point which is at bottom side of screen.
+        int startY = (int) (size.height * 0.90);
+//Find endy point which is at top side of screen.
+        int endY = (int) (size.height * 0.40);
+//Find horizontal point where you wants to swipe. It is in middle of screen width.
+        int startX= size.width / 2;
+//Swipe from Bottom to Top. driver.swipe(startx, starty, startx, endy, 3000);
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+//Swipe from Top to Bottom.
+
+        new TouchAction(driver)
+                .press(PointOption.point(startX,endY))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(2000)))
+                .moveTo(PointOption.point(startX,startY))
+                .release()
+                .perform();
     }
 
     @After
