@@ -99,7 +99,7 @@ public class TestContraCheque extends TestBase {
 
         logar_cpf("01530880521");
         try {
-            sleep(1000);
+            sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -128,7 +128,7 @@ public class TestContraCheque extends TestBase {
         trocar_empresa();
 
         try {
-            sleep(2000);
+            sleep(6000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -146,9 +146,9 @@ public class TestContraCheque extends TestBase {
         boolean flagTodasIguas = true;
 
         if (rc_matriculas1.size() != rc_matriculas2.size()) {
-            assert (false);
+            flagTodasIguas = false;
         } else if (rc_matriculas1.size() == 0) {
-            assert (false);
+            flagTodasIguas = false;
         } else {
             for (int i = 0; i < rc_matriculas2.size(); i++) {
                 flagTodasIguas = flagTodasIguas && rc_matriculas1_str.get(i).equals(rc_matriculas2_str.get(i));
@@ -218,7 +218,7 @@ public class TestContraCheque extends TestBase {
         empresa.click();
 
         try {
-            sleep(6000);
+            sleep(8000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

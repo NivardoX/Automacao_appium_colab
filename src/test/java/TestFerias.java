@@ -174,7 +174,7 @@ public class TestFerias extends TestBase {
         logar();
 
         try {
-            sleep(6000);
+            sleep(8000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

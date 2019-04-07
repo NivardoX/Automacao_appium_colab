@@ -29,7 +29,7 @@ import static java.lang.Thread.sleep;
 
 public class TestBase {
     AppiumDriver driver;
-    String PATH = "/home/nivardo/nivardo/lia/automacao/";
+    String PATH = "/home/nivardo/Documents/Automacao_appium_colab/";
     @Before
     public void setup() throws MalformedURLException {
 
