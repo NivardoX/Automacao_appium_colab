@@ -665,14 +665,6 @@ public class TestPonto extends TestBase {
         MobileElement saldo_banco = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/saldo_banco_horas_atedia");
         enviar_req("excluirBatida.json","agente/ponto/espelho/excluir");
         assert (saldo_banco.getText().contains("Teste Banco de Horas") && saldo_banco.getText().contains("31/12/2017"));
-
-
-
-
-
-
-
-
     }
 
 }
