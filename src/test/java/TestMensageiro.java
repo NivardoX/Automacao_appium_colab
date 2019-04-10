@@ -2,6 +2,7 @@ import io.appium.java_client.MobileElement;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class TestMensageiro extends TestBase {
 
         sleep_testes(3000 * CONST_NET);
 
-        List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_eme_company"));
         empresas.get(2).click();
 
         sleep_testes(8000 * CONST_NET);
@@ -174,6 +175,76 @@ public class TestMensageiro extends TestBase {
         System.out.println(texto + ",Este é um teste automatizado, não bula!");
         assert (titulo.equals("Teste") && texto.equals("Este é um teste automatizado, não bula!"));
 
+
+    }
+
+    @Test
+    public void marcar_mensagem_lida(){
+        Boolean assertionFlag = true;
+        enviar_req("enviarMensagem.json", "agente/mensagem/incluir");
+
+        logar_cpf("01607344521");
+
+        sleep_testes(6000 * CONST_NET);
+
+
+        MobileElement mensagens_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/message");
+        mensagens_button.click();
+
+        MobileElement scroll_view = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/list_message"));
+
+        List<MobileElement> mensagens = scroll_view.findElements
+                (By.id("br.com.fortes.appcolaborador:id/constraint_layout_profile"));
+
+
+        String titulo = mensagens.get(0).findElementById("br.com.fortes.appcolaborador:id/title_message").getText();
+        String texto = mensagens.get(0).findElementById("br.com.fortes.appcolaborador:id/text_message").getText();
+
+        MobileElement is_read = null;
+        try {
+
+            is_read = (MobileElement) mensagens.get(0).findElementById("br.com.fortes.appcolaborador:id/iv_is_read");
+        }catch (Exception e ){
+            System.out.println("'br.com.fortes.appcolaborador:id/iv_is_read' não foi encontrado.");
+            assertionFlag = false;
+        }
+
+        mensagens.get(0).click();
+        sleep_testes(1000 * CONST_NET);
+
+
+
+        driver.navigate().back();
+        scroll_view = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/list_message"));
+
+        sleep_testes(500*CONST_NET);
+
+        try {
+            is_read = (MobileElement) mensagens.get(0).findElementById("br.com.fortes.appcolaborador:id/iv_is_read");
+            assertionFlag = false;
+        }catch (Exception e){
+            assertionFlag = true;
+        }
+
+
+        mensagens = scroll_view.findElements
+                (By.id("br.com.fortes.appcolaborador:id/constraint_layout_profile"));
+
+
+
+        mensagens.get(0).click();
+        sleep_testes(1000 * CONST_NET);
+
+        MobileElement delete_button = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/action_delete"));
+        delete_button.click();
+
+        sleep_testes(500 * CONST_NET);
+
+
+        MobileElement delete_button_confirm = (MobileElement) driver.findElement(By.id("android:id/button1"));
+        delete_button_confirm.click();
+
+        assert assertionFlag;
 
     }
 }

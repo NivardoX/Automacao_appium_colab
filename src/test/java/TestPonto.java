@@ -618,4 +618,61 @@ public class TestPonto extends TestBase {
         }
     }
 
+    @Test
+    public void dataSaldo_descr(){
+        enviar_req("enviarSaldo.json","agente/ponto/espelho/incluir");
+        logar_cpf("01846903580");
+        sleep_testes(6000 * CONST_NET);
+
+
+        MobileElement ponto_button = (MobileElement) driver.findElement
+                (By.id("br.com.fortes.appcolaborador:id/point"));
+
+        ponto_button.click();
+
+        List<MobileElement> rc_matriculas = driver.findElements
+                (By.id("br.com.fortes.appcolaborador:id/text_mat"));
+        for (MobileElement rc_matricula : rc_matriculas) {
+            System.out.println(rc_matricula.getText());
+            if (rc_matricula.getText().contains("012643")) {
+                rc_matricula.click();
+                break;
+            }
+        }
+        sleep_testes(500*CONST_NET);
+
+        List<MobileElement> meses_tv = null;
+        meses_tv = driver.findElements(By.id("br.com.fortes.appcolaborador:id/text_month"));
+
+
+
+        if(meses_tv.size() == 0){
+            meses_tv = driver.findElements
+                    (By.id("br.com.fortes.appcolaborador:id/text_month_single"));
+        }
+
+        for (MobileElement mes: meses_tv) {
+            System.out.println(mes.getText());
+            if(mes.getText().equals("Janeiro")){
+                mes.click();
+                break;
+            }
+
+        }
+
+        sleep_testes(1000*CONST_NET);
+
+        MobileElement saldo_banco = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/saldo_banco_horas_atedia");
+        enviar_req("excluirBatida.json","agente/ponto/espelho/excluir");
+        assert (saldo_banco.getText().contains("Teste Banco de Horas") && saldo_banco.getText().contains("31/12/2017"));
+
+
+
+
+
+
+
+
+    }
+
 }
