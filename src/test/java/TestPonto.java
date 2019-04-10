@@ -10,7 +10,6 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Thread.sleep;
 import static junit.framework.TestCase.*;
 
 public class TestPonto extends TestBase {
@@ -21,11 +20,8 @@ public class TestPonto extends TestBase {
         logar();
 
 
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(6000 * CONST_NET);
+
 
         MobileElement ponto_button = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/point"));
@@ -46,11 +42,8 @@ public class TestPonto extends TestBase {
         logar();
 
 
-        try {
-            sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(8000 * CONST_NET);
+
 
         MobileElement ponto_button = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/point"));
@@ -62,11 +55,8 @@ public class TestPonto extends TestBase {
 
         rc_matricula.click();
 
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(1000 * CONST_NET);
 
         MobileElement scroll_view = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/point_month_recyclerview"));
@@ -91,11 +81,8 @@ public class TestPonto extends TestBase {
         logar();
 
 
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(6000 * CONST_NET);
+
 
         MobileElement ponto_button = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/point"));
@@ -107,11 +94,9 @@ public class TestPonto extends TestBase {
 
         rc_matriculas.get(0).click();
 
-        try {
-            sleep(400);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(400 * CONST_NET);
+
         Dimension size = driver.manage().window().getSize();
         System.out.println(size);
         int startX = 0;
@@ -133,11 +118,8 @@ public class TestPonto extends TestBase {
                 .release()
                 .perform();
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(2000 * CONST_NET);
+
 
         MobileElement toolbar = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/toolbar"));
         MobileElement title = toolbar.findElement(By.className("android.widget.TextView"));
@@ -155,11 +137,9 @@ public class TestPonto extends TestBase {
         MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresa.click();
 
-        try {
-            sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(8000 * CONST_NET);
+
 
         MobileElement ponto_button = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/point"));
@@ -213,21 +193,15 @@ public class TestPonto extends TestBase {
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(1).click();
 
-        try {
-            sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(8000 * CONST_NET);
+
 
         MobileElement ponto_button = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/point"));
 
         ponto_button.click();
-        try {
-            sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(500 * CONST_NET);
 
         try {
             MobileElement nothing_point = (MobileElement) driver.findElement(
@@ -260,11 +234,8 @@ public class TestPonto extends TestBase {
 
         logar_cpf("01607344521");
 
-        try {
-            sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(8000 * CONST_NET);
+
 
         MobileElement ponto_button = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/point"));
@@ -276,11 +247,8 @@ public class TestPonto extends TestBase {
 
         registrar_ponto_bttn.click();
 
-        try {
-            sleep(22000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(22000 * CONST_NET);
+
         try {
 
             MobileElement alert = (MobileElement) driver.findElement
@@ -312,11 +280,8 @@ public class TestPonto extends TestBase {
 
         registrar_bttn.click();
 
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(6000 * CONST_NET);
+
 
         List<MobileElement> meses_tv = driver.findElements
                 (By.id("br.com.fortes.appcolaborador:id/text_month_single"));
@@ -334,11 +299,8 @@ public class TestPonto extends TestBase {
 
         ponto_mes.click();
 
-        try {
-            sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(2000 * CONST_NET);
 
 
         boolean flag_horas_iguais = false;
@@ -386,11 +348,9 @@ public class TestPonto extends TestBase {
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(3).click();
 
-        try {
-            sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(8000 * CONST_NET);
+
 
         MobileElement ponto_button = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/point"));
@@ -398,21 +358,16 @@ public class TestPonto extends TestBase {
         ponto_button.click();
 
 
-        try {
-            sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(500 * CONST_NET);
+
         MobileElement registrar_ponto_bttn = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/pm_beat_point"));
 
         registrar_ponto_bttn.click();
 
-        try {
-            sleep(22000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(22000 * CONST_NET);
+
         try {
 
             MobileElement alert = (MobileElement) driver.findElement
@@ -444,11 +399,9 @@ public class TestPonto extends TestBase {
 
         registrar_bttn.click();
 
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(6000 * CONST_NET);
+
 
         List<MobileElement> meses_tv = driver.findElements
                 (By.id("br.com.fortes.appcolaborador:id/text_month_single"));
@@ -466,11 +419,7 @@ public class TestPonto extends TestBase {
 
         ponto_mes.click();
 
-        try {
-            sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(2000 * CONST_NET);
 
 
         boolean flag_horas_iguais = false;
@@ -515,19 +464,14 @@ public class TestPonto extends TestBase {
 
         logar_cpf("01530880521");
 
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(6000 * CONST_NET);
+
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(0).click();
 
-        try {
-            sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(8000 * CONST_NET);
 
         MobileElement ponto_button = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/point"));
@@ -538,21 +482,15 @@ public class TestPonto extends TestBase {
                 (By.id("br.com.fortes.appcolaborador:id/text_mat"));
         matriculas.get(0).click();
 
-        try {
-            sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(500 * CONST_NET);
+
         MobileElement registrar_ponto_bttn = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/pm_beat_point"));
 
         registrar_ponto_bttn.click();
 
-        try {
-            sleep(22000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(22000 * CONST_NET);
+
         try {
 
             MobileElement alert = (MobileElement) driver.findElement
@@ -584,11 +522,9 @@ public class TestPonto extends TestBase {
 
         registrar_bttn.click();
 
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(6000 * CONST_NET);
+
 
         List<MobileElement> meses_tv = driver.findElements
                 (By.id("br.com.fortes.appcolaborador:id/text_month"));
@@ -606,11 +542,8 @@ public class TestPonto extends TestBase {
 
         ponto_mes.click();
 
-        try {
-            sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(2000 * CONST_NET);
 
 
         boolean flag_horas_iguais = false;
@@ -646,11 +579,8 @@ public class TestPonto extends TestBase {
                 (By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(4).click();
 
-        try {
-            sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(8000 * CONST_NET);
+
 
         MobileElement ponto_button = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/point"));
@@ -663,11 +593,9 @@ public class TestPonto extends TestBase {
         registrar_ponto_bttn.click();
         Boolean flag_localizacao = false;
 
-        try {
-            sleep(22000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(22000 * CONST_NET);
+
         try {
 
             MobileElement alert = (MobileElement) driver.findElement

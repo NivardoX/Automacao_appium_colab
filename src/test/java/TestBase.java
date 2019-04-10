@@ -29,7 +29,9 @@ import static java.lang.Thread.sleep;
 
 public class TestBase {
     AppiumDriver driver;
+    Double CONST_NET = 1.2;
     String PATH = "/home/nivardo/Documents/Automacao_appium_colab/";
+
     @Before
     public void setup() throws MalformedURLException {
 
@@ -48,17 +50,26 @@ public class TestBase {
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
     }
 
-    void enviar_req(String file,String endpoint){
+    public void sleep_testes(Double millis) {
+        long mils = (millis.longValue());
+        try {
+            sleep(mils);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    void enviar_req(String file, String endpoint) {
         try {
             // FileReader reads text files in the default encoding.
-            FileReader fileReader = new FileReader(PATH+"src/test/java/"+file);
+            FileReader fileReader = new FileReader(PATH + "src/test/java/" + file);
 
             // Always wrap FileReader in BufferedReader.
             BufferedReader bufferedReader =
                     new BufferedReader(fileReader);
             String payload = "";
             String line = null;
-            while((line = bufferedReader.readLine()) != null) {
+            while ((line = bufferedReader.readLine()) != null) {
                 payload += line;
             }
 
@@ -72,7 +83,7 @@ public class TestBase {
 
             HttpResponse response = httpClient.execute(request);
             System.out.println(response.getStatusLine().getStatusCode());
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -82,20 +93,14 @@ public class TestBase {
                 (By.id("br.com.fortes.appcolaborador:id/iv_company"));
 
         dropDown.click();
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(1000 * CONST_NET);
+
 
         List<MobileElement> empresas = driver.findElements
                 (By.id("br.com.fortes.appcolaborador:id/constraint_layout_profile"));
         empresas.get(2).click();
-        try {
-            sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(2000 * CONST_NET);
+
     }
 
     void logar() {
@@ -108,11 +113,8 @@ public class TestBase {
         cpf.sendKeys("00717420345");
         pass.sendKeys("12345678");
         login_button.click();
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(6000 * CONST_NET);
+
     }
 
     void logar_cpf_pass(String cpf_str, String pass_str) {
@@ -125,11 +127,8 @@ public class TestBase {
         cpf.sendKeys(cpf_str);
         pass.sendKeys(pass_str);
         login_button.click();
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(6000 * CONST_NET);
+
     }
 
     Boolean isSorted(List<MobileElement> a) {
@@ -153,28 +152,18 @@ public class TestBase {
         cpf.sendKeys(cpf_str);
         pass.sendKeys("12345678");
         login_button.click();
-        try {
-            sleep(7000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(7000 * CONST_NET);
+
     }
 
     void deslogar() {
-        try {
-            sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(3000 * CONST_NET);
 
         MobileElement perfil = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/profile"));
         perfil.click();
 
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(1000 * CONST_NET);
+
 
         MobileElement scroll_view = (MobileElement) driver.findElement((By.id("br.com.fortes.appcolaborador:id/scroll_view_profile")));
 
@@ -183,25 +172,18 @@ public class TestBase {
                         .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                                 + "new UiSelector().text(\"Sair\"));"));
 
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(1000 * CONST_NET);
+
         logout_btn = (MobileElement) driver.findElement((By.id("br.com.fortes.appcolaborador:id/btn_logout")));
 
         logout_btn.click();
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(1000 * CONST_NET);
 
 
     }
 
 
-    void atualizar(){
+    void atualizar() {
 
         driver.getContext();
         //Get the size of screen.
@@ -212,19 +194,16 @@ public class TestBase {
 //Find endy point which is at top side of screen.
         int endY = (int) (size.height * 0.40);
 //Find horizontal point where you wants to swipe. It is in middle of screen width.
-        int startX= size.width / 2;
-//Swipe from Bottom to Top. driver.swipe(startx, starty, startx, endy, 3000);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        int startX = size.width / 2;
+//Swipe from Bottom to Top. driver.swipe(startx, starty, startx, endy, 3000 * CONST_NET);
+        sleep_testes(1000 * CONST_NET);
+
 //Swipe from Top to Bottom.
 
         new TouchAction(driver)
-                .press(PointOption.point(startX,endY))
+                .press(PointOption.point(startX, endY))
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(2000)))
-                .moveTo(PointOption.point(startX,startY))
+                .moveTo(PointOption.point(startX, startY))
                 .release()
                 .perform();
     }

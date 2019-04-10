@@ -11,8 +11,6 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Thread.sleep;
-
 
 public class TestFerias extends TestBase {
 
@@ -22,11 +20,8 @@ public class TestFerias extends TestBase {
         logar();
 
 
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(6000 * CONST_NET);
+
 
         MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
@@ -53,11 +48,9 @@ public class TestFerias extends TestBase {
         MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresa.click();
 
-        try {
-            sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(8000 * CONST_NET);
+
 
         MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
@@ -71,11 +64,8 @@ public class TestFerias extends TestBase {
 
         meses.get(0).click();
 
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(1000 * CONST_NET);
+
 
         MobileElement view = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/paycheck_registry_recyclerview"));
@@ -85,11 +75,8 @@ public class TestFerias extends TestBase {
 
         matriculas.get(0).click();
 
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(1000 * CONST_NET);
+
 
         MobileElement download_pdf = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/action_delete"));
@@ -104,11 +91,8 @@ public class TestFerias extends TestBase {
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(2).click();
 
-        try {
-            sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(8000 * CONST_NET);
+
 
         MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
@@ -126,11 +110,8 @@ public class TestFerias extends TestBase {
 
         meses.get(0).click();
 
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(1000 * CONST_NET);
+
         List<MobileElement> matricula = driver.findElements(By.id
                 ("br.com.fortes.appcolaborador:id/text_item_header_name"));
 
@@ -145,11 +126,8 @@ public class TestFerias extends TestBase {
         logar();
 
 
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(6000 * CONST_NET);
+
 
         MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
@@ -173,11 +151,8 @@ public class TestFerias extends TestBase {
 
         logar();
 
-        try {
-            sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(8000 * CONST_NET);
 
         MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
@@ -209,11 +184,7 @@ public class TestFerias extends TestBase {
                 .release()
                 .perform();
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(2000 * CONST_NET);
 
 
         ferias = (MobileElement) driver.findElement(MobileBy
@@ -231,11 +202,8 @@ public class TestFerias extends TestBase {
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(4).click();
 
-        try {
-            sleep(7000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(7000 * CONST_NET);
+
 
         MobileElement folha = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/financial"));
@@ -258,23 +226,20 @@ public class TestFerias extends TestBase {
 
 
     }
+
     @Test
     public void ferias_att_dados_troca_empresa() {
 
         logar_cpf("01530880521");
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(1000 * CONST_NET);
+
         MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresa.click();
 
-        try {
-            sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(8000 * CONST_NET);
+
 
         MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
@@ -296,11 +261,9 @@ public class TestFerias extends TestBase {
 
         trocar_empresa();
 
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(6000 * CONST_NET);
+
         ferias = (MobileElement) driver.findElement(MobileBy
                 .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");"));
 

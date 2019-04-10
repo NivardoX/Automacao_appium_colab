@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 
 import java.util.List;
 
-import static java.lang.Thread.sleep;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertFalse;
 
@@ -16,12 +15,7 @@ public class TestPerfil extends TestBase {
         logar();
 
 
-
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(6000 * CONST_NET);
 
         MobileElement perfil = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/profile"));
@@ -41,11 +35,7 @@ public class TestPerfil extends TestBase {
             if (elementos.get(i).getText().equals("")) {
                 erros++;
             }
-            try {
-                sleep(300);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            sleep_testes(300 * CONST_NET);
 
         }
 
@@ -61,11 +51,7 @@ public class TestPerfil extends TestBase {
 
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(3).click();
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(6000 * CONST_NET);
         MobileElement perfil = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/profile"));
         perfil.click();
@@ -82,11 +68,7 @@ public class TestPerfil extends TestBase {
             if (elementos.get(i).getText().equals("")) {
                 erros++;
             }
-            try {
-                sleep(300);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            sleep_testes(300* CONST_NET);
 
         }
 
@@ -98,11 +80,7 @@ public class TestPerfil extends TestBase {
     public void test_mudar_empresa_campos() {
         logar();
 
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(6000 * CONST_NET);
         MobileElement perfil = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/profile"));
         perfil.click();
@@ -124,29 +102,17 @@ public class TestPerfil extends TestBase {
                         .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                                 + "new UiSelector().text(\"Sair\"));"));
 
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(1000 * CONST_NET);
         logout_btn = (MobileElement) driver.findElement((By.id("br.com.fortes.appcolaborador:id/btn_logout")));
 
         logout_btn.click();
 
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(1000 * CONST_NET);
 
         logar_cpf("01607344521");
 
 
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(6000*CONST_NET);
 
         perfil = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/profile"));

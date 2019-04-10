@@ -6,7 +6,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static java.lang.Thread.sleep;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.fail;
@@ -39,11 +38,8 @@ public class TestLogin extends TestBase {
         pass.sendKeys("1234567789");
         login_button.click();
 
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(6000 * CONST_NET);
+
         assertEquals(tvErrorCPF.getText(), error);
     }
 
@@ -71,15 +67,12 @@ public class TestLogin extends TestBase {
 
         login_button.click();
 
-        try {
-            sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(2000 * CONST_NET);
+
 
         MobileElement error_dados_alert = (MobileElement) driver.findElement(By.id("android:id/alertTitle"));
         if (!(error_dados_alert.getText().equals("CPF ou senha incorretos"))) {
-            fail("Não está exibindo o texto \"CPF ou senha incorretos\" e sim \""+ error_dados_alert.getText()+"\"");
+            fail("Não está exibindo o texto \"CPF ou senha incorretos\" e sim \"" + error_dados_alert.getText() + "\"");
         }
         MobileElement error_dados_alert_button = (MobileElement) driver.findElement(By.id("android:id/button1"));
         error_dados_alert_button.click();
@@ -139,38 +132,29 @@ public class TestLogin extends TestBase {
         MobileElement avancar_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/rp_bt_proceed");
         avancar_button.click();
 
-        try {
-            sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(500 * CONST_NET);
+
 
         driver.runAppInBackground(Duration.ofSeconds(2));
 
-        try {
-            sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(500 * CONST_NET);
+
         avancar_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/rp_bt_proceed2");
 
         assert avancar_button.isDisplayed();
 
 
+    }
 
-
-    } @Test
+    @Test
     public void test_recuperar_senha_minimizar() {
         MobileElement recover_pass_tv = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/tv_recover_password"));
 
         recover_pass_tv.click();
 
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(1000 * CONST_NET);
+
 
         MobileElement recover_cpf_tv = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/rp_et_cpf"));
@@ -181,24 +165,15 @@ public class TestLogin extends TestBase {
         MobileElement avancar_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/rp_bt_proceed");
         avancar_button.click();
 
-        try {
-            sleep(7000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(7000 * CONST_NET);
 
         driver.runAppInBackground(Duration.ofSeconds(2));
 
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(1000 * CONST_NET);
+
         avancar_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/rp_bt_proceed2");
 
         assert avancar_button.isDisplayed();
-
-
 
 
     }
@@ -221,20 +196,12 @@ public class TestLogin extends TestBase {
 
         recover_pass_tv.click();
 
-        try {
-            sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(2000 * CONST_NET);
+
 
         MobileElement recover_cpf_tv = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/rp_et_cpf"));
-        try {
-            sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
+        sleep_testes(2000 * CONST_NET);
 
 
         recover_cpf_tv.sendKeys("39456803975");
@@ -254,11 +221,7 @@ public class TestLogin extends TestBase {
         driver.getContext();
 
 
-        try {
-            sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(8000 * CONST_NET);
 
         MobileElement perfil = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/profile"));
 
@@ -272,21 +235,16 @@ public class TestLogin extends TestBase {
     public void test_minimizar() {
         logar();
         driver.getContext();
-        try {
-            sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(8000 * CONST_NET);
+
         MobileElement perfil = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/profile"));
 
 
         if (perfil.isDisplayed()) {
             driver.runAppInBackground(Duration.ofSeconds(2));
-            try {
-                sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
+            sleep_testes(2000 * CONST_NET);
+
             perfil = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/profile"));
             assert (perfil.isDisplayed());
 
@@ -313,23 +271,14 @@ public class TestLogin extends TestBase {
     @Test
     public void test_login_logout_login_diffacc() {
         logar();
-        try {
-            sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(4000 * CONST_NET);
+
         deslogar();
-        try {
-            sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(4000 * CONST_NET);
+
         logar();
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(6000 * CONST_NET);
+
         MobileElement perfil = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/profile"));
 
         assert (perfil.isDisplayed());

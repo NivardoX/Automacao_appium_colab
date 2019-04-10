@@ -12,7 +12,6 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Thread.sleep;
 import static junit.framework.TestCase.fail;
 
 public class TestContraCheque extends TestBase {
@@ -23,11 +22,8 @@ public class TestContraCheque extends TestBase {
         logar();
 
 
-        try {
-            sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(8000 * CONST_NET);
+
 
         MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
@@ -49,12 +45,8 @@ public class TestContraCheque extends TestBase {
 
         MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresa.click();
+        sleep_testes(6000 * CONST_NET);
 
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
@@ -68,11 +60,8 @@ public class TestContraCheque extends TestBase {
 
         meses.get(0).click();
 
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(1000 * CONST_NET);
+
 
         MobileElement view = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/paycheck_registry_recyclerview"));
@@ -82,11 +71,8 @@ public class TestContraCheque extends TestBase {
 
         matriculas.get(0).click();
 
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(1000 * CONST_NET);
+
 
         MobileElement download_pdf = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/action_delete"));
@@ -98,19 +84,13 @@ public class TestContraCheque extends TestBase {
     public void att_dados_troca_empresa() {
 
         logar_cpf("01530880521");
-        try {
-            sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(2000 * CONST_NET);
+
         MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresa.click();
 
-        try {
-            sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(8000 * CONST_NET);
+
 
         MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
@@ -127,11 +107,8 @@ public class TestContraCheque extends TestBase {
 
         trocar_empresa();
 
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(6000 * CONST_NET);
+
 
         List<MobileElement> rc_matriculas2 = driver.findElements
                 (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
@@ -155,7 +132,7 @@ public class TestContraCheque extends TestBase {
 
             }
         }
-            assert (!flagTodasIguas);
+        assert (!flagTodasIguas);
 
 
     }
@@ -168,11 +145,8 @@ public class TestContraCheque extends TestBase {
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(0).click();
 
-        try {
-            sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(8000 * CONST_NET);
+
 
         MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
@@ -186,11 +160,8 @@ public class TestContraCheque extends TestBase {
 
         meses.get(0).click();
 
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(1000 * CONST_NET);
+
 
         MobileElement view = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/paycheck_registry_recyclerview"));
@@ -217,11 +188,7 @@ public class TestContraCheque extends TestBase {
         MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresa.click();
 
-        try {
-            sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(8000 * CONST_NET);
 
         MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
@@ -235,11 +202,8 @@ public class TestContraCheque extends TestBase {
 
         meses.get(0).click();
 
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(1000 * CONST_NET);
+
 
         MobileElement view = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/paycheck_registry_recyclerview"));
@@ -264,11 +228,8 @@ public class TestContraCheque extends TestBase {
         logar_cpf("01607344521");
 
 
-        try {
-            sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(8000 * CONST_NET);
+
 
         MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
@@ -281,7 +242,7 @@ public class TestContraCheque extends TestBase {
                     new BufferedReader(fileReader);
             String payload = "";
             String line = null;
-            while((line = bufferedReader.readLine()) != null) {
+            while ((line = bufferedReader.readLine()) != null) {
                 payload += line;
             }
 
@@ -295,17 +256,14 @@ public class TestContraCheque extends TestBase {
 
             HttpResponse response = httpClient.execute(request);
             System.out.println(response.getStatusLine().getStatusCode());
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
 
         atualizar();
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(6000 * CONST_NET);
+
         atualizar();
 
 
@@ -323,7 +281,7 @@ public class TestContraCheque extends TestBase {
                     new BufferedReader(fileReader);
             String payload = "";
             String line = null;
-            while((line = bufferedReader.readLine()) != null) {
+            while ((line = bufferedReader.readLine()) != null) {
                 payload += line;
             }
 
@@ -338,17 +296,15 @@ public class TestContraCheque extends TestBase {
             HttpResponse response = httpClient.execute(request);
             System.out.println(response.getStatusLine().getStatusCode());
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-
-
         boolean flag = false;
-        for (MobileElement me:meses
+        for (MobileElement me : meses
         ) {
-            if(me.getText().equals("Fevereiro")){
+            if (me.getText().equals("Fevereiro")) {
                 flag = true;
             }
 
@@ -362,19 +318,12 @@ public class TestContraCheque extends TestBase {
 
         logar_cpf("01530880521");
 
-        try {
-            sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(3000 * CONST_NET);
+
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(4).click();
+        sleep_testes(6000 * CONST_NET);
 
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         MobileElement folha = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/financial"));
@@ -391,8 +340,9 @@ public class TestContraCheque extends TestBase {
 
 
     }
+
     @Test
-    public void enviar_folha(){
+    public void enviar_folha() {
         //Envia a folha
         try {
             // FileReader reads text files in the default encoding.
@@ -403,7 +353,7 @@ public class TestContraCheque extends TestBase {
                     new BufferedReader(fileReader);
             String payload = "";
             String line = null;
-            while((line = bufferedReader.readLine()) != null) {
+            while ((line = bufferedReader.readLine()) != null) {
                 payload += line;
             }
 
@@ -417,16 +367,13 @@ public class TestContraCheque extends TestBase {
 
             HttpResponse response = httpClient.execute(request);
             System.out.println(response.getStatusLine().getStatusCode());
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         logar_cpf("01607344521");
 
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(6000 * CONST_NET);
+
 
         MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
@@ -437,15 +384,15 @@ public class TestContraCheque extends TestBase {
                 (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
 
         boolean flag = false;
-        for (MobileElement me:meses
-             ) {
-            if(me.getText().equals("Fevereiro")){
+        for (MobileElement me : meses
+        ) {
+            if (me.getText().equals("Fevereiro")) {
                 flag = true;
             }
 
         }
 
-        int response2 =0;
+        int response2 = 0;
         try {
             // FileReader reads text files in the default encoding.
             FileReader fileReader = new FileReader("excluirFolha.json");
@@ -455,7 +402,7 @@ public class TestContraCheque extends TestBase {
                     new BufferedReader(fileReader);
             String payload = "";
             String line = null;
-            while((line = bufferedReader.readLine()) != null) {
+            while ((line = bufferedReader.readLine()) != null) {
                 payload += line;
             }
 
@@ -469,17 +416,17 @@ public class TestContraCheque extends TestBase {
 
             HttpResponse response = httpClient.execute(request);
             response2 = response.getStatusLine().getStatusCode();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         assert flag && response2 == 200;
 
 
-
     }
+
     @Test
-    public void transicao_folha(){
+    public void transicao_folha() {
         //Envia a folha
         try {
             // FileReader reads text files in the default encoding.
@@ -490,7 +437,7 @@ public class TestContraCheque extends TestBase {
                     new BufferedReader(fileReader);
             String payload = "";
             String line = null;
-            while((line = bufferedReader.readLine()) != null) {
+            while ((line = bufferedReader.readLine()) != null) {
                 payload += line;
             }
 
@@ -504,17 +451,14 @@ public class TestContraCheque extends TestBase {
 
             HttpResponse response = httpClient.execute(request);
             System.out.println(response.getStatusLine().getStatusCode());
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         logar_cpf("01607344521");
 
 
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(6000 * CONST_NET);
+
 
         MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
@@ -531,23 +475,13 @@ public class TestContraCheque extends TestBase {
         }
         meses.get(0).click();
 
-        try {
-            sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-try {
-            sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        sleep_testes(6000 * CONST_NET);
+
 
         driver.navigate().back();
-        try {
-            sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(3000 * CONST_NET);
+
 
         scroll_view = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/listShowPayChecks"));
@@ -557,10 +491,10 @@ try {
         boolean flag = true;
 
 
-        if(meses.size() != meses2.size()){
+        if (meses.size() != meses2.size()) {
             flag = false;
-        }else if(meses.size() != 0){
-            for(int i = 0; i < meses.size(); i++){
+        } else if (meses.size() != 0) {
+            for (int i = 0; i < meses.size(); i++) {
                 System.out.println(meses_str.get(i));
                 flag = meses_str.get(i).equals(meses2.get(i).getText()) && flag;
             }
@@ -571,17 +505,14 @@ try {
     }
 
     @Test
-    public void folhas_diferentes(){
+    public void folhas_diferentes() {
         logar_cpf("01530880521");
 
         MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresa.click();
 
-        try {
-            sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(6000 * CONST_NET);
+
 
         MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
         folha.click();
@@ -595,11 +526,8 @@ try {
 
         meses.get(0).click();
 
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep_testes(1000 * CONST_NET);
+
 
         MobileElement view = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/paycheck_registry_recyclerview"));
@@ -619,5 +547,5 @@ try {
     }
 
 
-
 }
+
