@@ -30,7 +30,7 @@ import static java.lang.Thread.sleep;
 public class TestBase {
     AppiumDriver driver;
     Double CONST_NET = 1.2;
-    String PATH = "/home/nivardo/nivardo/lia/automacao/";
+    String PATH = System.getProperty("user.dir")+"/";
 
     @Before
     public void setup() throws MalformedURLException {
