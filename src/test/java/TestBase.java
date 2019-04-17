@@ -144,12 +144,15 @@ public class TestBase {
 
     void logar_cpf(String cpf_str) {
         MobileElement cpf = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_cpf"));
+        cpf.sendKeys(cpf_str);
+
         MobileElement pass = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_password"));
+        pass.sendKeys("12345678");
+
         MobileElement login_button = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/cpf_sign_in_button"));
 
 
-        cpf.sendKeys(cpf_str);
         pass.sendKeys("12345678");
         login_button.click();
         sleep_testes(7000 * CONST_NET);

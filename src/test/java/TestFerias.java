@@ -45,6 +45,8 @@ public class TestFerias extends TestBase {
 
         logar_cpf("01530880521");
 
+
+
         MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresa.click();
 

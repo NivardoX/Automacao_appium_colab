@@ -100,13 +100,11 @@ public class TestLogin extends TestBase {
 
         recover_pass_tv.click();
 
-        WebDriverWait wait = new WebDriverWait(driver, 4);
+        sleep_testes(500 * CONST_NET);
 
 
         MobileElement recover_cpf_tv = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/rp_et_cpf"));
-
-        wait.until(ExpectedConditions.visibilityOf(recover_cpf_tv));
 
         assert (recover_cpf_tv.isDisplayed());
 
@@ -119,29 +117,30 @@ public class TestLogin extends TestBase {
 
         recover_pass_tv.click();
 
-        WebDriverWait wait = new WebDriverWait(driver, 4);
-
+        sleep_testes(500 *CONST_NET);
 
         MobileElement recover_cpf_tv = (MobileElement) driver.findElement
                 (By.id("br.com.fortes.appcolaborador:id/rp_et_cpf"));
 
-        wait.until(ExpectedConditions.visibilityOf(recover_cpf_tv));
 
         recover_cpf_tv.sendKeys("87577440094");
 
         MobileElement avancar_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/rp_bt_proceed");
         avancar_button.click();
 
-        sleep_testes(500 * CONST_NET);
+        driver.runAppInBackground(Duration.ofMillis(3000));
 
+        sleep_testes(1000 * CONST_NET);
+        MobileElement cpf = null;
 
-        driver.runAppInBackground(Duration.ofSeconds(2));
+        Boolean assertionFlag = false;
+        try {
+            cpf = (MobileElement) driver.findElement(By.id("android:id/message"));
+        }catch (Exception e){
+            assertionFlag = true;
+        }
 
-        sleep_testes(500 * CONST_NET);
-
-        avancar_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/rp_bt_proceed2");
-
-        assert avancar_button.isDisplayed();
+        assert assertionFlag;
 
 
     }

@@ -1,0 +1,18 @@
+{
+  "Mensagem": {
+    "ID": "1354",
+    "TpInscEmpregador": "1",
+    "NrInscEmpregador": "02535568",
+    "MensagemTitulo": "Teste_1",
+    "MensagemCorpo": "Este é um teste automatizado, não bula!",
+    "Colaboradores": [
+      {
+        "CPF": "01607344521",
+        "Contrato": {
+          "Matricula": "100000",
+          "Cargo": "Professor"
+        }
+      }
+    ]
+  }
+}

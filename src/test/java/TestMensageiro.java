@@ -14,7 +14,7 @@ public class TestMensageiro extends TestBase {
 
         sleep_testes(3000 * CONST_NET);
 
-        List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_eme_company"));
+        List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(2).click();
 
         sleep_testes(8000 * CONST_NET);
@@ -224,6 +224,7 @@ public class TestMensageiro extends TestBase {
             assertionFlag = false;
         }catch (Exception e){
             assertionFlag = true;
+            System.out.println("Nao foi encontrada leitura");
         }
 
 
