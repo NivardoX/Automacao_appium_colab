@@ -36,7 +36,7 @@ public class TestBase {
     public void setup() throws MalformedURLException {
 
 
-        File app = new File(PATH, "app-homolog_ifce.apk");
+        File app = new File(PATH, "app-debug.apk");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("device", "Android");
 
