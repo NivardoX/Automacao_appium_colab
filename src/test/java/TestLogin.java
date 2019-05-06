@@ -29,17 +29,16 @@ public class TestLogin extends TestBase {
         MobileElement pass = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/et_password")));
         MobileElement login_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/cpf_sign_in_button")));
-        MobileElement tvErrorCPF = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_cpf_error")));
 
         String error = "Sua empresa não tem esse serviço disponível. Procure o setor de Recursos Humanos para ativá-lo";
 
         cpf.sendKeys("06155262330");
         pass.sendKeys("1234567789");
         login_button.click();
+        MobileElement tvErrorCPF = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_cpf_error")));
+        String tvErrorCPFtext = tvErrorCPF.getText();
 
-        sleep_testes(6000 * CONST_NET);
-
-        assertEquals(tvErrorCPF.getText(), error);
+        assertEquals(error,tvErrorCPFtext);
     }
 
     @Test
@@ -124,10 +123,11 @@ public class TestLogin extends TestBase {
 
         recover_cpf_tv.sendKeys("87577440094");
 
-        MobileElement avancar_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/rp_bt_proceed");
+        MobileElement avancar_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/rp_bt_proceed")));
         avancar_button.click();
 
         driver.runAppInBackground(Duration.ofMillis(3000));
+        driver.launchApp();
 
         sleep_testes(1000 * CONST_NET);
         MobileElement cpf = null;
@@ -160,16 +160,15 @@ public class TestLogin extends TestBase {
 
         recover_cpf_tv.sendKeys("87577440094");
 
-        MobileElement avancar_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/rp_bt_proceed");
+        MobileElement avancar_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/rp_bt_proceed")));
         avancar_button.click();
 
-        sleep_testes(7000 * CONST_NET);
 
         driver.runAppInBackground(Duration.ofSeconds(2));
-
+        //driver.launchApp();
         sleep_testes(1000 * CONST_NET);
 
-        avancar_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/rp_bt_proceed2");
+        avancar_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/rp_bt_proceed2")));
 
         assert avancar_button.isDisplayed();
 
@@ -240,6 +239,7 @@ public class TestLogin extends TestBase {
 
         if (perfil.isDisplayed()) {
             driver.runAppInBackground(Duration.ofSeconds(2));
+
 
             sleep_testes(2000 * CONST_NET);
 

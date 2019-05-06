@@ -97,15 +97,7 @@ public class TestPerfil extends TestBase {
         System.out.println(cpf_1);
 
 
-        MobileElement logout_btn = scroll_view
-                .findElement(MobileBy
-                        .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
-                                + "new UiSelector().text(\"Sair\"));"));
-
-        sleep_testes(1000 * CONST_NET);
-        logout_btn = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("br.com.fortes.appcolaborador:id/btn_logout"))));
-
-        logout_btn.click();
+        deslogar();
 
         sleep_testes(1000 * CONST_NET);
 

@@ -1,2 +1,39 @@
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.List;
+
 public class TestIR extends TestBase {
+    @Test
+    public void ir_empty_state() {
+
+        logar_cpf("01530880521");
+
+
+        List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        empresas.get(4).click();
+
+
+        MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/financial")));
+        folha.click();
+
+        MobileElement ferias = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy
+                .AndroidUIAutomator("new UiSelector().description(\"IR\");")));
+
+        ferias.click();
+        try {
+            MobileElement nothing_point = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.id("br.com.fortes.appcolaborador:id/nothing_paycheck")));
+        } catch (Exception e) {
+            assert (false);
+        }
+
+        assert true;
+
+
+    }
 }

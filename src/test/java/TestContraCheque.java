@@ -23,9 +23,6 @@ public class TestContraCheque extends TestBase {
         logar();
 
 
-        sleep_testes(8000 * CONST_NET);
-
-
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
         folha.click();
 
@@ -46,7 +43,6 @@ public class TestContraCheque extends TestBase {
 
         MobileElement empresa = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_name_company")));
         empresa.click();
-        sleep_testes(6000 * CONST_NET);
 
 
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
@@ -61,7 +57,6 @@ public class TestContraCheque extends TestBase {
 
         meses.get(0).click();
 
-        sleep_testes(1000 * CONST_NET);
 
 
         MobileElement view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -85,12 +80,10 @@ public class TestContraCheque extends TestBase {
     public void att_dados_troca_empresa() {
 
         logar_cpf("01530880521");
-        sleep_testes(2000 * CONST_NET);
 
         MobileElement empresa = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_name_company")));
         empresa.click();
 
-        sleep_testes(8000 * CONST_NET);
 
 
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
@@ -107,8 +100,6 @@ public class TestContraCheque extends TestBase {
         }
 
         trocar_empresa();
-
-        sleep_testes(6000 * CONST_NET);
 
 
         List<MobileElement> rc_matriculas2 = driver.findElements
@@ -189,8 +180,6 @@ public class TestContraCheque extends TestBase {
         MobileElement empresa = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_name_company")));
         empresa.click();
 
-        sleep_testes(8000 * CONST_NET);
-
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
         folha.click();
 
@@ -229,7 +218,6 @@ public class TestContraCheque extends TestBase {
         logar_cpf("01607344521");
 
 
-        sleep_testes(8000 * CONST_NET);
 
 
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
@@ -264,7 +252,6 @@ public class TestContraCheque extends TestBase {
 
         atualizar();
         sleep_testes(6000 * CONST_NET);
-
         atualizar();
 
 
@@ -319,11 +306,9 @@ public class TestContraCheque extends TestBase {
 
         logar_cpf("01530880521");
 
-        sleep_testes(3000 * CONST_NET);
 
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(4).click();
-        sleep_testes(6000 * CONST_NET);
 
 
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated

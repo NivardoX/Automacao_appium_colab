@@ -159,8 +159,6 @@ public class TestBase {
         MobileElement login_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/cpf_sign_in_button")));
 
-
-        pass.sendKeys("12345678");
         login_button.click();
         sleep_testes(7000 * CONST_NET);
 
@@ -171,18 +169,16 @@ public class TestBase {
         MobileElement perfil = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/profile")));
         perfil.click();
 
+        Dimension size = driver.manage().window().getSize();
 
         MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("br.com.fortes.appcolaborador:id/scroll_view_profile"))));
+        int startY = (int) (size.height * 0.70);
+        int endY = (int) (size.height * 0.10);
 
-        MobileElement logout_btn = scroll_view
-                .findElement(MobileBy
-                        .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
-                                + "new UiSelector().text(\"Sair\"));"));
+        new TouchAction(driver).press(PointOption.point(550, startY)).waitAction().moveTo(PointOption.point(550, endY)).release().perform();
+        MobileElement logout_btn2 = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("br.com.fortes.appcolaborador:id/btn_logout"))));
 
-
-        //logout_btn = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("br.com.fortes.appcolaborador:id/btn_logout"))));
-
-        logout_btn.click();
+        logout_btn2.click();
         sleep_testes(1000 * CONST_NET);
 
 
