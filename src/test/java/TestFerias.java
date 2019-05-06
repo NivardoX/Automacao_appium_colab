@@ -6,6 +6,7 @@ import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -23,15 +24,15 @@ public class TestFerias extends TestBase {
         sleep_testes(6000 * CONST_NET);
 
 
-        MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
+        MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
         folha.click();
 
-        MobileElement ferias = (MobileElement) driver.findElement(MobileBy
-                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");"));
+        MobileElement ferias = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy
+                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");")));
 
         ferias.click();
 
-        MobileElement scroll_view = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/viewpager"));
+        MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/viewpager")));
 
         List<MobileElement> meses = scroll_view.findElements
                 (By.id("br.com.fortes.appcolaborador:id/item"));
@@ -46,20 +47,19 @@ public class TestFerias extends TestBase {
         logar_cpf("01530880521");
 
 
-
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        MobileElement empresa = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_name_company")));
         empresa.click();
 
 
         sleep_testes(8000 * CONST_NET);
 
 
-        MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
+        MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
         folha.click();
 
 
-        MobileElement scroll_view = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/listShowPayChecks"));
+        MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/listShowPayChecks")));
 
         List<MobileElement> meses = scroll_view.findElements
                 (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
@@ -69,8 +69,8 @@ public class TestFerias extends TestBase {
         sleep_testes(1000 * CONST_NET);
 
 
-        MobileElement view = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/paycheck_registry_recyclerview"));
+        MobileElement view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/paycheck_registry_recyclerview")));
 
         List<MobileElement> matriculas = driver.findElements(By.id
                 ("br.com.fortes.appcolaborador:id/item"));
@@ -80,8 +80,8 @@ public class TestFerias extends TestBase {
         sleep_testes(1000 * CONST_NET);
 
 
-        MobileElement download_pdf = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/action_delete"));
+        MobileElement download_pdf = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/action_delete")));
 
         assert (download_pdf.isDisplayed() && download_pdf.isEnabled());
     }
@@ -96,16 +96,16 @@ public class TestFerias extends TestBase {
         sleep_testes(8000 * CONST_NET);
 
 
-        MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
+        MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
         folha.click();
 
-        MobileElement ferias = (MobileElement) driver.findElement(MobileBy
-                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");"));
+        MobileElement ferias = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy
+                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");")));
 
         ferias.click();
 
 
-        MobileElement scroll_view = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/viewpager"));
+        MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/viewpager")));
 
         List<MobileElement> meses = scroll_view.findElements
                 (By.id("br.com.fortes.appcolaborador:id/item"));
@@ -131,15 +131,15 @@ public class TestFerias extends TestBase {
         sleep_testes(6000 * CONST_NET);
 
 
-        MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
+        MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
         folha.click();
 
-        MobileElement ferias = (MobileElement) driver.findElement(MobileBy
-                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");"));
+        MobileElement ferias = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy
+                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");")));
 
         ferias.click();
 
-        MobileElement scroll_view = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/viewpager"));
+        MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/viewpager")));
 
         List<MobileElement> meses = scroll_view.findElements
                 (By.id("br.com.fortes.appcolaborador:id/item"));
@@ -156,11 +156,11 @@ public class TestFerias extends TestBase {
 
         sleep_testes(8000 * CONST_NET);
 
-        MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
+        MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
         folha.click();
 
-        MobileElement ferias = (MobileElement) driver.findElement(MobileBy
-                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");"));
+        MobileElement ferias = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy
+                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");")));
 
         ferias.click();
 
@@ -189,8 +189,8 @@ public class TestFerias extends TestBase {
         sleep_testes(2000 * CONST_NET);
 
 
-        ferias = (MobileElement) driver.findElement(MobileBy
-                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");"));
+        ferias = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy
+                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");")));
 
         assert (ferias.isDisplayed());
 
@@ -207,19 +207,19 @@ public class TestFerias extends TestBase {
         sleep_testes(7000 * CONST_NET);
 
 
-        MobileElement folha = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/financial"));
+        MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/financial")));
         folha.click();
-        MobileElement ferias = (MobileElement) driver.findElement(MobileBy
-                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");"));
+        MobileElement ferias = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy
+                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");")));
 
         ferias.click();
 
 
         try {
 
-            MobileElement nothing_point = (MobileElement) driver.findElement(
-                    By.id("br.com.fortes.appcolaborador:id/nothing_paycheck"));
+            MobileElement nothing_point = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.id("br.com.fortes.appcolaborador:id/nothing_paycheck")));
         } catch (Exception e) {
             assert (false);
         }
@@ -236,29 +236,29 @@ public class TestFerias extends TestBase {
 
         sleep_testes(1000 * CONST_NET);
 
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        MobileElement empresa = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_name_company")));
         empresa.click();
 
 
         sleep_testes(8000 * CONST_NET);
 
 
-        MobileElement folha = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/financial"));
+        MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
         folha.click();
 
-        MobileElement ferias = (MobileElement) driver.findElement(MobileBy
-                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");"));
+        MobileElement ferias = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy
+                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");")));
 
         ferias.click();
 
-        MobileElement scroll_view = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/viewpager"));
+        MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/viewpager")));
 
         List<MobileElement> meses_empresa1 = scroll_view.findElements
                 (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
         ArrayList<String> meses_empresa1_str = new ArrayList<String>();
 
-        for (int i = 0; i < meses_empresa1.size(); i++) {
-            meses_empresa1_str.add(meses_empresa1.get(i).getText());
+        for (MobileElement mobileElement : meses_empresa1) {
+            meses_empresa1_str.add(mobileElement.getText());
         }
 
         trocar_empresa();
@@ -266,8 +266,8 @@ public class TestFerias extends TestBase {
 
         sleep_testes(6000 * CONST_NET);
 
-        ferias = (MobileElement) driver.findElement(MobileBy
-                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");"));
+        ferias = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy
+                .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");")));
 
         ferias.click();
 

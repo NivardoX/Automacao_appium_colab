@@ -16,6 +16,8 @@ import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -29,8 +31,9 @@ import static java.lang.Thread.sleep;
 
 public class TestBase {
     AppiumDriver driver;
-    Double CONST_NET = 1.2;
-    String PATH = System.getProperty("user.dir")+"/";
+    Double CONST_NET = 1.3;
+    String PATH = System.getProperty("user.dir") + "/";
+    WebDriverWait wait;
 
     @Before
     public void setup() throws MalformedURLException {
@@ -48,7 +51,10 @@ public class TestBase {
         //other caps
         capabilities.setCapability("app", app.getAbsolutePath());
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        wait = new WebDriverWait(driver, 30);
+
     }
+
 
     public void sleep_testes(Double millis) {
         long mils = (millis.longValue());
@@ -89,8 +95,8 @@ public class TestBase {
     }
 
     void trocar_empresa() {
-        MobileElement dropDown = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/iv_company"));
+        MobileElement dropDown = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/iv_company")));
 
         dropDown.click();
         sleep_testes(1000 * CONST_NET);
@@ -104,10 +110,11 @@ public class TestBase {
     }
 
     void logar() {
-        MobileElement cpf = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_cpf"));
-        MobileElement pass = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_password"));
-        MobileElement login_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/cpf_sign_in_button"));
+
+        MobileElement cpf = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/et_cpf")));
+        MobileElement pass = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/et_password")));
+        MobileElement login_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/cpf_sign_in_button")));
 
 
         cpf.sendKeys("00717420345");
@@ -118,10 +125,10 @@ public class TestBase {
     }
 
     void logar_cpf_pass(String cpf_str, String pass_str) {
-        MobileElement cpf = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_cpf"));
-        MobileElement pass = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_password"));
-        MobileElement login_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/cpf_sign_in_button"));
+        MobileElement cpf = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/et_cpf")));
+        MobileElement pass = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/et_password")));
+        MobileElement login_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/cpf_sign_in_button")));
 
 
         cpf.sendKeys(cpf_str);
@@ -143,14 +150,14 @@ public class TestBase {
     }
 
     void logar_cpf(String cpf_str) {
-        MobileElement cpf = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_cpf"));
+        MobileElement cpf = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/et_cpf")));
         cpf.sendKeys(cpf_str);
 
-        MobileElement pass = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/et_password"));
+        MobileElement pass = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/et_password")));
         pass.sendKeys("12345678");
 
-        MobileElement login_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/cpf_sign_in_button"));
+        MobileElement login_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/cpf_sign_in_button")));
 
 
         pass.sendKeys("12345678");
@@ -160,24 +167,20 @@ public class TestBase {
     }
 
     void deslogar() {
-        sleep_testes(3000 * CONST_NET);
 
-        MobileElement perfil = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/profile"));
+        MobileElement perfil = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/profile")));
         perfil.click();
 
-        sleep_testes(1000 * CONST_NET);
 
-
-        MobileElement scroll_view = (MobileElement) driver.findElement((By.id("br.com.fortes.appcolaborador:id/scroll_view_profile")));
+        MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("br.com.fortes.appcolaborador:id/scroll_view_profile"))));
 
         MobileElement logout_btn = scroll_view
                 .findElement(MobileBy
                         .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                                 + "new UiSelector().text(\"Sair\"));"));
 
-        sleep_testes(1000 * CONST_NET);
 
-        logout_btn = (MobileElement) driver.findElement((By.id("br.com.fortes.appcolaborador:id/btn_logout")));
+        //logout_btn = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("br.com.fortes.appcolaborador:id/btn_logout"))));
 
         logout_btn.click();
         sleep_testes(1000 * CONST_NET);

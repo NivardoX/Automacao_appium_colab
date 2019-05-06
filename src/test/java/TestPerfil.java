@@ -2,6 +2,7 @@ import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -17,14 +18,13 @@ public class TestPerfil extends TestBase {
 
         sleep_testes(6000 * CONST_NET);
 
-        MobileElement perfil = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/profile"));
+        MobileElement perfil = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/profile")));
         perfil.click();
 
 
-
-        MobileElement scroll_view = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/scroll_view_profile"));
+        MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/scroll_view_profile")));
 
         List<MobileElement> elementos = driver.findElements(MobileBy
                 .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
@@ -52,12 +52,12 @@ public class TestPerfil extends TestBase {
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(3).click();
         sleep_testes(6000 * CONST_NET);
-        MobileElement perfil = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/profile"));
+        MobileElement perfil = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/profile")));
         perfil.click();
 
-        MobileElement scroll_view = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/scroll_view_profile"));
+        MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/scroll_view_profile")));
 
         List<MobileElement> elementos = driver.findElements(MobileBy
                 .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
@@ -68,7 +68,7 @@ public class TestPerfil extends TestBase {
             if (elementos.get(i).getText().equals("")) {
                 erros++;
             }
-            sleep_testes(300* CONST_NET);
+            sleep_testes(300 * CONST_NET);
 
         }
 
@@ -81,16 +81,16 @@ public class TestPerfil extends TestBase {
         logar();
 
         sleep_testes(6000 * CONST_NET);
-        MobileElement perfil = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/profile"));
+        MobileElement perfil = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/profile")));
         perfil.click();
 
-        MobileElement scroll_view = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/scroll_view_profile"));
+        MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/scroll_view_profile")));
 
-        MobileElement elemento = (MobileElement) driver.findElement(MobileBy
+        MobileElement elemento = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy
                 .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
-                        + "new UiSelector().className(\"android.widget.EditText\").clickable(true).index(3));"));
+                        + "new UiSelector().className(\"android.widget.EditText\").clickable(true).index(3));")));
 
         String cpf_1 = elemento.getText();
 
@@ -103,7 +103,7 @@ public class TestPerfil extends TestBase {
                                 + "new UiSelector().text(\"Sair\"));"));
 
         sleep_testes(1000 * CONST_NET);
-        logout_btn = (MobileElement) driver.findElement((By.id("br.com.fortes.appcolaborador:id/btn_logout")));
+        logout_btn = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("br.com.fortes.appcolaborador:id/btn_logout"))));
 
         logout_btn.click();
 
@@ -112,15 +112,15 @@ public class TestPerfil extends TestBase {
         logar_cpf("01607344521");
 
 
-        sleep_testes(6000*CONST_NET);
+        sleep_testes(6000 * CONST_NET);
 
-        perfil = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/profile"));
+        perfil = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/profile")));
         perfil.click();
 
-        elemento = (MobileElement) driver.findElement(MobileBy
+        elemento = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy
                 .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
-                        + "new UiSelector().className(\"android.widget.EditText\").clickable(true).index(3));"));
+                        + "new UiSelector().className(\"android.widget.EditText\").clickable(true).index(3));")));
 
         assertFalse(cpf_1.equals(elemento.getText()));
 
