@@ -367,7 +367,6 @@ public class TestPonto extends TestBase {
         registrar_ponto_bttn.click();
 
 
-        sleep_testes(22000 * CONST_NET);
 
         try {
 
@@ -401,7 +400,7 @@ public class TestPonto extends TestBase {
         registrar_bttn.click();
 
 
-        sleep_testes(6000 * CONST_NET);
+        sleep_testes(9000 * CONST_NET);
 
 
         List<MobileElement> meses_tv = driver.findElements
