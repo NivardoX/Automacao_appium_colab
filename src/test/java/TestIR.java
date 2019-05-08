@@ -27,13 +27,34 @@ public class TestIR extends TestBase {
         ferias.click();
         try {
             MobileElement nothing_point = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(
-                    By.id("br.com.fortes.appcolaborador:id/nothing_paycheck")));
+                    By.id("br.com.fortes.appcolaborador:id/nothing_ir")));
         } catch (Exception e) {
             assert (false);
         }
 
         assert true;
 
+    }
+    /*@Test
+    public void test_vizualizar_ir() {
+        logar_cpf("01607344521");
+
+
+        MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
+        folha.click();
+
+        MobileElement ferias = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy
+                .AndroidUIAutomator("new UiSelector().description(\"IR\");")));
+
+        ferias.click();
+
+        MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/viewpager")));
+
+        List<MobileElement> meses = scroll_view.findElements
+                (By.id("br.com.fortes.appcolaborador:id/item"));
+
+        assert (meses.get(0).isDisplayed() && meses.get(0).isEnabled());
 
     }
+*/
 }
