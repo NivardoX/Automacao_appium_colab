@@ -19,7 +19,7 @@ public class testes{
 
         try {
             // FileReader reads text files in the default encoding.
-            FileReader fileReader = new FileReader(PATH + "src/main/java/" + file);
+            FileReader fileReader = new FileReader(PATH + "src/test/java/" + file);
 
             // Always wrap FileReader in BufferedReader.
             BufferedReader bufferedReader =

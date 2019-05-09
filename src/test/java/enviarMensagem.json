@@ -2,6 +2,7 @@
   "Mensagem": {
     "ID": "1234",
     "TpInscEmpregador": "1",
+    "DataMensagem":"14/10/2019",
     "NrInscEmpregador": "02535568",
     "MensagemTitulo": "Teste",
     "MensagemCorpo": "Este é um teste automatizado, não bula!",
