@@ -1,0 +1,34 @@
+{
+  "Declaracoes": [
+    {
+      "TpInscEmpregador": "1",
+      "NrInscEmpregador": "02535568",
+      "CPF": "01607344521",
+      "Matricula": "100000",
+      "AnoCalendario": "2018",
+      "NomeEmpresarialPagador": "Empresa Homologação",
+      "NrInscEstabelecimento": "02535568000132",
+      "TituloEleitorBeneficiario": "12345678900",
+      "NomeBeneficiario": "Carlinhos Bala",
+      "NaturezaRendimento": "Rendimentos do Trabalho Assalariado",
+      "TotalRendimentos": "24000,00",
+      "ContribuicaoPrevidenciaOficial": "1430,00",
+      "ContribuicaoPrevidenciaComplementar": "0,00",
+      "PensaoAlimenticia": "0,00",
+      "ImpostoRetidoFonte": "0,00",
+      "ParcelaIsenta": "0,00",
+      "DiariasAjudaCusto": "0,00",
+      "PensaoProventosReformas": "0,00",
+      "LucroDividendos": "0,00",
+      "ValorTitularSocioMicroPequenaEmpresa": "0,00",
+      "IdenizacaoRecisaoContrato": "0,00",
+      "OutrosRendimentosIsentos": "0,00",
+      "DecimoTerceiro": "2000,00",
+      "ImpostoRetidoDecimoTerceiro": "0,00",
+      "OutrosRendimentosTributacaoExclusiva": "0,00",
+      "InformacoesComplementares": "Observação: Lorem ipsum dolor sit amet...",
+      "NomeResponsavelInformacao": "Jose Oliveira da Silva",
+      "DataResponsavelInformacao": "28/02/2019"
+    }
+  ]
+}

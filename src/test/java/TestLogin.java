@@ -13,7 +13,7 @@ public class TestLogin extends TestBase {
 
 
     @Test
-    public void test_cpf_invalido() {
+    public void test_login_cpf_invalido() {
         MobileElement cpf = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/et_cpf")));
         cpf.sendKeys("063056165151");
         MobileElement tvErrorCPF = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_cpf_error")));
@@ -24,7 +24,7 @@ public class TestLogin extends TestBase {
 
     //CPF VALIDO NÃO CADASTRO
     @Test
-    public void test_credenciais_incorretas() {
+    public void test_login_credenciais_incorretas() {
         MobileElement cpf = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/et_cpf")));
         MobileElement pass = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/et_password")));
         MobileElement login_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -38,11 +38,11 @@ public class TestLogin extends TestBase {
         MobileElement tvErrorCPF = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_cpf_error")));
         String tvErrorCPFtext = tvErrorCPF.getText();
 
-        assertEquals(error,tvErrorCPFtext);
+        assertEquals(error, tvErrorCPFtext);
     }
 
     @Test
-    public void test_campos_vazios() {
+    public void test_login_campos_vazios() {
         MobileElement cpf = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/et_cpf")));
         MobileElement pass = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/et_password")));
         MobileElement login_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -52,9 +52,8 @@ public class TestLogin extends TestBase {
 
     }
 
-
     @Test
-    public void test_cpfvalido_senhaincorreta() {
+    public void test_login_cpfvalido_senhaincorreta() {
         MobileElement cpf = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/et_cpf")));
         MobileElement pass = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/et_password")));
         MobileElement login_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -64,8 +63,6 @@ public class TestLogin extends TestBase {
         pass.sendKeys("79654321654");
 
         login_button.click();
-
-        sleep_testes(2000 * CONST_NET);
 
 
         MobileElement error_dados_alert = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("android:id/alertTitle")));
@@ -90,15 +87,12 @@ public class TestLogin extends TestBase {
         }
     }
 
-
     @Test
-    public void test_recuperar_senha() {
+    public void test_login_recuperar_senha() {
         MobileElement recover_pass_tv = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/tv_recover_password")));
 
         recover_pass_tv.click();
-
-        sleep_testes(500 * CONST_NET);
 
 
         MobileElement recover_cpf_tv = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -109,13 +103,12 @@ public class TestLogin extends TestBase {
     }
 
     @Test
-    public void test_recuperar_senha_minimizar_loading() {
+    public void test_login_recuperar_senha_minimizar_loading() {
         MobileElement recover_pass_tv = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/tv_recover_password")));
 
         recover_pass_tv.click();
 
-        sleep_testes(500 * CONST_NET);
 
         MobileElement recover_cpf_tv = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/rp_et_cpf")));
@@ -145,13 +138,11 @@ public class TestLogin extends TestBase {
     }
 
     @Test
-    public void test_recuperar_senha_minimizar() {
+    public void test_login_recuperar_senha_minimizar() {
         MobileElement recover_pass_tv = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/tv_recover_password")));
 
         recover_pass_tv.click();
-
-        sleep_testes(1000 * CONST_NET);
 
 
         MobileElement recover_cpf_tv = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -166,7 +157,6 @@ public class TestLogin extends TestBase {
 
         driver.runAppInBackground(Duration.ofSeconds(2));
         //driver.launchApp();
-        sleep_testes(1000 * CONST_NET);
 
         avancar_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/rp_bt_proceed2")));
 
@@ -175,9 +165,8 @@ public class TestLogin extends TestBase {
 
     }
 
-
     @Test
-    public void login_cognito_sem_empresa() {
+    public void test_login_cognito_sem_empresa() {
         logar_cpf("03717612395");
         MobileElement alerta = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("android:id/message")));
@@ -187,13 +176,11 @@ public class TestLogin extends TestBase {
     }
 
     @Test
-    public void test_recuperar_senha_cpf_invalido() {
+    public void test_login_recuperar_senha_cpf_invalido() {
         MobileElement recover_pass_tv = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/tv_recover_password")));
 
         recover_pass_tv.click();
-
-        sleep_testes(2000 * CONST_NET);
 
 
         MobileElement recover_cpf_tv = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -218,8 +205,6 @@ public class TestLogin extends TestBase {
         driver.getContext();
 
 
-        sleep_testes(8000 * CONST_NET);
-
         MobileElement perfil = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/profile")));
 
         assert (perfil.isDisplayed());
@@ -227,12 +212,10 @@ public class TestLogin extends TestBase {
 
     }
 
-
     @Test
-    public void test_minimizar() {
+    public void test_login_minimizar() {
         logar();
         driver.getContext();
-        sleep_testes(8000 * CONST_NET);
 
         MobileElement perfil = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/profile")));
 
@@ -240,8 +223,6 @@ public class TestLogin extends TestBase {
         if (perfil.isDisplayed()) {
             driver.runAppInBackground(Duration.ofSeconds(2));
 
-
-            sleep_testes(2000 * CONST_NET);
 
             perfil = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/profile")));
             assert (perfil.isDisplayed());
@@ -275,7 +256,6 @@ public class TestLogin extends TestBase {
         sleep_testes(4000 * CONST_NET);
 
         logar();
-        sleep_testes(6000 * CONST_NET);
 
         MobileElement perfil = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/profile")));
 
@@ -285,7 +265,7 @@ public class TestLogin extends TestBase {
     }
 
     @Test
-    public void solicite_primeiro_acesso() {
+    public void test_login_solicite_primeiro_acesso() {
         logar_cpf_pass("53752313870", "02535568");
         MobileElement alert = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("android:id/alertTitle")));
         assertEquals("Solicite o primeiro acesso", alert.getText());

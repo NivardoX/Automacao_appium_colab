@@ -9,7 +9,7 @@ import java.util.List;
 public class TestMensageiro extends TestBase {
 
     @Test
-    public void mensagem_empty_state() {
+    public void test_mensagem_empty_state() {
         logar_cpf("01530880521");
 
         sleep_testes(3000 * CONST_NET);
@@ -17,7 +17,6 @@ public class TestMensageiro extends TestBase {
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(2).click();
 
-        sleep_testes(8000 * CONST_NET);
 
         MobileElement mensagens_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/message")));
         mensagens_button.click();
@@ -28,14 +27,11 @@ public class TestMensageiro extends TestBase {
     }
 
     @Test
-    public void att_mensagem_trocar_empresa() {
+    public void test_mensagem_att_mensagem_trocar_empresa() {
 
         logar_cpf("01530880521");
-        sleep_testes(1000 * CONST_NET);
         MobileElement empresa = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_name_company")));
         empresa.click();
-
-        sleep_testes(9000 * CONST_NET);
 
 
         MobileElement mensagens_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/message")));
@@ -56,7 +52,6 @@ public class TestMensageiro extends TestBase {
         }
 
         trocar_empresa();
-        sleep_testes(2000 * CONST_NET);
 
 
         scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/list_message")));
@@ -95,14 +90,11 @@ public class TestMensageiro extends TestBase {
     }
 
     @Test
-    public void vizualizar_mensagem() {
+    public void test_mensagem_vizualizar_mensagem() {
         logar_cpf("01530880521");
-        sleep_testes(1000 * CONST_NET);
 
         MobileElement empresa = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_name_company")));
         empresa.click();
-
-        sleep_testes(9000 * CONST_NET);
 
 
         MobileElement mensagens_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/message")));
@@ -139,13 +131,11 @@ public class TestMensageiro extends TestBase {
     }
 
     @Test
-    public void enviar_mensagem() {
+    public void test_mensagem_enviar_mensagem() {
 
         enviar_req("enviarMensagem.json", "agente/mensagem/incluir");
 
         logar_cpf("01607344521");
-
-        sleep_testes(6000 * CONST_NET);
 
 
         MobileElement mensagens_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/message")));
@@ -161,7 +151,6 @@ public class TestMensageiro extends TestBase {
         String texto = mensagens.get(0).findElementById("br.com.fortes.appcolaborador:id/text_message").getText();
 
         mensagens.get(0).click();
-        sleep_testes(1000 * CONST_NET);
 
         MobileElement delete_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/action_delete")));
         delete_button.click();
@@ -178,13 +167,11 @@ public class TestMensageiro extends TestBase {
     }
 
     @Test
-    public void marcar_mensagem_lida() {
+    public void test_mensagem_marcar_mensagem_lida() {
         Boolean assertionFlag = true;
         enviar_req("enviarMensagem.json", "agente/mensagem/incluir");
 
         logar_cpf("01607344521");
-
-        sleep_testes(6000 * CONST_NET);
 
 
         MobileElement mensagens_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/message")));
@@ -231,12 +218,9 @@ public class TestMensageiro extends TestBase {
 
 
         mensagens.get(0).click();
-        sleep_testes(1000 * CONST_NET);
 
         MobileElement delete_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/action_delete")));
         delete_button.click();
-
-        sleep_testes(500 * CONST_NET);
 
 
         MobileElement delete_button_confirm = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("android:id/button1")));

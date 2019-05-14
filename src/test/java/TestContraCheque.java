@@ -18,7 +18,7 @@ import static junit.framework.TestCase.fail;
 public class TestContraCheque extends TestBase {
 
     @Test
-    public void test_anos_ordenados() {
+    public void test_contracheque_anos_ordenados() {
 
         logar();
 
@@ -37,7 +37,7 @@ public class TestContraCheque extends TestBase {
     }
 
     @Test
-    public void test_exibir_download_pdf() {
+    public void test_contracheque_exibir_download_pdf() {
 
         logar_cpf("01530880521");
 
@@ -58,7 +58,6 @@ public class TestContraCheque extends TestBase {
         meses.get(0).click();
 
 
-
         MobileElement view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/paycheck_registry_recyclerview")));
 
@@ -66,8 +65,6 @@ public class TestContraCheque extends TestBase {
                 ("br.com.fortes.appcolaborador:id/item"));
 
         matriculas.get(0).click();
-
-        sleep_testes(1000 * CONST_NET);
 
 
         MobileElement download_pdf = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -77,13 +74,12 @@ public class TestContraCheque extends TestBase {
     }
 
     @Test
-    public void att_dados_troca_empresa() {
+    public void test_contracheque_att_dados_troca_empresa() {
 
         logar_cpf("01530880521");
 
         MobileElement empresa = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_name_company")));
         empresa.click();
-
 
 
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
@@ -130,14 +126,12 @@ public class TestContraCheque extends TestBase {
     }
 
     @Test
-    public void test_exibir_matriculas() {
+    public void test_contracheque_exibir_matriculas() {
 
         logar_cpf("01530880521");
 
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(0).click();
-
-        sleep_testes(8000 * CONST_NET);
 
 
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
@@ -151,8 +145,6 @@ public class TestContraCheque extends TestBase {
                 (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
 
         meses.get(0).click();
-
-        sleep_testes(1000 * CONST_NET);
 
 
         MobileElement view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -173,7 +165,7 @@ public class TestContraCheque extends TestBase {
     }
 
     @Test
-    public void test_exibir_folhas() {
+    public void test_contracheque_exibir_folhas() {
 
         logar_cpf("01530880521");
 
@@ -191,8 +183,6 @@ public class TestContraCheque extends TestBase {
                 (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
 
         meses.get(0).click();
-
-        sleep_testes(1000 * CONST_NET);
 
 
         MobileElement view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -213,11 +203,9 @@ public class TestContraCheque extends TestBase {
     }
 
     @Test
-    public void test_atualizar() {
+    public void test_contracheque_atualizar() {
 
         logar_cpf("01607344521");
-
-
 
 
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
@@ -251,7 +239,7 @@ public class TestContraCheque extends TestBase {
 
 
         atualizar();
-        sleep_testes(6000 * CONST_NET);
+        sleep_testes(2000 * CONST_NET);
         atualizar();
 
 
@@ -302,7 +290,7 @@ public class TestContraCheque extends TestBase {
     }
 
     @Test
-    public void folha_empty_state() {
+    public void test_contracheque_empty_state() {
 
         logar_cpf("01530880521");
 
@@ -328,7 +316,7 @@ public class TestContraCheque extends TestBase {
     }
 
     @Test
-    public void enviar_folha() {
+    public void test_contracheque_enviar_folha() {
         //Envia a folha
         try {
             // FileReader reads text files in the default encoding.
@@ -357,8 +345,6 @@ public class TestContraCheque extends TestBase {
             e.printStackTrace();
         }
         logar_cpf("01607344521");
-
-        sleep_testes(6000 * CONST_NET);
 
 
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
@@ -412,7 +398,7 @@ public class TestContraCheque extends TestBase {
     }
 
     @Test
-    public void transicao_folha() {
+    public void test_contracheque_transicao_folha() {
         //Envia a folha
         try {
             // FileReader reads text files in the default encoding.
@@ -443,9 +429,6 @@ public class TestContraCheque extends TestBase {
         logar_cpf("01607344521");
 
 
-        sleep_testes(6000 * CONST_NET);
-
-
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
         folha.click();
 
@@ -466,7 +449,6 @@ public class TestContraCheque extends TestBase {
 
 
         driver.navigate().back();
-        sleep_testes(3000 * CONST_NET);
 
 
         scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -491,13 +473,11 @@ public class TestContraCheque extends TestBase {
     }
 
     @Test
-    public void folhas_diferentes() {
+    public void test_contracheque_folhas_diferentes() {
         logar_cpf("01530880521");
 
         MobileElement empresa = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_name_company")));
         empresa.click();
-
-        sleep_testes(6000 * CONST_NET);
 
 
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
@@ -511,8 +491,6 @@ public class TestContraCheque extends TestBase {
                 (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));
 
         meses.get(0).click();
-
-        sleep_testes(1000 * CONST_NET);
 
 
         MobileElement view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated

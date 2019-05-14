@@ -16,12 +16,9 @@ import static junit.framework.TestCase.*;
 public class TestPonto extends TestBase {
 
     @Test
-    public void test_matricula_ponto() {
+    public void test_ponto_exibir_matriculas() {
 
         logar();
-
-
-        sleep_testes(6000 * CONST_NET);
 
 
         MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -37,13 +34,10 @@ public class TestPonto extends TestBase {
     }
 
     @Test
-    public void ponto_mes_ano() {
+    public void test_ponto_mes_ano() {
 
 
         logar();
-
-
-        sleep_testes(8000 * CONST_NET);
 
 
         MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -56,8 +50,6 @@ public class TestPonto extends TestBase {
 
         rc_matricula.click();
 
-
-        sleep_testes(1000 * CONST_NET);
 
         MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/point_month_recyclerview")));
@@ -77,12 +69,9 @@ public class TestPonto extends TestBase {
     }
 
     @Test
-    public void test_batidas_refresh() {
+    public void test_ponto_refresh() {
 
         logar();
-
-
-        sleep_testes(6000 * CONST_NET);
 
 
         MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -119,8 +108,6 @@ public class TestPonto extends TestBase {
                 .release()
                 .perform();
 
-        sleep_testes(2000 * CONST_NET);
-
 
         MobileElement toolbar = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/toolbar")));
         MobileElement title = toolbar.findElement(By.className("android.widget.TextView"));
@@ -131,15 +118,12 @@ public class TestPonto extends TestBase {
     }
 
     @Test
-    public void att_dados_troca_empresa() {
+    public void test_ponto_att_dados_troca_empresa() {
 
         logar_cpf("01530880521");
 
         MobileElement empresa = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_name_company")));
         empresa.click();
-
-
-        sleep_testes(8000 * CONST_NET);
 
 
         MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -186,15 +170,13 @@ public class TestPonto extends TestBase {
     }
 
     @Test
-    public void ponto_empty_state() {
+    public void test_ponto_empty_state() {
 
         logar_cpf("01530880521");
 
 
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(1).click();
-
-        sleep_testes(8000 * CONST_NET);
 
 
         MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -217,7 +199,7 @@ public class TestPonto extends TestBase {
     }
 
     @Test
-    public void registrar_ponto() {
+    public void test_ponto_bater_ponto() {
 
         List<String> meses = new ArrayList<>();
         meses.add("Janeiro");
@@ -235,8 +217,6 @@ public class TestPonto extends TestBase {
 
         logar_cpf("01607344521");
 
-        sleep_testes(8000 * CONST_NET);
-
 
         MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/point")));
@@ -248,7 +228,6 @@ public class TestPonto extends TestBase {
 
         registrar_ponto_bttn.click();
 
-        sleep_testes(22000 * CONST_NET);
 
         try {
 
@@ -328,7 +307,7 @@ public class TestPonto extends TestBase {
     }
 
     @Test
-    public void registrar_ponto_vazio() {
+    public void test_ponto_registrar_ponto_vazio() {
 
         List<String> meses = new ArrayList<>();
         meses.add("Janeiro");
@@ -350,22 +329,16 @@ public class TestPonto extends TestBase {
         empresas.get(3).click();
 
 
-        sleep_testes(8000 * CONST_NET);
-
-
         MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/point")));
 
         ponto_button.click();
 
 
-        sleep_testes(500 * CONST_NET);
-
         MobileElement registrar_ponto_bttn = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/pm_beat_point")));
 
         registrar_ponto_bttn.click();
-
 
 
         try {
@@ -446,7 +419,7 @@ public class TestPonto extends TestBase {
     }
 
     @Test
-    public void registrar_ponto_matriculas() {
+    public void test_ponto_registrar_ponto_matriculas() {
 
         List<String> meses = new ArrayList<>();
         meses.add("Janeiro");
@@ -471,8 +444,6 @@ public class TestPonto extends TestBase {
         empresas.get(0).click();
 
 
-        sleep_testes(8000 * CONST_NET);
-
         MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/point")));
 
@@ -482,7 +453,6 @@ public class TestPonto extends TestBase {
                 (By.id("br.com.fortes.appcolaborador:id/text_mat"));
         matriculas.get(0).click();
 
-        sleep_testes(500 * CONST_NET);
 
         MobileElement registrar_ponto_bttn = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/pm_beat_point")));
@@ -569,17 +539,14 @@ public class TestPonto extends TestBase {
 
     }
 
-
     @Test
-    public void detectar_localizacao() {
+    public void test_ponto_detectar_localizacao() {
 
         logar_cpf("01530880521");
 
         List<MobileElement> empresas = driver.findElements
                 (By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(4).click();
-
-        sleep_testes(8000 * CONST_NET);
 
 
         MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -619,10 +586,9 @@ public class TestPonto extends TestBase {
     }
 
     @Test
-    public void dataSaldo_descr() {
+    public void test_ponto_dataSaldo_descr() {
         enviar_req("enviarSaldo.json", "agente/ponto/espelho/incluir");
         logar_cpf("01846903580");
-        sleep_testes(6000 * CONST_NET);
 
 
         MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated

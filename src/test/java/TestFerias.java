@@ -17,11 +17,8 @@ public class TestFerias extends TestBase {
 
 
     @Test
-    public void test_vizualizar_ferias() {
+    public void test_ferias_vizualizar_ferias() {
         logar();
-
-
-        sleep_testes(6000 * CONST_NET);
 
 
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
@@ -42,16 +39,13 @@ public class TestFerias extends TestBase {
     }
 
     @Test
-    public void test_exibir_download_pdf() {
+    public void test_ferias_exibir_download_pdf() {
 
         logar_cpf("01530880521");
 
 
         MobileElement empresa = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_name_company")));
         empresa.click();
-
-
-        sleep_testes(8000 * CONST_NET);
 
 
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
@@ -66,8 +60,6 @@ public class TestFerias extends TestBase {
 
         meses.get(0).click();
 
-        sleep_testes(1000 * CONST_NET);
-
 
         MobileElement view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/paycheck_registry_recyclerview")));
@@ -77,8 +69,6 @@ public class TestFerias extends TestBase {
 
         matriculas.get(0).click();
 
-        sleep_testes(1000 * CONST_NET);
-
 
         MobileElement download_pdf = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/action_delete")));
@@ -87,13 +77,11 @@ public class TestFerias extends TestBase {
     }
 
     @Test
-    public void test_vizualizar_matriculas() {
+    public void test_ferias_vizualizar_matriculas() {
         logar_cpf("01530880521");
 
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(2).click();
-
-        sleep_testes(8000 * CONST_NET);
 
 
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
@@ -124,11 +112,8 @@ public class TestFerias extends TestBase {
     }
 
     @Test
-    public void test_vizualizar_ferias_meses() {
+    public void test_ferias_vizualizar_ferias_meses() {
         logar();
-
-
-        sleep_testes(6000 * CONST_NET);
 
 
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
@@ -149,12 +134,10 @@ public class TestFerias extends TestBase {
     }
 
     @Test
-    public void test_refresh() {
+    public void test_ferias_refresh() {
 
         logar();
 
-
-        sleep_testes(8000 * CONST_NET);
 
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
         folha.click();
@@ -186,8 +169,6 @@ public class TestFerias extends TestBase {
                 .release()
                 .perform();
 
-        sleep_testes(2000 * CONST_NET);
-
 
         ferias = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy
                 .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");")));
@@ -197,14 +178,12 @@ public class TestFerias extends TestBase {
     }
 
     @Test
-    public void folha_empty_state() {
+    public void test_ferias_folha_empty_state() {
 
         logar_cpf("01530880521");
 
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(4).click();
-
-        sleep_testes(7000 * CONST_NET);
 
 
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
@@ -230,17 +209,13 @@ public class TestFerias extends TestBase {
     }
 
     @Test
-    public void ferias_att_dados_troca_empresa() {
+    public void test_ferias_att_dados_troca_empresa() {
 
         logar_cpf("01530880521");
 
-        sleep_testes(1000 * CONST_NET);
 
         MobileElement empresa = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_name_company")));
         empresa.click();
-
-
-        sleep_testes(8000 * CONST_NET);
 
 
         MobileElement folha = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/financial")));
@@ -263,8 +238,6 @@ public class TestFerias extends TestBase {
 
         trocar_empresa();
 
-
-        sleep_testes(6000 * CONST_NET);
 
         ferias = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy
                 .AndroidUIAutomator("new UiSelector().description(\"FÉRIAS\");")));

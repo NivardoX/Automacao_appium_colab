@@ -12,11 +12,9 @@ import static junit.framework.TestCase.assertFalse;
 public class TestPerfil extends TestBase {
 
     @Test
-    public void test_campos_perfil() {
+    public void test_perfil_campos() {
         logar();
 
-
-        sleep_testes(6000 * CONST_NET);
 
         MobileElement perfil = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/profile")));
@@ -43,15 +41,13 @@ public class TestPerfil extends TestBase {
 
     }
 
-
     //Faltam dados.
     @Test
-    public void test_campos_perfil_enderecoVazio() {
+    public void test_perfil_campos_enderecoVazio() {
         logar_cpf("01530880521");
 
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(3).click();
-        sleep_testes(6000 * CONST_NET);
         MobileElement perfil = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/profile")));
         perfil.click();
@@ -77,10 +73,9 @@ public class TestPerfil extends TestBase {
     }
 
     @Test
-    public void test_mudar_empresa_campos() {
+    public void test_perfil_mudar_empresa_campos() {
         logar();
 
-        sleep_testes(6000 * CONST_NET);
         MobileElement perfil = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/profile")));
         perfil.click();
@@ -103,8 +98,6 @@ public class TestPerfil extends TestBase {
 
         logar_cpf("01607344521");
 
-
-        sleep_testes(6000 * CONST_NET);
 
         perfil = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.id("br.com.fortes.appcolaborador:id/profile")));
