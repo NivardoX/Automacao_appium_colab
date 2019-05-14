@@ -142,14 +142,11 @@ public class TestIR extends TestBase {
         enviar_req("enviarDeclaracao.json", "agente/declaracao/incluir");
 
 
-        sleep_testes(4000 * CONST_NET);
 
+        sleep_testes(4000 * CONST_NET);
         atualizar();
 
-
-        ir = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy
-                .AndroidUIAutomator("new UiSelector().description(\"IR\");" +
-                        "")));
+        sleep_testes(2000 * CONST_NET);
 
         List<MobileElement> irs = driver.findElements
                 (By.id("br.com.fortes.appcolaborador:id/text_item_paycheck_name"));

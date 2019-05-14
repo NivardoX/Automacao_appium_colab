@@ -34,7 +34,11 @@ public class TestLogin extends TestBase {
 
         cpf.sendKeys("06155262330");
         pass.sendKeys("1234567789");
+
+
         login_button.click();
+        sleep_testes(CONST_NET * 3000);
+
         MobileElement tvErrorCPF = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_cpf_error")));
         String tvErrorCPFtext = tvErrorCPF.getText();
 
