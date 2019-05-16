@@ -153,7 +153,7 @@ public class TestLogin extends TestBase {
                 (By.id("br.com.fortes.appcolaborador:id/rp_et_cpf")));
 
 
-        recover_cpf_tv.sendKeys("87577440094");
+        recover_cpf_tv.sendKeys("01530880521");
 
         MobileElement avancar_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/rp_bt_proceed")));
         avancar_button.click();
