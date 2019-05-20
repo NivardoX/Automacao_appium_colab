@@ -1,11 +1,11 @@
 {
-  "Folhas": [
+  "Declaracoes": [
     {
       "TpInscEmpregador": "1",
       "NrInscEmpregador": "02535568",
       "CPF": "01607344521",
       "Matricula": "100000",
-      "IdFolha": "99000"
+      "AnoCalendario": "2018"
     }
   ]
 }

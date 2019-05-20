@@ -1,15 +1,15 @@
 import io.appium.java_client.MobileElement;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TestMensageiro extends TestBase {
 
     @Test
-    public void mensagem_empty_state() {
+    public void test_mensagem_empty_state() {
         logar_cpf("01530880521");
 
         sleep_testes(3000 * CONST_NET);
@@ -17,31 +17,27 @@ public class TestMensageiro extends TestBase {
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(2).click();
 
-        sleep_testes(8000 * CONST_NET);
 
-        MobileElement mensagens_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/message");
+        MobileElement mensagens_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/message")));
         mensagens_button.click();
 
-        MobileElement empty_state = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/nothing_message");
+        MobileElement empty_state = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/nothing_message")));
 
         assert empty_state.isDisplayed();
     }
 
     @Test
-    public void att_mensagem_trocar_empresa() {
+    public void test_mensagem_att_mensagem_trocar_empresa() {
 
         logar_cpf("01530880521");
-        sleep_testes(1000 * CONST_NET);
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        MobileElement empresa = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_name_company")));
         empresa.click();
 
-        sleep_testes(9000 * CONST_NET);
 
-
-        MobileElement mensagens_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/message");
+        MobileElement mensagens_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/message")));
         mensagens_button.click();
 
-        MobileElement scroll_view = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/list_message"));
+        MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/list_message")));
 
         List<MobileElement> mensagens1 = scroll_view.findElements
                 (By.id("br.com.fortes.appcolaborador:id/constraint_layout_profile"));
@@ -49,16 +45,16 @@ public class TestMensageiro extends TestBase {
         ArrayList<String> mensagens1_cnt = new ArrayList<String>();
 
         for (int i = 0; i < mensagens1.size(); i++) {
+
             String titulo = mensagens1.get(i).findElementById("br.com.fortes.appcolaborador:id/title_message").getText();
             String texto = mensagens1.get(i).findElementById("br.com.fortes.appcolaborador:id/text_message").getText();
             mensagens1_cnt.add(titulo + "," + texto);
         }
 
         trocar_empresa();
-        sleep_testes(2000 * CONST_NET);
 
 
-        scroll_view = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/list_message"));
+        scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/list_message")));
 
         List<MobileElement> mensagens2 = scroll_view.findElements
                 (By.id("br.com.fortes.appcolaborador:id/constraint_layout_profile"));
@@ -94,22 +90,19 @@ public class TestMensageiro extends TestBase {
     }
 
     @Test
-    public void vizualizar_mensagem() {
+    public void test_mensagem_vizualizar_mensagem() {
         logar_cpf("01530880521");
-        sleep_testes(1000 * CONST_NET);
 
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        MobileElement empresa = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_name_company")));
         empresa.click();
 
-        sleep_testes(9000 * CONST_NET);
 
-
-        MobileElement mensagens_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/message");
+        MobileElement mensagens_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/message")));
         mensagens_button.click();
 
-        MobileElement scroll_view = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/list_message"));
+        MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/list_message")));
 
-        MobileElement mensagem = (MobileElement) scroll_view.findElement
+        MobileElement mensagem = scroll_view.findElement
                 (By.id("br.com.fortes.appcolaborador:id/constraint_layout_profile"));
 
         mensagem.click();
@@ -120,14 +113,14 @@ public class TestMensageiro extends TestBase {
         Boolean titulo_acessivel = false;
 
         try {
-            MobileElement titulo = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/title_message");
+            MobileElement titulo = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/title_message")));
             titulo_acessivel = titulo.isDisplayed();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            MobileElement text = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/text_message");
+            MobileElement text = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/text_message")));
             texto_acessivel = text.isDisplayed();
 
         } catch (Exception e) {
@@ -138,19 +131,17 @@ public class TestMensageiro extends TestBase {
     }
 
     @Test
-    public void enviar_mensagem() {
+    public void test_mensagem_enviar_mensagem() {
 
         enviar_req("enviarMensagem.json", "agente/mensagem/incluir");
 
         logar_cpf("01607344521");
 
-        sleep_testes(6000 * CONST_NET);
 
-
-        MobileElement mensagens_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/message");
+        MobileElement mensagens_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/message")));
         mensagens_button.click();
 
-        MobileElement scroll_view = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/list_message"));
+        MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/list_message")));
 
         List<MobileElement> mensagens = scroll_view.findElements
                 (By.id("br.com.fortes.appcolaborador:id/constraint_layout_profile"));
@@ -160,15 +151,12 @@ public class TestMensageiro extends TestBase {
         String texto = mensagens.get(0).findElementById("br.com.fortes.appcolaborador:id/text_message").getText();
 
         mensagens.get(0).click();
-        sleep_testes(1000 * CONST_NET);
 
-        MobileElement delete_button = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/action_delete"));
+        MobileElement delete_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/action_delete")));
         delete_button.click();
 
-        sleep_testes(500 * CONST_NET);
 
-
-        MobileElement delete_button_confirm = (MobileElement) driver.findElement(By.id("android:id/button1"));
+        MobileElement delete_button_confirm = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("android:id/button1")));
         delete_button_confirm.click();
 
         System.out.println(titulo + ", Teste");
@@ -179,19 +167,17 @@ public class TestMensageiro extends TestBase {
     }
 
     @Test
-    public void marcar_mensagem_lida(){
+    public void test_mensagem_marcar_mensagem_lida() {
         Boolean assertionFlag = true;
         enviar_req("enviarMensagem.json", "agente/mensagem/incluir");
 
         logar_cpf("01607344521");
 
-        sleep_testes(6000 * CONST_NET);
 
-
-        MobileElement mensagens_button = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/message");
+        MobileElement mensagens_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/message")));
         mensagens_button.click();
 
-        MobileElement scroll_view = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/list_message"));
+        MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/list_message")));
 
         List<MobileElement> mensagens = scroll_view.findElements
                 (By.id("br.com.fortes.appcolaborador:id/constraint_layout_profile"));
@@ -203,8 +189,8 @@ public class TestMensageiro extends TestBase {
         MobileElement is_read = null;
         try {
 
-            is_read = (MobileElement) mensagens.get(0).findElementById("br.com.fortes.appcolaborador:id/iv_is_read");
-        }catch (Exception e ){
+            is_read = mensagens.get(0).findElementById("br.com.fortes.appcolaborador:id/iv_is_read");
+        } catch (Exception e) {
             System.out.println("'br.com.fortes.appcolaborador:id/iv_is_read' não foi encontrado.");
             assertionFlag = false;
         }
@@ -213,16 +199,15 @@ public class TestMensageiro extends TestBase {
         sleep_testes(1000 * CONST_NET);
 
 
-
         driver.navigate().back();
-        scroll_view = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/list_message"));
+        scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/list_message")));
 
-        sleep_testes(500*CONST_NET);
+        sleep_testes(500 * CONST_NET);
 
         try {
-            is_read = (MobileElement) mensagens.get(0).findElementById("br.com.fortes.appcolaborador:id/iv_is_read");
+            is_read = mensagens.get(0).findElementById("br.com.fortes.appcolaborador:id/iv_is_read");
             assertionFlag = false;
-        }catch (Exception e){
+        } catch (Exception e) {
             assertionFlag = true;
             System.out.println("Nao foi encontrada leitura");
         }
@@ -232,17 +217,13 @@ public class TestMensageiro extends TestBase {
                 (By.id("br.com.fortes.appcolaborador:id/constraint_layout_profile"));
 
 
-
         mensagens.get(0).click();
-        sleep_testes(1000 * CONST_NET);
 
-        MobileElement delete_button = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/action_delete"));
+        MobileElement delete_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/action_delete")));
         delete_button.click();
 
-        sleep_testes(500 * CONST_NET);
 
-
-        MobileElement delete_button_confirm = (MobileElement) driver.findElement(By.id("android:id/button1"));
+        MobileElement delete_button_confirm = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("android:id/button1")));
         delete_button_confirm.click();
 
         assert assertionFlag;

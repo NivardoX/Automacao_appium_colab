@@ -5,6 +5,7 @@ import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -15,16 +16,13 @@ import static junit.framework.TestCase.*;
 public class TestPonto extends TestBase {
 
     @Test
-    public void test_matricula_ponto() {
+    public void test_ponto_exibir_matriculas() {
 
         logar();
 
 
-        sleep_testes(6000 * CONST_NET);
-
-
-        MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/point"));
+        MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/point")));
 
         ponto_button.click();
 
@@ -36,30 +34,25 @@ public class TestPonto extends TestBase {
     }
 
     @Test
-    public void ponto_mes_ano() {
+    public void test_ponto_mes_ano() {
 
 
         logar();
 
 
-        sleep_testes(8000 * CONST_NET);
-
-
-        MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/point"));
+        MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/point")));
 
         ponto_button.click();
 
-        MobileElement rc_matricula = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/constraint_layout_profile"));
+        MobileElement rc_matricula = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/constraint_layout_profile")));
 
         rc_matricula.click();
 
 
-        sleep_testes(1000 * CONST_NET);
-
-        MobileElement scroll_view = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/point_month_recyclerview"));
+        MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/point_month_recyclerview")));
 
         List<MobileElement> anos = scroll_view.findElements
                 (By.id("br.com.fortes.appcolaborador:id/text_item_header_name"));
@@ -76,16 +69,13 @@ public class TestPonto extends TestBase {
     }
 
     @Test
-    public void test_batidas_refresh() {
+    public void test_ponto_refresh() {
 
         logar();
 
 
-        sleep_testes(6000 * CONST_NET);
-
-
-        MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/point"));
+        MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/point")));
 
         ponto_button.click();
 
@@ -118,10 +108,8 @@ public class TestPonto extends TestBase {
                 .release()
                 .perform();
 
-        sleep_testes(2000 * CONST_NET);
 
-
-        MobileElement toolbar = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/toolbar"));
+        MobileElement toolbar = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/toolbar")));
         MobileElement title = toolbar.findElement(By.className("android.widget.TextView"));
 
         assertEquals("Histórico de Batidas", title.getText());
@@ -130,19 +118,16 @@ public class TestPonto extends TestBase {
     }
 
     @Test
-    public void att_dados_troca_empresa() {
+    public void test_ponto_att_dados_troca_empresa() {
 
         logar_cpf("01530880521");
 
-        MobileElement empresa = (MobileElement) driver.findElement(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
+        MobileElement empresa = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_name_company")));
         empresa.click();
 
 
-        sleep_testes(8000 * CONST_NET);
-
-
-        MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/point"));
+        MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/point")));
 
         ponto_button.click();
 
@@ -185,7 +170,7 @@ public class TestPonto extends TestBase {
     }
 
     @Test
-    public void ponto_empty_state() {
+    public void test_ponto_empty_state() {
 
         logar_cpf("01530880521");
 
@@ -193,19 +178,17 @@ public class TestPonto extends TestBase {
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(1).click();
 
-        sleep_testes(8000 * CONST_NET);
 
-
-        MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/point"));
+        MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/point")));
 
         ponto_button.click();
 
         sleep_testes(500 * CONST_NET);
 
         try {
-            MobileElement nothing_point = (MobileElement) driver.findElement(
-                    By.id("br.com.fortes.appcolaborador:id/nothing_point"));
+            MobileElement nothing_point = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.id("br.com.fortes.appcolaborador:id/nothing_point")));
         } catch (Exception e) {
             assert (false);
         }
@@ -216,7 +199,7 @@ public class TestPonto extends TestBase {
     }
 
     @Test
-    public void registrar_ponto() {
+    public void test_ponto_bater_ponto() {
 
         List<String> meses = new ArrayList<>();
         meses.add("Janeiro");
@@ -234,25 +217,22 @@ public class TestPonto extends TestBase {
 
         logar_cpf("01607344521");
 
-        sleep_testes(8000 * CONST_NET);
 
-
-        MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/point"));
+        MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/point")));
 
         ponto_button.click();
 
-        MobileElement registrar_ponto_bttn = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/pm_beat_point"));
+        MobileElement registrar_ponto_bttn = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/pm_beat_point")));
 
         registrar_ponto_bttn.click();
 
-        sleep_testes(22000 * CONST_NET);
 
         try {
 
-            MobileElement alert = (MobileElement) driver.findElement
-                    (By.id("android:id/message"));
+            MobileElement alert = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                    (By.id("android:id/message")));
 
             if (alert.isDisplayed()) {
                 assertFalse(alert.getText().equals
@@ -263,11 +243,11 @@ public class TestPonto extends TestBase {
             System.out.println("Localização detectada");
         }
 
-        MobileElement hora = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/bp_tv_data_hour"));
+        MobileElement hora = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/bp_tv_data_hour")));
         String hora_str = hora.getText();
-        MobileElement date = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/bp_tv_data_date"));
+        MobileElement date = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/bp_tv_data_date")));
 
         String data = date.getText();
         data = data.substring(3, 5);
@@ -275,8 +255,8 @@ public class TestPonto extends TestBase {
         String mes = meses.get(Integer.parseInt(data));
 
 
-        MobileElement registrar_bttn = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/btn_beat_point"));
+        MobileElement registrar_bttn = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/btn_beat_point")));
 
         registrar_bttn.click();
 
@@ -308,8 +288,8 @@ public class TestPonto extends TestBase {
         for (int i = 0; i < 8; i++) {
             String id = "br.com.fortes.appcolaborador:id/tv_point_" + i;
             System.out.println(id);
-            horarios.add((MobileElement) driver.findElement
-                    (By.id(id)));
+            horarios.add((MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                    (By.id(id))));
             String hora_econtrada = horarios.get(i).getText();
 
             if (hora_econtrada.equals(hora_str)) {
@@ -327,7 +307,7 @@ public class TestPonto extends TestBase {
     }
 
     @Test
-    public void registrar_ponto_vazio() {
+    public void test_ponto_registrar_ponto_vazio() {
 
         List<String> meses = new ArrayList<>();
         meses.add("Janeiro");
@@ -349,29 +329,22 @@ public class TestPonto extends TestBase {
         empresas.get(3).click();
 
 
-        sleep_testes(8000 * CONST_NET);
-
-
-        MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/point"));
+        MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/point")));
 
         ponto_button.click();
 
 
-        sleep_testes(500 * CONST_NET);
-
-        MobileElement registrar_ponto_bttn = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/pm_beat_point"));
+        MobileElement registrar_ponto_bttn = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/pm_beat_point")));
 
         registrar_ponto_bttn.click();
 
 
-        sleep_testes(22000 * CONST_NET);
-
         try {
 
-            MobileElement alert = (MobileElement) driver.findElement
-                    (By.id("android:id/message"));
+            MobileElement alert = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                    (By.id("android:id/message")));
 
             if (alert.isDisplayed()) {
                 assertFalse(alert.getText().equals
@@ -382,11 +355,11 @@ public class TestPonto extends TestBase {
             System.out.println("Localização detectada");
         }
 
-        MobileElement hora = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/bp_tv_data_hour"));
+        MobileElement hora = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/bp_tv_data_hour")));
         String hora_str = hora.getText();
-        MobileElement date = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/bp_tv_data_date"));
+        MobileElement date = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/bp_tv_data_date")));
 
         String data = date.getText();
         data = data.substring(3, 5);
@@ -394,13 +367,13 @@ public class TestPonto extends TestBase {
         String mes = meses.get(Integer.parseInt(data));
 
 
-        MobileElement registrar_bttn = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/btn_beat_point"));
+        MobileElement registrar_bttn = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/btn_beat_point")));
 
         registrar_bttn.click();
 
 
-        sleep_testes(6000 * CONST_NET);
+        sleep_testes(9000 * CONST_NET);
 
 
         List<MobileElement> meses_tv = driver.findElements
@@ -427,8 +400,8 @@ public class TestPonto extends TestBase {
         for (int i = 0; i < 8; i++) {
             String id = "br.com.fortes.appcolaborador:id/tv_point_" + i;
             System.out.println(id);
-            horarios.add((MobileElement) driver.findElement
-                    (By.id(id)));
+            horarios.add((MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                    (By.id(id))));
             String hora_econtrada = horarios.get(i).getText();
 
             if (hora_econtrada.equals(hora_str)) {
@@ -446,7 +419,7 @@ public class TestPonto extends TestBase {
     }
 
     @Test
-    public void registrar_ponto_matriculas() {
+    public void test_ponto_registrar_ponto_matriculas() {
 
         List<String> meses = new ArrayList<>();
         meses.add("Janeiro");
@@ -471,10 +444,8 @@ public class TestPonto extends TestBase {
         empresas.get(0).click();
 
 
-        sleep_testes(8000 * CONST_NET);
-
-        MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/point"));
+        MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/point")));
 
         ponto_button.click();
 
@@ -482,10 +453,9 @@ public class TestPonto extends TestBase {
                 (By.id("br.com.fortes.appcolaborador:id/text_mat"));
         matriculas.get(0).click();
 
-        sleep_testes(500 * CONST_NET);
 
-        MobileElement registrar_ponto_bttn = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/pm_beat_point"));
+        MobileElement registrar_ponto_bttn = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/pm_beat_point")));
 
         registrar_ponto_bttn.click();
 
@@ -493,8 +463,8 @@ public class TestPonto extends TestBase {
 
         try {
 
-            MobileElement alert = (MobileElement) driver.findElement
-                    (By.id("android:id/message"));
+            MobileElement alert = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                    (By.id("android:id/message")));
 
             if (alert.isDisplayed()) {
                 assertFalse(alert.getText().equals
@@ -505,11 +475,11 @@ public class TestPonto extends TestBase {
             System.out.println("Localização detectada");
         }
 
-        MobileElement hora = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/bp_tv_data_hour"));
+        MobileElement hora = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/bp_tv_data_hour")));
         String hora_str = hora.getText();
-        MobileElement date = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/bp_tv_data_date"));
+        MobileElement date = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/bp_tv_data_date")));
 
         String data = date.getText();
         data = data.substring(3, 5);
@@ -517,8 +487,8 @@ public class TestPonto extends TestBase {
         String mes = meses.get(Integer.parseInt(data));
 
 
-        MobileElement registrar_bttn = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/btn_beat_point"));
+        MobileElement registrar_bttn = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/btn_beat_point")));
 
         registrar_bttn.click();
 
@@ -551,8 +521,8 @@ public class TestPonto extends TestBase {
         for (int i = 0; i < 8; i++) {
             String id = "br.com.fortes.appcolaborador:id/tv_point_" + i;
             System.out.println(id);
-            horarios.add((MobileElement) driver.findElement
-                    (By.id(id)));
+            horarios.add((MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                    (By.id(id))));
             String hora_econtrada = horarios.get(i).getText();
 
             if (hora_econtrada.equals(hora_str)) {
@@ -569,9 +539,8 @@ public class TestPonto extends TestBase {
 
     }
 
-
     @Test
-    public void detectar_localizacao() {
+    public void test_ponto_detectar_localizacao() {
 
         logar_cpf("01530880521");
 
@@ -579,16 +548,14 @@ public class TestPonto extends TestBase {
                 (By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(4).click();
 
-        sleep_testes(8000 * CONST_NET);
 
-
-        MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/point"));
+        MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/point")));
 
         ponto_button.click();
 
-        MobileElement registrar_ponto_bttn = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/pm_beat_point"));
+        MobileElement registrar_ponto_bttn = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/pm_beat_point")));
 
         registrar_ponto_bttn.click();
         Boolean flag_localizacao = false;
@@ -598,8 +565,8 @@ public class TestPonto extends TestBase {
 
         try {
 
-            MobileElement alert = (MobileElement) driver.findElement
-                    (By.id("android:id/message"));
+            MobileElement alert = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                    (By.id("android:id/message")));
 
             if (alert.isDisplayed()) {
                 assertFalse(alert.getText().equals
@@ -619,14 +586,13 @@ public class TestPonto extends TestBase {
     }
 
     @Test
-    public void dataSaldo_descr(){
-        enviar_req("enviarSaldo.json","agente/ponto/espelho/incluir");
+    public void test_ponto_dataSaldo_descr() {
+        enviar_req("enviarSaldo.json", "agente/ponto/espelho/incluir");
         logar_cpf("01846903580");
-        sleep_testes(6000 * CONST_NET);
 
 
-        MobileElement ponto_button = (MobileElement) driver.findElement
-                (By.id("br.com.fortes.appcolaborador:id/point"));
+        MobileElement ponto_button = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.id("br.com.fortes.appcolaborador:id/point")));
 
         ponto_button.click();
 
@@ -639,31 +605,30 @@ public class TestPonto extends TestBase {
                 break;
             }
         }
-        sleep_testes(500*CONST_NET);
+        sleep_testes(500 * CONST_NET);
 
         List<MobileElement> meses_tv = null;
         meses_tv = driver.findElements(By.id("br.com.fortes.appcolaborador:id/text_month"));
 
 
-
-        if(meses_tv.size() == 0){
+        if (meses_tv.size() == 0) {
             meses_tv = driver.findElements
                     (By.id("br.com.fortes.appcolaborador:id/text_month_single"));
         }
 
-        for (MobileElement mes: meses_tv) {
+        for (MobileElement mes : meses_tv) {
             System.out.println(mes.getText());
-            if(mes.getText().equals("Janeiro")){
+            if (mes.getText().equals("Janeiro")) {
                 mes.click();
                 break;
             }
 
         }
 
-        sleep_testes(1000*CONST_NET);
+        sleep_testes(1000 * CONST_NET);
 
         MobileElement saldo_banco = (MobileElement) driver.findElementById("br.com.fortes.appcolaborador:id/saldo_banco_horas_atedia");
-        enviar_req("excluirBatida.json","agente/ponto/espelho/excluir");
+        enviar_req("excluirBatida.json", "agente/ponto/espelho/excluir");
         assert (saldo_banco.getText().contains("Teste Banco de Horas") && saldo_banco.getText().contains("31/12/2017"));
     }
 
