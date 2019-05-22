@@ -10,16 +10,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.*;
 
 public class TestPerfil extends TestBase {
 
     @Test
     public void test_perfil_campos() {
-        try {
-            logar();
 
+            logar();
 
             MobileElement perfil = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
                     (By.id("br.com.fortes.appcolaborador:id/profile")));
@@ -42,17 +40,6 @@ public class TestPerfil extends TestBase {
 
             }
             assertEquals(0, erros);
-            throw new Exception("Teste");
-
-        }catch (Exception e){
-            System.out.println("Exception");
-            File file = driver.getScreenshotAs(OutputType.FILE);
-            try {
-                FileUtils.copyFile(file, new File("Error.png"));
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
 
 
     }

@@ -5,21 +5,30 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
+import org.apache.commons.io.FileUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.Rule;
+import org.junit.rules.MethodRule;
+import org.junit.runners.model.FrameworkMethod;
+import org.junit.runners.model.Statement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -29,10 +38,13 @@ import java.util.List;
 import static java.lang.Thread.sleep;
 
 public class TestBase {
-    AppiumDriver driver;
+    static AppiumDriver driver;
     Double CONST_NET = 1.3;
     String PATH = System.getProperty("user.dir") + "/";
     WebDriverWait wait;
+
+    @Rule
+    public ScreenshotTestRule screenshotTestRule = new ScreenshotTestRule();
 
     @Before
     public void setup() throws MalformedURLException {
@@ -210,9 +222,33 @@ public class TestBase {
                 .perform();
     }
 
-    @After
-    public void tearDown() {
+    @AfterClass
+    public static void tearDown() {
         driver.quit();
+    }
+
+    class ScreenshotTestRule implements MethodRule {
+        public Statement apply(final Statement statement, final FrameworkMethod frameworkMethod, final Object o) {
+
+            return new Statement() {
+                @Override
+                public void evaluate() throws Throwable {
+                    try {
+                        statement.evaluate();
+                    } catch (Throwable t) {
+                        System.out.println("Error");
+                        String fileName = frameworkMethod.getName();
+                        new File("screenshots").mkdirs(); // Insure directory is there
+                        FileOutputStream out = new FileOutputStream("screenshots/screenshot-" + fileName + ".png");
+                        out.write(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
+                        out.close();
+
+                        throw t; // rethrow to allow the failure to be reported to JUnit
+                    }
+                }
+
+            };
+        }
     }
 
 }
