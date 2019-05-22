@@ -223,13 +223,7 @@ public class TestBase {
     }
 
     @AfterClass
-    public static void tearDown() {
-        try {
-            sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        driver.quit();
+    public static void tearDown() {driver.quit();
     }
 
     class ScreenshotTestRule implements MethodRule {
@@ -241,12 +235,12 @@ public class TestBase {
                     try {
                         statement.evaluate();
                     } catch (Throwable t) {
-                        System.out.println("Error");
                         String fileName = frameworkMethod.getName();
                         new File("screenshots").mkdirs(); // Insure directory is there
                         FileOutputStream out = new FileOutputStream("screenshots/screenshot-" + fileName + ".png");
                         out.write(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
                         out.close();
+                        sleep(500);
 
                         throw t; // rethrow to allow the failure to be reported to JUnit
                     }
