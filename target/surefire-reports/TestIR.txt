@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
-Test set: TestPonto
+Test set: TestIR
 -------------------------------------------------------------------------------
-Tests run: 20, Failures: 0, Errors: 20, Skipped: 0, Time elapsed: 0.061 sec <<< FAILURE!
-test_ponto_empty_state(TestPonto)  Time elapsed: 0.004 sec  <<< ERROR!
+Tests run: 12, Failures: 0, Errors: 12, Skipped: 0, Time elapsed: 0.069 sec <<< FAILURE!
+test_ir_empty_state(TestIR)  Time elapsed: 0.012 sec  <<< ERROR!
 org.openqa.selenium.SessionNotCreatedException: Unable to create a new remote session. Please check the server log for more details. Original error: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
@@ -21,7 +21,8 @@ Driver info: driver.version: AndroidDriver
 	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:94)
 	at io.appium.java_client.android.AndroidDriver.<init>(AndroidDriver.java:95)
 	at TestBase.setup(TestBase.java:52)
-	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
@@ -55,14 +56,15 @@ Driver info: driver.version: AndroidDriver
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 Caused by: java.lang.reflect.InvocationTargetException
-	at sun.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:186)
-	... 46 more
+	... 47 more
 Caused by: org.openqa.selenium.WebDriverException: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
 	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:115)
-	... 50 more
+	... 52 more
 Caused by: org.openqa.selenium.json.JsonException: Unable to determine type from: T. Last 1 characters read: T
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
@@ -74,12 +76,13 @@ Driver info: driver.version: AndroidDriver
 	at org.openqa.selenium.json.Json.toType(Json.java:55)
 	at org.openqa.selenium.json.Json.toType(Json.java:50)
 	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:112)
-	... 50 more
+	... 52 more
 
-test_ponto_empty_state(TestPonto)  Time elapsed: 0.004 sec  <<< ERROR!
+test_ir_empty_state(TestIR)  Time elapsed: 0.012 sec  <<< ERROR!
 java.lang.NullPointerException
 	at TestBase.tearDown(TestBase.java:214)
-	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
@@ -112,7 +115,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-test_ponto_att_dados_troca_empresa(TestPonto)  Time elapsed: 0.006 sec  <<< ERROR!
+test_ir_vizualizar_declaracao(TestIR)  Time elapsed: 0.015 sec  <<< ERROR!
 org.openqa.selenium.SessionNotCreatedException: Unable to create a new remote session. Please check the server log for more details. Original error: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
@@ -131,7 +134,8 @@ Driver info: driver.version: AndroidDriver
 	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:94)
 	at io.appium.java_client.android.AndroidDriver.<init>(AndroidDriver.java:95)
 	at TestBase.setup(TestBase.java:52)
-	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
@@ -165,14 +169,15 @@ Driver info: driver.version: AndroidDriver
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 Caused by: java.lang.reflect.InvocationTargetException
-	at sun.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:186)
-	... 46 more
+	... 47 more
 Caused by: org.openqa.selenium.WebDriverException: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
 	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:115)
-	... 50 more
+	... 52 more
 Caused by: org.openqa.selenium.json.JsonException: Unable to determine type from: T. Last 1 characters read: T
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
@@ -184,12 +189,13 @@ Driver info: driver.version: AndroidDriver
 	at org.openqa.selenium.json.Json.toType(Json.java:55)
 	at org.openqa.selenium.json.Json.toType(Json.java:50)
 	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:112)
-	... 50 more
+	... 52 more
 
-test_ponto_att_dados_troca_empresa(TestPonto)  Time elapsed: 0.006 sec  <<< ERROR!
+test_ir_vizualizar_declaracao(TestIR)  Time elapsed: 0.016 sec  <<< ERROR!
 java.lang.NullPointerException
 	at TestBase.tearDown(TestBase.java:214)
-	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
@@ -222,7 +228,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-test_ponto_dataSaldo_descr(TestPonto)  Time elapsed: 0.006 sec  <<< ERROR!
+test_ir_refresh(TestIR)  Time elapsed: 0.011 sec  <<< ERROR!
 org.openqa.selenium.SessionNotCreatedException: Unable to create a new remote session. Please check the server log for more details. Original error: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
@@ -241,7 +247,8 @@ Driver info: driver.version: AndroidDriver
 	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:94)
 	at io.appium.java_client.android.AndroidDriver.<init>(AndroidDriver.java:95)
 	at TestBase.setup(TestBase.java:52)
-	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
@@ -275,14 +282,15 @@ Driver info: driver.version: AndroidDriver
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 Caused by: java.lang.reflect.InvocationTargetException
-	at sun.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:186)
-	... 46 more
+	... 47 more
 Caused by: org.openqa.selenium.WebDriverException: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
 	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:115)
-	... 50 more
+	... 52 more
 Caused by: org.openqa.selenium.json.JsonException: Unable to determine type from: T. Last 1 characters read: T
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
@@ -294,12 +302,13 @@ Driver info: driver.version: AndroidDriver
 	at org.openqa.selenium.json.Json.toType(Json.java:55)
 	at org.openqa.selenium.json.Json.toType(Json.java:50)
 	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:112)
-	... 50 more
+	... 52 more
 
-test_ponto_dataSaldo_descr(TestPonto)  Time elapsed: 0.006 sec  <<< ERROR!
+test_ir_refresh(TestIR)  Time elapsed: 0.011 sec  <<< ERROR!
 java.lang.NullPointerException
 	at TestBase.tearDown(TestBase.java:214)
-	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
@@ -332,7 +341,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-test_ponto_registrar_ponto_matriculas(TestPonto)  Time elapsed: 0.008 sec  <<< ERROR!
+test_ir_att_dados_troca_empresa(TestIR)  Time elapsed: 0.009 sec  <<< ERROR!
 org.openqa.selenium.SessionNotCreatedException: Unable to create a new remote session. Please check the server log for more details. Original error: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
@@ -351,7 +360,8 @@ Driver info: driver.version: AndroidDriver
 	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:94)
 	at io.appium.java_client.android.AndroidDriver.<init>(AndroidDriver.java:95)
 	at TestBase.setup(TestBase.java:52)
-	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
@@ -385,14 +395,15 @@ Driver info: driver.version: AndroidDriver
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 Caused by: java.lang.reflect.InvocationTargetException
-	at sun.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:186)
-	... 46 more
+	... 47 more
 Caused by: org.openqa.selenium.WebDriverException: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
 	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:115)
-	... 50 more
+	... 52 more
 Caused by: org.openqa.selenium.json.JsonException: Unable to determine type from: T. Last 1 characters read: T
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
@@ -404,12 +415,13 @@ Driver info: driver.version: AndroidDriver
 	at org.openqa.selenium.json.Json.toType(Json.java:55)
 	at org.openqa.selenium.json.Json.toType(Json.java:50)
 	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:112)
-	... 50 more
+	... 52 more
 
-test_ponto_registrar_ponto_matriculas(TestPonto)  Time elapsed: 0.008 sec  <<< ERROR!
+test_ir_att_dados_troca_empresa(TestIR)  Time elapsed: 0.009 sec  <<< ERROR!
 java.lang.NullPointerException
 	at TestBase.tearDown(TestBase.java:214)
-	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
@@ -442,7 +454,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-test_ponto_mes_ano(TestPonto)  Time elapsed: 0.006 sec  <<< ERROR!
+test_ir_vizualizar_matriculas(TestIR)  Time elapsed: 0.008 sec  <<< ERROR!
 org.openqa.selenium.SessionNotCreatedException: Unable to create a new remote session. Please check the server log for more details. Original error: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
@@ -461,7 +473,8 @@ Driver info: driver.version: AndroidDriver
 	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:94)
 	at io.appium.java_client.android.AndroidDriver.<init>(AndroidDriver.java:95)
 	at TestBase.setup(TestBase.java:52)
-	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
@@ -495,14 +508,15 @@ Driver info: driver.version: AndroidDriver
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 Caused by: java.lang.reflect.InvocationTargetException
-	at sun.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:186)
-	... 46 more
+	... 47 more
 Caused by: org.openqa.selenium.WebDriverException: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
 	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:115)
-	... 50 more
+	... 52 more
 Caused by: org.openqa.selenium.json.JsonException: Unable to determine type from: T. Last 1 characters read: T
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
@@ -514,12 +528,13 @@ Driver info: driver.version: AndroidDriver
 	at org.openqa.selenium.json.Json.toType(Json.java:55)
 	at org.openqa.selenium.json.Json.toType(Json.java:50)
 	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:112)
-	... 50 more
+	... 52 more
 
-test_ponto_mes_ano(TestPonto)  Time elapsed: 0.006 sec  <<< ERROR!
+test_ir_vizualizar_matriculas(TestIR)  Time elapsed: 0.008 sec  <<< ERROR!
 java.lang.NullPointerException
 	at TestBase.tearDown(TestBase.java:214)
-	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
@@ -552,7 +567,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-test_ponto_exibir_matriculas(TestPonto)  Time elapsed: 0.006 sec  <<< ERROR!
+test_ir_exibir_download_pdf(TestIR)  Time elapsed: 0.012 sec  <<< ERROR!
 org.openqa.selenium.SessionNotCreatedException: Unable to create a new remote session. Please check the server log for more details. Original error: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
@@ -571,7 +586,8 @@ Driver info: driver.version: AndroidDriver
 	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:94)
 	at io.appium.java_client.android.AndroidDriver.<init>(AndroidDriver.java:95)
 	at TestBase.setup(TestBase.java:52)
-	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
@@ -605,14 +621,15 @@ Driver info: driver.version: AndroidDriver
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 Caused by: java.lang.reflect.InvocationTargetException
-	at sun.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:186)
-	... 46 more
+	... 47 more
 Caused by: org.openqa.selenium.WebDriverException: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
 	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:115)
-	... 50 more
+	... 52 more
 Caused by: org.openqa.selenium.json.JsonException: Unable to determine type from: T. Last 1 characters read: T
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
@@ -624,452 +641,13 @@ Driver info: driver.version: AndroidDriver
 	at org.openqa.selenium.json.Json.toType(Json.java:55)
 	at org.openqa.selenium.json.Json.toType(Json.java:50)
 	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:112)
-	... 50 more
+	... 52 more
 
-test_ponto_exibir_matriculas(TestPonto)  Time elapsed: 0.006 sec  <<< ERROR!
+test_ir_exibir_download_pdf(TestIR)  Time elapsed: 0.012 sec  <<< ERROR!
 java.lang.NullPointerException
 	at TestBase.tearDown(TestBase.java:214)
-	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.RunAfters.invokeMethod(RunAfters.java:46)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:33)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:305)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:365)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:330)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:78)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:328)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:65)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:292)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:305)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:412)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
-	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-
-test_ponto_refresh(TestPonto)  Time elapsed: 0.007 sec  <<< ERROR!
-org.openqa.selenium.SessionNotCreatedException: Unable to create a new remote session. Please check the server log for more details. Original error: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
-Driver info: driver.version: AndroidDriver
-	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:208)
-	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:217)
-	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
-	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:213)
-	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:131)
-	at io.appium.java_client.DefaultGenericMobileDriver.<init>(DefaultGenericMobileDriver.java:38)
-	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:84)
-	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:94)
-	at io.appium.java_client.android.AndroidDriver.<init>(AndroidDriver.java:95)
-	at TestBase.setup(TestBase.java:52)
-	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.RunBefores.invokeMethod(RunBefores.java:33)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:305)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:365)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:330)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:78)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:328)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:65)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:292)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:305)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:412)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
-	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-Caused by: java.lang.reflect.InvocationTargetException
-	at sun.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:186)
-	... 46 more
-Caused by: org.openqa.selenium.WebDriverException: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:115)
-	... 50 more
-Caused by: org.openqa.selenium.json.JsonException: Unable to determine type from: T. Last 1 characters read: T
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
-Driver info: driver.version: AndroidDriver
-	at org.openqa.selenium.json.JsonInput.peek(JsonInput.java:122)
-	at org.openqa.selenium.json.JsonTypeCoercer.lambda$null$6(JsonTypeCoercer.java:140)
-	at org.openqa.selenium.json.JsonTypeCoercer.coerce(JsonTypeCoercer.java:126)
-	at org.openqa.selenium.json.Json.toType(Json.java:69)
-	at org.openqa.selenium.json.Json.toType(Json.java:55)
-	at org.openqa.selenium.json.Json.toType(Json.java:50)
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:112)
-	... 50 more
-
-test_ponto_refresh(TestPonto)  Time elapsed: 0.007 sec  <<< ERROR!
-java.lang.NullPointerException
-	at TestBase.tearDown(TestBase.java:214)
-	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.RunAfters.invokeMethod(RunAfters.java:46)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:33)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:305)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:365)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:330)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:78)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:328)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:65)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:292)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:305)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:412)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
-	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-
-test_ponto_registrar_ponto_vazio(TestPonto)  Time elapsed: 0.006 sec  <<< ERROR!
-org.openqa.selenium.SessionNotCreatedException: Unable to create a new remote session. Please check the server log for more details. Original error: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
-Driver info: driver.version: AndroidDriver
-	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:208)
-	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:217)
-	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
-	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:213)
-	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:131)
-	at io.appium.java_client.DefaultGenericMobileDriver.<init>(DefaultGenericMobileDriver.java:38)
-	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:84)
-	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:94)
-	at io.appium.java_client.android.AndroidDriver.<init>(AndroidDriver.java:95)
-	at TestBase.setup(TestBase.java:52)
-	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.RunBefores.invokeMethod(RunBefores.java:33)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:305)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:365)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:330)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:78)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:328)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:65)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:292)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:305)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:412)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
-	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-Caused by: java.lang.reflect.InvocationTargetException
-	at sun.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:186)
-	... 46 more
-Caused by: org.openqa.selenium.WebDriverException: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:115)
-	... 50 more
-Caused by: org.openqa.selenium.json.JsonException: Unable to determine type from: T. Last 1 characters read: T
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
-Driver info: driver.version: AndroidDriver
-	at org.openqa.selenium.json.JsonInput.peek(JsonInput.java:122)
-	at org.openqa.selenium.json.JsonTypeCoercer.lambda$null$6(JsonTypeCoercer.java:140)
-	at org.openqa.selenium.json.JsonTypeCoercer.coerce(JsonTypeCoercer.java:126)
-	at org.openqa.selenium.json.Json.toType(Json.java:69)
-	at org.openqa.selenium.json.Json.toType(Json.java:55)
-	at org.openqa.selenium.json.Json.toType(Json.java:50)
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:112)
-	... 50 more
-
-test_ponto_registrar_ponto_vazio(TestPonto)  Time elapsed: 0.006 sec  <<< ERROR!
-java.lang.NullPointerException
-	at TestBase.tearDown(TestBase.java:214)
-	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.RunAfters.invokeMethod(RunAfters.java:46)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:33)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:305)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:365)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:330)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:78)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:328)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:65)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:292)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:305)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:412)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
-	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-
-test_ponto_detectar_localizacao(TestPonto)  Time elapsed: 0.006 sec  <<< ERROR!
-org.openqa.selenium.SessionNotCreatedException: Unable to create a new remote session. Please check the server log for more details. Original error: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
-Driver info: driver.version: AndroidDriver
-	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:208)
-	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:217)
-	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
-	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:213)
-	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:131)
-	at io.appium.java_client.DefaultGenericMobileDriver.<init>(DefaultGenericMobileDriver.java:38)
-	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:84)
-	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:94)
-	at io.appium.java_client.android.AndroidDriver.<init>(AndroidDriver.java:95)
-	at TestBase.setup(TestBase.java:52)
-	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.RunBefores.invokeMethod(RunBefores.java:33)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:305)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:365)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:330)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:78)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:328)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:65)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:292)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:305)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:412)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
-	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-Caused by: java.lang.reflect.InvocationTargetException
-	at sun.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:186)
-	... 46 more
-Caused by: org.openqa.selenium.WebDriverException: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:115)
-	... 50 more
-Caused by: org.openqa.selenium.json.JsonException: Unable to determine type from: T. Last 1 characters read: T
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
-Driver info: driver.version: AndroidDriver
-	at org.openqa.selenium.json.JsonInput.peek(JsonInput.java:122)
-	at org.openqa.selenium.json.JsonTypeCoercer.lambda$null$6(JsonTypeCoercer.java:140)
-	at org.openqa.selenium.json.JsonTypeCoercer.coerce(JsonTypeCoercer.java:126)
-	at org.openqa.selenium.json.Json.toType(Json.java:69)
-	at org.openqa.selenium.json.Json.toType(Json.java:55)
-	at org.openqa.selenium.json.Json.toType(Json.java:50)
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:112)
-	... 50 more
-
-test_ponto_detectar_localizacao(TestPonto)  Time elapsed: 0.006 sec  <<< ERROR!
-java.lang.NullPointerException
-	at TestBase.tearDown(TestBase.java:214)
-	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.RunAfters.invokeMethod(RunAfters.java:46)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:33)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:305)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:365)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:330)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:78)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:328)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:65)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:292)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:305)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:412)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
-	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-
-test_ponto_bater_ponto(TestPonto)  Time elapsed: 0.006 sec  <<< ERROR!
-org.openqa.selenium.SessionNotCreatedException: Unable to create a new remote session. Please check the server log for more details. Original error: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
-Driver info: driver.version: AndroidDriver
-	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:208)
-	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:217)
-	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
-	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:213)
-	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:131)
-	at io.appium.java_client.DefaultGenericMobileDriver.<init>(DefaultGenericMobileDriver.java:38)
-	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:84)
-	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:94)
-	at io.appium.java_client.android.AndroidDriver.<init>(AndroidDriver.java:95)
-	at TestBase.setup(TestBase.java:52)
-	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.RunBefores.invokeMethod(RunBefores.java:33)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:305)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:365)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:330)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:78)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:328)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:65)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:292)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:305)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:412)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
-	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-Caused by: java.lang.reflect.InvocationTargetException
-	at sun.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:186)
-	... 46 more
-Caused by: org.openqa.selenium.WebDriverException: Unable to parse remote response: The URL '/wsd/hub/session' did not map to a valid resource
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:115)
-	... 50 more
-Caused by: org.openqa.selenium.json.JsonException: Unable to determine type from: T. Last 1 characters read: T
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'inspiron', ip: '192.168.10.142', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-1036-oem', java.version: '1.8.0_191'
-Driver info: driver.version: AndroidDriver
-	at org.openqa.selenium.json.JsonInput.peek(JsonInput.java:122)
-	at org.openqa.selenium.json.JsonTypeCoercer.lambda$null$6(JsonTypeCoercer.java:140)
-	at org.openqa.selenium.json.JsonTypeCoercer.coerce(JsonTypeCoercer.java:126)
-	at org.openqa.selenium.json.Json.toType(Json.java:69)
-	at org.openqa.selenium.json.Json.toType(Json.java:55)
-	at org.openqa.selenium.json.Json.toType(Json.java:50)
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:112)
-	... 50 more
-
-test_ponto_bater_ponto(TestPonto)  Time elapsed: 0.006 sec  <<< ERROR!
-java.lang.NullPointerException
-	at TestBase.tearDown(TestBase.java:214)
-	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
