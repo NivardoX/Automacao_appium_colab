@@ -129,7 +129,6 @@ public class TestContraCheque extends TestBase {
     public void test_contracheque_exibir_matriculas() {
 
         logar_cpf("01530880521");
-
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("br.com.fortes.appcolaborador:id/tv_name_company")));
         List<MobileElement> empresas = driver.findElements(By.id("br.com.fortes.appcolaborador:id/tv_name_company"));
         empresas.get(0).click();

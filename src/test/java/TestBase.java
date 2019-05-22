@@ -49,7 +49,7 @@ public class TestBase {
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
         //other caps
         capabilities.setCapability("app", app.getAbsolutePath());
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wsd/hub"), capabilities);
         wait = new WebDriverWait(driver, 30);
 
     }
