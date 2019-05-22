@@ -46,6 +46,7 @@ public class TestBase {
         capabilities.setCapability("deviceName", "Mi 8 Lite");
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("autoGrantPermissions", "true");
+        capabilities.setCapability(MobileCapabilityType.TAKES_SCREENSHOT, "true");
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
         //other caps
         capabilities.setCapability("app", app.getAbsolutePath());

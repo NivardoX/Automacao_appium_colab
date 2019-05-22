@@ -1,9 +1,13 @@
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
@@ -13,31 +17,43 @@ public class TestPerfil extends TestBase {
 
     @Test
     public void test_perfil_campos() {
-        logar();
+        try {
+            logar();
 
 
-        MobileElement perfil = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.id("br.com.fortes.appcolaborador:id/profile")));
-        perfil.click();
+            MobileElement perfil = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                    (By.id("br.com.fortes.appcolaborador:id/profile")));
+            perfil.click();
 
 
-        MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.id("br.com.fortes.appcolaborador:id/scroll_view_profile")));
+            MobileElement scroll_view = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated
+                    (By.id("br.com.fortes.appcolaborador:id/scroll_view_profile")));
 
-        List<MobileElement> elementos = driver.findElements(MobileBy
-                .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
-                        + "new UiSelector().className(\"android.widget.EditText\").clickable(true));"));
+            List<MobileElement> elementos = driver.findElements(MobileBy
+                    .AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
+                            + "new UiSelector().className(\"android.widget.EditText\").clickable(true));"));
 
-        int erros = 0;
-        for (int i = 0; i < elementos.size(); i++) {
-            if (elementos.get(i).getText().equals("")) {
-                erros++;
+            int erros = 0;
+            for (int i = 0; i < elementos.size(); i++) {
+                if (elementos.get(i).getText().equals("")) {
+                    erros++;
+                }
+                sleep_testes(300 * CONST_NET);
+
             }
-            sleep_testes(300 * CONST_NET);
+            assertEquals(0, erros);
+            throw new Exception("Teste");
 
+        }catch (Exception e){
+            System.out.println("Exception");
+            File file = driver.getScreenshotAs(OutputType.FILE);
+            try {
+                FileUtils.copyFile(file, new File("Error.png"));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
 
-        assertEquals(0, erros);
 
     }
 
