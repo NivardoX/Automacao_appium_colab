@@ -225,7 +225,7 @@ public class TestBase {
     @AfterClass
     public static void tearDown() {
         try {
-            sleep(100);
+            sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
