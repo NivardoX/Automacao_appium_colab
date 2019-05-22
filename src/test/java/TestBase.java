@@ -224,6 +224,11 @@ public class TestBase {
 
     @AfterClass
     public static void tearDown() {
+        try {
+            sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         driver.quit();
     }
 
