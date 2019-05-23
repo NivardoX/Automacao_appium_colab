@@ -240,7 +240,7 @@ public class TestBase {
                         FileOutputStream out = new FileOutputStream("screenshots/screenshot-" + fileName + ".png");
                         out.write(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
                         out.close();
-                        sleep(500);
+
 
                         throw t; // rethrow to allow the failure to be reported to JUnit
                     }

@@ -39,6 +39,7 @@ public class TestPerfil extends TestBase {
                 sleep_testes(300 * CONST_NET);
 
             }
+
             assertEquals(0, erros);
 
 

@@ -124,7 +124,7 @@ public class TestLogin extends TestBase {
         avancar_button.click();
 
         driver.runAppInBackground(Duration.ofMillis(3000));
-        driver.launchApp();
+        //driver.launchApp();
 
         sleep_testes(1000 * CONST_NET);
         MobileElement cpf = null;
