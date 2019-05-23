@@ -222,7 +222,7 @@ public class TestBase {
                 .perform();
     }
 
-    @AfterClass
+    @After
     public static void tearDown() {driver.quit();
     }
 
