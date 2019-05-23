@@ -38,13 +38,10 @@ import java.util.List;
 import static java.lang.Thread.sleep;
 
 public class TestBase {
-    static AppiumDriver driver;
+    AppiumDriver driver;
     Double CONST_NET = 1.3;
     String PATH = System.getProperty("user.dir") + "/";
     WebDriverWait wait;
-
-    @Rule
-    public ScreenshotTestRule screenshotTestRule = new ScreenshotTestRule();
 
     @Before
     public void setup() throws MalformedURLException {
@@ -223,31 +220,8 @@ public class TestBase {
     }
 
     @After
-    public static void tearDown() {driver.quit();
-    }
-
-    class ScreenshotTestRule implements MethodRule {
-        public Statement apply(final Statement statement, final FrameworkMethod frameworkMethod, final Object o) {
-
-            return new Statement() {
-                @Override
-                public void evaluate() throws Throwable {
-                    try {
-                        statement.evaluate();
-                    } catch (Throwable t) {
-                        String fileName = frameworkMethod.getName();
-                        new File("screenshots").mkdirs(); // Insure directory is there
-                        FileOutputStream out = new FileOutputStream("screenshots/screenshot-" + fileName + ".png");
-                        out.write(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
-                        out.close();
+    public void tearDown() {driver.quit();}
 
 
-                        throw t; // rethrow to allow the failure to be reported to JUnit
-                    }
-                }
-
-            };
-        }
-    }
 
 }
