@@ -15,8 +15,6 @@ public class testes{
         String PATH = System.getProperty("user.dir")+"/";
         String file= "enviarMensagem.json";
         String endpoint = "agente/mensagem/incluir";
-
-
         try {
             // FileReader reads text files in the default encoding.
             FileReader fileReader = new FileReader(PATH + "src/test/java/" + file);
